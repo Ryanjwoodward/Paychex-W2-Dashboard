@@ -5,6 +5,11 @@ CREATE SCHEMA `PaychexW2Dashboard` ;
 CREATE TABLE `PaychexW2Dashboard`.`lookup_types` (
   `lookup_type_id` INT NOT NULL,
   PRIMARY KEY (`lookup_type_id`));
+
+/* Missed a Column in creating the above table*/  
+  ALTER TABLE `PaychexW2Dashboard`.`lookup_types` 
+ADD COLUMN `lookup_type` VARCHAR(45) NULL AFTER `lookup_type_id`;
+
   
 /* Create table 'lookup_table' which has a foreign key in 'lookup_types' table*/
 CREATE TABLE `PaychexW2Dashboard`.`lookup_table` (
