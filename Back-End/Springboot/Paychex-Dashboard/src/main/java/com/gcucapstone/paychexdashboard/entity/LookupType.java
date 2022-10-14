@@ -35,7 +35,7 @@ public class LookupType {
 	//----------------------------------------------------
 	@Id
 	@Column(name = "lookup_type_id")
-	private int lookupTypeId;
+	private Long lookupTypeId;
 
 
 	@Column(name = "lookup_type")

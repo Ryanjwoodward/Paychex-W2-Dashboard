@@ -18,7 +18,7 @@ import java.util.Optional;
  *                 | native SQL Query methods will be defind for Carrier entities
  * ---------------------------------------------------------------------------
  * Notes:
- *  - Added General Save(create), find, update, and delete methods for the interface
+ *  - Add General Save(create), find, update, and delete methods for the interface
  *
  *---------------------------------------------------------------------------*/
 public interface CarrierRepository extends JpaRepository<Carrier, BranchClient> {
