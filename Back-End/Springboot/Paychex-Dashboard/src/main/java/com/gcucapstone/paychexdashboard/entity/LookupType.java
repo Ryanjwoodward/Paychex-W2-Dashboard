@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 /**-------------------------------------------------------------------
-  Authors:      | Ryan Woodward & Chris Robles
+  Authors:      | Ryan Woodward
   Class:        | STG451 - Capstone 1
   Institution:  | Grand Canyon University &  Paychex
   Instructor:   | Dr. Isac Artzi

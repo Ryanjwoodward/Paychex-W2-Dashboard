@@ -1,6 +1,7 @@
 package com.gcucapstone.paychexdashboard.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -23,6 +24,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Getter
 @Setter
+@NoArgsConstructor
 public class BranchClient implements  Serializable{
 
     //----------------------------------------------------

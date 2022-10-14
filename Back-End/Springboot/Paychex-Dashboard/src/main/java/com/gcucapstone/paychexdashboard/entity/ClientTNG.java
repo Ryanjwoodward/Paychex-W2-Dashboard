@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 
 /**
  * ------------------------------------------------------------------------
- * Authors:        | Ryan Woodward & Chris Robles
+ * Authors:        | Ryan Woodward
  * Institution:    | Grand Canyon University & Paychex
  * Instructor:     | Dr. Isac Artzi
  * Date:           | (Created) 10-13-2022
@@ -33,7 +33,7 @@ import java.sql.Timestamp;
         name = "w2_client_tng",
         schema = "PaychexDashboard"
 )
-public class W2ClientTNG {
+public class ClientTNG {
 
     //----------------------------------------------------
     // Instance Variables

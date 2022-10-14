@@ -29,7 +29,7 @@ import javax.persistence.*;
         name = "w2_vendor_information",
         schema = "PaychexDashboard"
 )
-public class W2Vendor {
+public class Vendor {
 
     //----------------------------------------------------
     // Instance Variables

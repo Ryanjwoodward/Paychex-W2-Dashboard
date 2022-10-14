@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 /**-------------------------------------------------------------------
-  Authors:      | Ryan Woodward & Chris Robles
+  Authors:      | Ryan Woodward
   Class:        | STG451 - Capstone 1
   Institution:  | Grand Canyon University & Paychex
   Instructor:   | Dr. Isac Artzi
@@ -28,7 +28,7 @@ Notes:
 		name = "w2_carrier_information",
 		schema = "PaychexDashboard"
 )
-public class W2Carrier {
+public class Carrier {
 
 	//----------------------------------------------------
 	// Instance Variables

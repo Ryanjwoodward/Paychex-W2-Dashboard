@@ -2,7 +2,7 @@ package com.gcucapstone.paychexdashboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-/*-------------------------------------------------------------------
+/**-------------------------------------------------------------------
   Authors:      | Ryan Woodward & Chris Robles
   Class:        | STG451 - Capstone 1
   Institution:  | Grand Canyon University &  Paychex
