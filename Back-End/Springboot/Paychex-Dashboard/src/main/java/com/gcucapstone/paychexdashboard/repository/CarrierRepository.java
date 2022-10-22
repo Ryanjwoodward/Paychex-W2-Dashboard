@@ -2,8 +2,10 @@ package com.gcucapstone.paychexdashboard.repository;
 
 import com.gcucapstone.paychexdashboard.entity.BranchClient;
 import com.gcucapstone.paychexdashboard.entity.Carrier;
+import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -18,19 +20,21 @@ import java.util.Optional;
  *                 | native SQL Query methods will be defind for Carrier entities
  * ---------------------------------------------------------------------------
  * Notes:
- *  - Add General Save(create), find, update, and delete methods for the interface
  *
  *---------------------------------------------------------------------------*/
 public interface CarrierRepository extends JpaRepository<Carrier, BranchClient> {
 
-    Optional<Carrier> findById(BranchClient id);
+    //----------------------------------------------------
+    // Query Method Definitions
+    //----------------------------------------------------
 
-    //carrier type
+    //---------------------------------------
+    // *** Find By Individual Attributes ***
+    //---------------------------------------
 
-    //delivery status type
+    //---------------------------------------
+    // *** Find by Multiple Attributes
+    //---------------------------------------
 
-    //destination address
-
-    //tracking id
 
 }// CarrierRepository Interface

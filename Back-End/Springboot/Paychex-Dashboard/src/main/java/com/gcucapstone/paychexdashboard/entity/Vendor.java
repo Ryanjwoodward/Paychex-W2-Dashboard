@@ -17,7 +17,7 @@ import javax.persistence.*;
  *                 | establish relationship between tables with fields/ attributes
  * ---------------------------------------------------------------------------
  Notes:
- - Add Foreign Key Relationship annotations to two latter columns
+
  ----------------------------------------------------------------------*/
 @Entity
 @Getter
@@ -44,8 +44,8 @@ public class Vendor {
     @Column(name = "vendor_w2_count")
     private int w2Count;
 
-    //Add Foreign Key reltionship annotation
-    @Column(name = "w2_vendor_type")
-    private int type;
+    @OneToOne
+    @JoinColumn(name = "lookup_id", referencedColumnName = "lookup_id")
+    private LookupTable type; //rename to lookupType
 
 }// W2Vendor Class

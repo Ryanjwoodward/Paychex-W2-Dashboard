@@ -18,12 +18,13 @@ import javax.persistence.*;
 Notes:
 
 ----------------------------------------------------------------------*/
-@Entity
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @ToString
+@Entity
 @Table(
 		name = "lookup_types",
 		schema = "PaychexDashboard"

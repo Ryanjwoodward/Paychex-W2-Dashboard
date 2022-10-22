@@ -16,7 +16,7 @@ import javax.persistence.*;
   				| it will be used to create carrier entities and determine relationships with fields/attributes
 ---------------------------------------------------------------------
 Notes:
- - Need to add FK relationship annotations to the latter two fields
+
 ----------------------------------------------------------------------*/
 @Entity
 @Getter
@@ -44,11 +44,13 @@ public class Carrier {
 	private String trackingId;
 
 	// Add foreign key relationship annotation
-	@Column(name ="carrier_type")
-	private int carrierType;
+	@OneToOne
+	@JoinColumn(name = "carrier_lookup_id", referencedColumnName = "lookup_id")
+	private LookupTable lookupId;
 
 	// Add foreign key relationship annotation
-	@Column(name = "delivery_status_type")
-	private int deliveryStatusType;
+	@OneToOne
+	@JoinColumn(name = "delviery_status_type_id", referencedColumnName = "lookup_id")
+	private LookupTable deliveryStatusTypeId;
 
 }// w2Carrier Class

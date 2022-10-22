@@ -2,10 +2,7 @@ package com.gcucapstone.paychexdashboard.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -21,7 +18,7 @@ import java.sql.Timestamp;
  *                 | tables using the fields/attributes
  * ---------------------------------------------------------------------------
  Notes:
-    - Add Foreign Key Relationship annotations to two latter columns
+
  ----------------------------------------------------------------------*/
 @Entity
 @Getter
@@ -60,12 +57,12 @@ public class ClientTNG {
     @Column(name = "w2_dlivery_address")
     private String w2DeliveryAddress;
 
-    // Add FK relationsip annotation
-    @Column(name = "client_type_id")
-    private int clientTypeId;
+    @OneToOne
+    @JoinColumn(name = "client_type_id", referencedColumnName = "lookup_id")
+    private LookupTable clientTypeId;
 
-    // Add FK relationship annotation
-    @Column(name = "delivery_code_type")
-    private int deliveryCodeType;
+    @OneToOne
+    @JoinColumn(name = "delivery_code_type", referencedColumnName = "lookup_id")
+    private LookupTable deliveryCodeType;
 
 }// w2ClientTNG Class

@@ -18,14 +18,14 @@ import javax.persistence.*;
  *                 | between tables with fields/attributes
  * ---------------------------------------------------------------------------
  Notes:
-    - Need to add FK relationship annotation to the final column
+
  ----------------------------------------------------------------------*/
-@Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @ToString
+@Entity
 @Table(
         name = "lookup_table",
         schema = "PaychexDashboard"
@@ -37,7 +37,7 @@ public class LookupTable {
     //----------------------------------------------------
     @Id
     @Column(name = "lookup_id")
-    private int lookupId;
+    private Long lookupId;
 
     @Column(name = "lookup_abbreviation")
     private String abbreviation;
@@ -48,8 +48,8 @@ public class LookupTable {
     @Column(name = "lookup_full_name")
     private String fullName;
 
-    //Add Foreign Key Relationship Annotation
-    @Column(name = "lookup_type_id")
-    private int typeId;
+    @OneToOne
+    @JoinColumn(name = "lookup_type_id", referencedColumnName = "lookup_type_Id")
+    private LookupType lookupTypeId;
 
 }// lookupTable Class
