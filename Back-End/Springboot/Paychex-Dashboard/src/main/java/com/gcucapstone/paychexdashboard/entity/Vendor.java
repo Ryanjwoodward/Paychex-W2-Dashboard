@@ -46,6 +46,6 @@ public class Vendor {
 
     @OneToOne
     @JoinColumn(name = "lookup_id", referencedColumnName = "lookup_id")
-    private LookupTable type; //rename to lookupType
+    private LookupTable lookupId;
 
 }// W2Vendor Class

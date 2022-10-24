@@ -1,6 +1,5 @@
 package com.gcucapstone.paychexdashboard.repository;
 
-import com.gcucapstone.paychexdashboard.entity.BranchClient;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +22,114 @@ import java.util.List;
 @SpringBootTest
 public class VendorRepositoryTest {
 
+    //-----------------------------------
+    // Variables
+    //-----------------------------------
     @Autowired
     VendorRepository vendorRepository;
 
+    //----------------------------------------------------
+    // Query Test Methods
+    //----------------------------------------------------
 
+    //--------------------------------
+    // Find by Individual Attributes
+    //--------------------------------
+
+    @Test
+    void findByBranch(){
+        List<Vendor> vendor = vendorRepository.findByBranch("northwest");
+
+        vendor.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("W2 COUNT: " + v.getW2Count());
+        });
+    }
+
+    @Test
+    void findByClientId(){
+        List<Vendor> vendor = vendorRepository.findByClientId("7765-DG");
+        vendor.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("W2 COUNT: " + v.getW2Count());
+        });
+    }
+
+    @Test
+    void findByEmployeeCount(){
+        List<Vendor> vendors = vendorRepository.findByEmployeeCount(117);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    @Test
+    void findByEmployeeCountGreaterThan(){
+        List<Vendor> vendors = vendorRepository.findByEmployeeCountGreaterThan(50);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    @Test
+    void findByEmployeeCountLessThan(){
+        List<Vendor> vendors = vendorRepository.findByEmployeeCountLessThan(200);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    @Test
+    void findByEmployeeCountBetween(){
+        List<Vendor> vendors = vendorRepository.findByEmployeeCountBetween(10, 200);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    @Test
+    void findByW2Count(){
+        List<Vendor> vendors = vendorRepository.findByW2Count(117);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    @Test
+    void findByW2CountGreaterThan(){
+        List<Vendor> vendors = vendorRepository.findByW2CountGreaterThan(25);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    @Test
+    void findByW2CountGLessThan(){
+        List<Vendor> vendors = vendorRepository.findByW2CountLessThan(200);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    @Test
+    void findByCW2CountBetween(){
+        List<Vendor> vendors = vendorRepository.findByW2CountBetween(10, 200);
+        vendors.forEach((v)->{
+            System.out.println("EMP COUNT: " + v.getEmployeeCount());
+            System.out.println("BRANCH: " + v.getVendorId().getBranch());
+        });
+    }
+
+    //--------------------------------
+    // Find by Multiple Attributes
+    //--------------------------------
     @Test
     void findByBranchOrClientId(){
 
@@ -38,15 +141,5 @@ public class VendorRepositoryTest {
         });
     }
 
-
-    @Test
-    void findByBranch(){
-        List<Vendor> vendor = vendorRepository.findAll();
-
-        vendor.forEach((v)->{
-            System.out.println("EMP COUNT: " + v.getEmployeeCount());
-            System.out.println("W2 COUNT: " + v.getW2Count());
-        });
-    }
 
 }// VendorRepositoryTest Class

@@ -2,6 +2,7 @@ package com.gcucapstone.paychexdashboard.repository;
 
 import com.gcucapstone.paychexdashboard.entity.BranchClient;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -22,12 +23,130 @@ import java.util.Optional;
  */
 public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
 
-   //for BranchClient attribute - I will have to write custom Query method
+   //----------------------------------------------------
+   // Query Test Methods
+   //----------------------------------------------------
 
-   @Query("SELECT v from Vendor v where v.vendorId.branch = ?1 or v.vendorId.clientId = ?2")
+   //--------------------------------
+   // Find by Individual Attributes
+   //--------------------------------
+
+   /**
+    * This method is a custom written JPQL Query method that returns a located vendor
+    * records that correspond to the passed branch parameter
+    * @param Branch  - the branch id of the vendor record
+    * @return        - the returned vendor record(s)
+    */
+   @Query("SELECT v FROM Vendor v WHERE v.vendorId.branch = ?1")
+   List<Vendor> findByBranch(String Branch);
+
+   /**
+    * This method is a custom written JPQL Query method that returns a located vendor
+    * record that corresponds to the passed client ID  parameter
+    * @param clientId   - the client ID of the vendor record
+    * @return           - the vendor record(s)
+    */
+   @Query("SELECT v FROM Vendor v WHERE v.vendorId.clientId = ?1")
+   List<Vendor> findByClientId(String clientId);
+
+
+   /**
+    * This method returns a list of Vendors that match the number  of employees
+    * as a passed parameter.
+    * @param employeeCount - the number of employees
+    * @return              - the vendor records
+    */
+   List<Vendor> findByEmployeeCount(int employeeCount);
+
+   /**
+    * This method returns a list of vendors that have a employee count
+    * greater than the passed parameter
+    * @param employeeCount - the number of employees to compare
+    * @return              - return the vendor records
+    */
+   List<Vendor> findByEmployeeCountGreaterThan(int employeeCount);
+
+   /**
+    * This method returns a list of vendors that have an employee count
+    * that is less than the passeed parameter
+    * @param employeeCount  - the number of employees to search for
+    * @return               - the list of Vendors
+    */
+   List<Vendor> findByEmployeeCountLessThan(int employeeCount);
+
+   /**
+    * This method returns a list of vendor records whose employee count
+    * is between the passed paramaters
+    * @param count1  - first boundary: number  of employees
+    * @param count2  - second boundary: number of employees
+    * @return        - the list of vendor records
+    */
+  List<Vendor> findByEmployeeCountBetween(int count1, int count2);
+
+   /**
+    * This method returns a list of vendor records whose W2 count
+    * matches the passed parameter
+    * @param w2Count - the number of the W2's to search for
+    * @return        - the list of vendor records
+    */
+  List<Vendor> findByW2Count(int w2Count);
+
+   /**
+    * This method returns a list of vendor records that have a greater value
+    * than the passed parameter, number of W2's
+    * @param w2Count - the number of W2's
+    * @return        - list of vendor records
+    */
+  List<Vendor> findByW2CountGreaterThan(int w2Count);
+
+   /**
+    * This method returns a list of vendor records that have a lesser value
+    * than the passed parameter, number of W2's
+    * @param w2Count - the number of W2's
+    * @return        - list of vendor records
+    */
+  List<Vendor> findByW2CountLessThan(int w2Count);
+
+   /**
+    * This method returns a list of vendor records that have a value between the
+    * passed parameters of W2 count
+    * @param w2Count1   - the first boundary: number of W2's
+    * @param w2Count2   - the second boundary: number of W2's
+    * @return           - the List of Vendor Records
+    */
+  List<Vendor> findByW2CountBetween(int w2Count1, int w2Count2);
+
+//*****************************************************************************
+//*****************************************************************************
+//*****************************************************************************
+//*****************************************************************************
+//*****************************************************************************
+   List<Vendor> findByLookupId(Long lookupId);
+
+
+   //--------------------------------
+   // Find by Multiple Attributes
+   //--------------------------------
+
+   /**
+    * This method is a custom written JPQL Query method that returns a located vendor
+    * record that corresponds to both of the passed Branch and client ID parameter
+    * @param Branch     - the Branch name to search for
+    * @param clientId   - the clientID to search for
+    * @return           - vendor record(s)
+    */
+   @Query("SELECT v FROM Vendor v WHERE v.vendorId.branch = ?1 AND v.vendorId.clientId = ?2")
+   List<Vendor> findByBranchAndClientId(String Branch, String clientId);
+
+   /**
+    * This method is a custom written JPQL Query method that returns o located vendor
+    * record that corresponds to at least one of the passed Branch of Client ID parameters
+    * @param branch     - the Branch name to search for
+    * @param clientId   - the client ID to search for
+    * @return           - vendor record(s)
+    */
+   @Query("SELECT v FROM Vendor v WHERE v.vendorId.branch = ?1 OR v.vendorId.clientId = ?2")
    List<Vendor> findByBranchOrClientId(String branch, String clientId);
 
-   @Query("SELECT v from Vendor v WHERE v.vendorId.branch = ?1")
-   List<Vendor> findByBranch(String Branch);
 
 }// VendorRepository Interface

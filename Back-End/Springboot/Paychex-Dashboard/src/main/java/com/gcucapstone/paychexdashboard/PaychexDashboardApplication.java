@@ -2,6 +2,9 @@ package com.gcucapstone.paychexdashboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.LinkedList;
+
 /**-------------------------------------------------------------------
   Authors:      | Ryan Woodward & Chris Robles
   Class:        | STG451 - Capstone 1
@@ -20,7 +23,12 @@ Notes:
 public class PaychexDashboardApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(PaychexDashboardApplication.class, args);
+
+		
 	}
+
+
 
 }// PaychexDashboardApplication Class
