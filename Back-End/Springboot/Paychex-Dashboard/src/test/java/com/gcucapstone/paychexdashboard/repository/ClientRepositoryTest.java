@@ -16,8 +16,8 @@ import java.util.List;
  * Date:           | (Created)10-26-2022
  * File:           | ClientRepositoryTest.java
  * Version:        | 1.0
- * Description:    |
- *                 |
+ * Description:    | This file will be used to test the repo & query methods
+ *                 |    defined within the ClientRepository interface
  * ---------------------------------------------------------------------------
  */
 @SpringBootTest

@@ -19,7 +19,7 @@ import java.util.Optional;
  * File:           | CarrierRepository.java
  * Version:        | 1.0
  * Description:    | This interface file is where JPARepository Methods, JPQL and
- *                 | native SQL Query methods will be defind for Carrier entities
+ *                 | native SQL Query methods will be defined for Carrier entities
  * ---------------------------------------------------------------------------
  * Notes:
  *
