@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/Carrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/Carrier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/ClientTNG.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/LookupTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/LookupTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/Vendor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/entity/Vendor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/CarrierRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/CarrierRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTableRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTableRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/VendorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/VendorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/CarrierRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/CarrierRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/VendorRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/VendorRepositoryTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2GadycZWxdDUMZXmEBpvoiI3OlJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/_ryan/Desktop/School_GCU/Programming Folders/GCU-Capstone-Project/GCU-Capstone/Back-End/Springboot&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;4e759a160651ab111b9a6212dc3a0393&quot;
+  }
+}</component>
+  <component name="RunManager" selected="JUnit.ClientRepositoryTest.findByDeliveryCodeTypeId">
+    <configuration name="ClientRepositoryTest.findByClientTypeId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.ClientRepositoryTest" />
+      <option name="METHOD_NAME" value="findByClientTypeId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientRepositoryTest.findByDeliveryCodeTypeId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.ClientRepositoryTest" />
+      <option name="METHOD_NAME" value="findByDeliveryCodeTypeId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientRepositoryTest.findByTransmissionFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.ClientRepositoryTest" />
+      <option name="METHOD_NAME" value="findByTransmissionFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientRepositoryTest.findByW2Count" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.ClientRepositoryTest" />
+      <option name="METHOD_NAME" value="findByW2Count" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientRepositoryTest.findByW2DeliveryAddress" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.ClientRepositoryTest" />
+      <option name="METHOD_NAME" value="findByW2DeliveryAddress" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ClientRepositoryTest.findByDeliveryCodeTypeId" />
+        <item itemvalue="JUnit.ClientRepositoryTest.findByClientTypeId" />
+        <item itemvalue="JUnit.ClientRepositoryTest.findByW2DeliveryAddress" />
+        <item itemvalue="JUnit.ClientRepositoryTest.findByW2Count" />
+        <item itemvalue="JUnit.ClientRepositoryTest.findByTransmissionFile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="" />
+      <created>1666630884159</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666630884159</updated>
+      <workItem from="1666630885413" duration="40000" />
+      <workItem from="1666733675848" duration="2372000" />
+      <workItem from="1666780736302" duration="13804000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

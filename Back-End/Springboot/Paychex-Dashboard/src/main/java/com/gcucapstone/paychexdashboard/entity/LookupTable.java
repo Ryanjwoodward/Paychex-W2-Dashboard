@@ -49,7 +49,7 @@ public class LookupTable {
     private String fullName;
 
     @OneToOne
-    @JoinColumn(name = "lookup_type_id", referencedColumnName = "lookup_type_Id")
+    @JoinColumn(name = "lookup_type_id", referencedColumnName = "lookup_type_Id", foreignKey=@ForeignKey(name = "Fk_lookup_type_id "))
     private LookupType lookupTypeId;
 
 }// lookupTable Class

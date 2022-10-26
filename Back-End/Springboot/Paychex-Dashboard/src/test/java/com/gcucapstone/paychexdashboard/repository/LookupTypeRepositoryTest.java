@@ -15,7 +15,7 @@ import java.util.List;
  * Date:           | (Created) 10-14-2022
  * File:           | LookupTypeRepositoryTest.java
  * Version:        | 1.0
- * Description:    | This file will be used to test the repo @ query methods
+ * Description:    | This file will be used to test the repo query methods
  *                 | defined in the LookupTypeRepository interface
  * ---------------------------------------------------------------------------
  * Notes:

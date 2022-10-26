@@ -45,12 +45,12 @@ public class Carrier {
 
 	// Add foreign key relationship annotation
 	@OneToOne
-	@JoinColumn(name = "carrier_lookup_id", referencedColumnName = "lookup_id")
-	private LookupTable lookupId;
+	@JoinColumn(name = "carrier_lookup_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_carrier_lookup_id"))
+	private LookupTable carrierLookupId;
 
 	// Add foreign key relationship annotation
 	@OneToOne
-	@JoinColumn(name = "delviery_status_type_id", referencedColumnName = "lookup_id")
+	@JoinColumn(name = "delviery_status_type_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_delivery_lookup_id"))
 	private LookupTable deliveryStatusTypeId;
 
 }// w2Carrier Class

@@ -27,10 +27,10 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 @Table(
-        name = "w2_client_tng",
+        name = "w2_client",
         schema = "PaychexDashboard"
 )
-public class ClientTNG {
+public class Client {
 
     //----------------------------------------------------
     // Instance Variables
@@ -45,24 +45,24 @@ public class ClientTNG {
     @Column(name = "created_date")
     private Timestamp createdDate;
 
-    @Column(name = "tng_employee_count")
-    private int tngEmployeeCount;
+    @Column(name = "employee_count")
+    private int employeeCount;
 
     @Column(name = "transmission_file")
     private String transmissionFile;
 
-    @Column(name = "tng_w2_count")
-    private int tngW2Count;
+    @Column(name = "w2_count")
+    private int w2Count;
 
-    @Column(name = "w2_dlivery_address")
+    @Column(name = "w2_delivery_address")
     private String w2DeliveryAddress;
 
     @OneToOne
-    @JoinColumn(name = "client_type_id", referencedColumnName = "lookup_id")
+    @JoinColumn(name = "client_type_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_client_lookup_id"))
     private LookupTable clientTypeId;
 
     @OneToOne
-    @JoinColumn(name = "delivery_code_type", referencedColumnName = "lookup_id")
-    private LookupTable deliveryCodeType;
+    @JoinColumn(name = "delivery_code_type", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_delivery_lookup_id"))
+    private LookupTable deliveryCodeTypeId;
 
 }// w2ClientTNG Class

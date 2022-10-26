@@ -1,11 +1,14 @@
 package com.gcucapstone.paychexdashboard.repository;
 
 import com.gcucapstone.paychexdashboard.entity.BranchClient;
+import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +23,10 @@ import java.util.Optional;
  * Description:    |This interface file is where JPARepository Methods, JPQL and
  *                 | native SQL Query methods will be defined for Vendor entities
  * ---------------------------------------------------------------------------
- */
+ *  Notes:
+ *
+ *  //Find by LookupTable lookup Id, reference Address/Order
+ *----------------------------------------------------------------------------*/
 public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
 
    //----------------------------------------------------
@@ -116,12 +122,7 @@ public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
     */
   List<Vendor> findByW2CountBetween(int w2Count1, int w2Count2);
 
-//*****************************************************************************
-//*****************************************************************************
-//*****************************************************************************
-//*****************************************************************************
-//*****************************************************************************
-   List<Vendor> findByLookupId(Long lookupId);
+  Vendor findByLookupId(LookupTable lookupId);
 
 
    //--------------------------------
