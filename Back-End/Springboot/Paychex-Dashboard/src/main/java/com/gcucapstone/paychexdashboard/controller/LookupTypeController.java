@@ -22,7 +22,8 @@ import java.util.List;
  *                 | LookupType Entities such as the basic CRUD methods
  * ---------------------------------------------------------------------------
  */
-@RestController @CrossOrigin(origins = "http://localhost:3306")
+@RestController
+@CrossOrigin(origins = "http://localhost:3306")
 @RequestMapping("/dashboard/lookuptype")
 public class LookupTypeController {
 
@@ -48,9 +49,63 @@ public class LookupTypeController {
         return lookupTypeRepository.findAll();
     }
 
+    /**
+     * This REST method maps a GET operation to a LookupTypeRepository instance
+     * and calls the JPA named query method: findByLookUpType defined in
+     * LookupTypeRepository and as a response to a server request returns
+     * a LoookupType Record corresponding the passed ID attribute
+     * @param lookupTypeId  - the id corresponding to the record to search for
+     * @return              - LookupType record
+     * @throws ResourceNotFoundException
+     */
     @GetMapping("/lookuptypes/{id}")
     public ResponseEntity<LookupType> getLookUpTypeById(@PathVariable(value = "id") Long lookupTypeId) throws ResourceNotFoundException{
         LookupType lookupType = lookupTypeRepository.findById(lookupTypeId).orElseThrow(() -> new ResourceNotFoundException("Nothing Found for this ID"));
         return ResponseEntity.ok().body(lookupType);
+    }
+
+    /**
+     * This REST method maps a GET Request to a LookupTypeRepository instance
+     * and calls the JPA Named Query Method: findByLookupType defined in
+     * LookupTypeRepository and as a response to a server request returns
+     * a list of LookupType Records that have an attribute of LookupType
+     * that matches the passed parameter
+     * @param lookuptype    - the lookup type to search for
+     * @return              - list of LookupType Records
+     */
+    @GetMapping("/lookuptypes/{type}")
+    public List<LookupType> getLookupTypeByIdOrType(@PathVariable(value = "type") String lookuptype) {
+        List<LookupType> lookupType = lookupTypeRepository.findByLookupType(lookuptype);
+        return lookupType;
+    }
+
+    /**
+     * This REST method maps a GET request to a LookupTypeRepository instance
+     * and calls the JPA named query method: findByLookupTypeIdOrLookupType defined
+     * in LookupTypeRepository and as a response to a server request returns a List
+     * of LookupType records that match either one of the passed parameters
+     * @param lookupTypeId  - the id to search for
+     * @param lookuptype    - the type to search for
+     * @return              - list of LookupType Records
+     */
+   @GetMapping("/lookuptypes/{id}/{type}")
+    public List<LookupType> getLookupTypeByIdOrType(@PathVariable(value = "id") Long lookupTypeId, @PathVariable(value = "type") String lookuptype) {
+        List<LookupType> lookupType = lookupTypeRepository.findByLookupTypeIdOrLookupType(lookupTypeId, lookuptype);
+       return lookupType;
+    }
+
+    /**
+     * This REST method maps a GET request to a LookupTypeRepository instance
+     * and calls the JPA Named Query Method: findByLookupTypeIdOrLookupType
+     * defined in LookupTypeRepository and as a response to a server request returns
+     * a list of lookupType Records that match both of the passed parameters
+     * @param lookupTypeId  - the id to search for
+     * @param lookuptype    - the type to search for
+     * @return              - the list of LookupType Records
+     */
+    @GetMapping("/lookuptype/{id}/{type}")
+    public List<LookupType> getLookupTypeByIdAndType(@PathVariable(value = "id") Long lookupTypeId, @PathVariable(value = "type") String lookuptype) {
+        List<LookupType> lookupType = lookupTypeRepository.findByLookupTypeIdAndLookupType(lookupTypeId, lookuptype);
+        return lookupType;
     }
 }// LookupTypeController Class

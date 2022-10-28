@@ -1,5 +1,6 @@
 package com.gcucapstone.paychexdashboard.repository;
 
+import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.entity.LookupType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,31 +39,18 @@ public class LookupTypeRepositoryTest {
     // Find by Individual Attributes
     //--------------------------------
     /**
-     * This method is used to test a dev-defined method that uses SB-JPA keywords:
-     * findById which locates the record with the passed ID parameter. This method
-     * then prints the attributes of that record
-     */
-    @Test
-    void findByIdMethod(){
-        Long id = 1234L;
-        LookupType lookupType = lookupTypeRepository.findById(id).get();
-
-        System.out.println("ID: " + lookupType.getLookupTypeId());
-        System.out.println("TYPE: " + lookupType.getLookupType());
-    }
-
-    /**
      * This overloaded method is a used to test a dev-defined method that uses SB-JPA keywords:
      * findById which locates the record with the passed ID parameter. This method
      * then prints the attributes of that record
-     * @param id - the id of the record to search for
      */
     @Test
-    void findByIdMethod(Long id){
+    void findByLookupTypeIdMethod(){
 
-        LookupType lookupType = lookupTypeRepository.findById(id).get();
+        Long id = 1234L;
+        LookupType lookupType = lookupTypeRepository.findByLookupTypeId(id);
         System.out.println("ID: " + lookupType.getLookupTypeId());
         System.out.println("TYPE: " + lookupType.getLookupType());
+
     }
 
     /**
@@ -135,54 +123,5 @@ public class LookupTypeRepositoryTest {
             System.out.println("TYPE: " + l.getLookupType());
         });
     }
-
-    //----------------------
-    // SAVE Methods
-    //----------------------
-
-    /**
-     * This method is used to test a JPARepository defined method save()
-     * This method saves a new record to the table and then call the
-     * overloaded findById method to verify the record was saved
-     */
-    @Test
-    void saveMethod(){
-
-        LookupType lookupType = new LookupType();
-        lookupType.setLookupTypeId(3204L);
-        lookupType.setLookupType("developer");
-
-        LookupType savedObj = lookupTypeRepository.save(lookupType);
-        System.out.println("Check to see if Record was saved...");
-        findByIdMethod(lookupType.getLookupTypeId());
-    }
-
-    //----------------------
-    // DELETE Methods
-    //----------------------
-    /**
-     * This method is used to test a JPARepository method deleteAll which
-     * will remove all records from the entity
-     */
-    @Test
-    void deleteAllMethod(){
-
-        lookupTypeRepository.deleteAll();
-    }
-
-    /**
-     * This method is used to test a JPARepository method deleteById which
-     *  removes the record with an Id that matches the parameter
-     */
-    @Test
-    void deleteByIdMethod(){
-        Long id = 1234L;
-
-        lookupTypeRepository.deleteById(id);
-    }
-
-    //deleteAll(passed list)
-
-    // exists and count method
 
 }// LookupTypeRepositoryTest Class

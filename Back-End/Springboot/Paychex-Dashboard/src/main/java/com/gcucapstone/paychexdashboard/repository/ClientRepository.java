@@ -88,6 +88,12 @@ public interface ClientRepository extends JpaRepository<Client, String> {
      */
     Client findByClientTypeId(LookupTable clientTypeId);
 
+    /**
+     * This method returns a Client record that has an attribute of DeliveryCodeTypeId
+     * that matches the passed parameter.
+     * @param deliveryCodeTypeId    - deliveryCodeTypeID to search for
+     * @return                      - Client record
+     */
     Client findByDeliveryCodeTypeId(LookupTable deliveryCodeTypeId);
 
     //---------------------------------------

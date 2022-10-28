@@ -72,4 +72,6 @@ public interface LookupTableRepository extends JpaRepository<LookupTable, Long> 
     //---------------------------------------
     // *** Find by Multiple Attributes
     //---------------------------------------
+
+
 } // LookupTableRepository Interface

@@ -33,9 +33,9 @@ public interface LookupTypeRepository extends JpaRepository<LookupType, Long> {
      * This method returns the Optional which contains the retrieved LookupType entry
      *  corresponding to the passed Id parameter
      * @param id   - the id of the LookupType Record to be searched for
-     * @return     - the Optional / LookupType Object
+     * @return     - the LookupType Object
      */
-    Optional<LookupType> findById(Long id);
+    LookupType findByLookupTypeId(Long id);
 
     /**
      *  This method returns a list of LookupType records that have a type attribute

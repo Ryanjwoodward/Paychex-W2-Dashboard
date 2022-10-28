@@ -3,14 +3,10 @@ package com.gcucapstone.paychexdashboard.repository;
 import com.gcucapstone.paychexdashboard.entity.BranchClient;
 import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * ------------------------------------------------------------------------
@@ -122,6 +118,12 @@ public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
     */
   List<Vendor> findByW2CountBetween(int w2Count1, int w2Count2);
 
+    /**
+     * This method returns  al ist of Vendor records that have a LookupId
+     * that matches the passed parameter
+     * @param lookupId  - the lookupId to search for
+     * @return          - Vendor record
+     */
   Vendor findByLookupId(LookupTable lookupId);
 
 
