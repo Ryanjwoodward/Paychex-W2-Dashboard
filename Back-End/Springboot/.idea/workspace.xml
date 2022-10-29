@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_4_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_record_codec_4_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_4_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_sync_4_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_mongodb_2_7_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_mongodb_3_4_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/PaychexDashboardApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/PaychexDashboardApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/controller/CarrierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/controller/CarrierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/controller/LookupTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/controller/LookupTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/CarrierRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/CarrierRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/CarrierRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/CarrierRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/test/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -95,39 +80,8 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.MongoLookupTypeRepositoryTest.findAllLookupType">
-    <configuration name="LookupTypeRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Paychex-Dashboard" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.LookupTypeRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LookupTypeRepositoryTest.findByLookupTypeIdMethod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Paychex-Dashboard" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.LookupTypeRepositoryTest" />
-      <option name="METHOD_NAME" value="findByLookupTypeIdMethod" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoLookupTypeRepositoryTest.findAllLookupType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.MongoLookupTableRepositoryTest.findAllLookupTables">
+    <configuration name="MongoCarrierRepositoryTest.findAllCarriers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Paychex-Dashboard" />
       <extension name="coverage">
         <pattern>
@@ -136,14 +90,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTypeRepositoryTest" />
-      <option name="METHOD_NAME" value="findAllLookupType" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoCarrierRepositoryTest" />
+      <option name="METHOD_NAME" value="findAllCarriers" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MongoLookupTypeRepositoryTest.findAllTestMethod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MongoLookupTableRepositoryTest.findAllLookupTables" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Paychex-Dashboard" />
       <extension name="coverage">
         <pattern>
@@ -152,14 +106,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTypeRepositoryTest" />
-      <option name="METHOD_NAME" value="findAllTestMethod" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTableRepositoryTest" />
+      <option name="METHOD_NAME" value="findAllLookupTables" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MongoLookupTypeRepositoryTest.findByLookupType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MongoLookupTableRepositoryTest.saveLookupTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Paychex-Dashboard" />
       <extension name="coverage">
         <pattern>
@@ -168,8 +122,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTypeRepositoryTest" />
-      <option name="METHOD_NAME" value="findByLookupType" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTableRepositoryTest" />
+      <option name="METHOD_NAME" value="saveLookupTable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoVendorRepositoryClass.findAllVendors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.mongoRepository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoVendorRepositoryClass" />
+      <option name="METHOD_NAME" value="findAllVendors" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoVendorRepositoryClass.saveVendor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.mongoRepository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoVendorRepositoryClass" />
+      <option name="METHOD_NAME" value="saveVendor" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -184,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MongoLookupTypeRepositoryTest.findAllLookupType" />
-        <item itemvalue="JUnit.MongoLookupTypeRepositoryTest.findByLookupType" />
-        <item itemvalue="JUnit.MongoLookupTypeRepositoryTest.findAllTestMethod" />
-        <item itemvalue="JUnit.LookupTypeRepositoryTest.findByLookupTypeIdMethod" />
-        <item itemvalue="JUnit.LookupTypeRepositoryTest" />
+        <item itemvalue="JUnit.MongoLookupTableRepositoryTest.findAllLookupTables" />
+        <item itemvalue="JUnit.MongoLookupTableRepositoryTest.saveLookupTable" />
+        <item itemvalue="JUnit.MongoVendorRepositoryClass.findAllVendors" />
+        <item itemvalue="JUnit.MongoVendorRepositoryClass.saveVendor" />
+        <item itemvalue="JUnit.MongoCarrierRepositoryTest.findAllCarriers" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +191,7 @@
       <workItem from="1666780736302" duration="15783000" />
       <workItem from="1666832062743" duration="7796000" />
       <workItem from="1666911487250" duration="16013000" />
-      <workItem from="1666998430141" duration="8962000" />
+      <workItem from="1666998430141" duration="12118000" />
     </task>
     <servers />
   </component>

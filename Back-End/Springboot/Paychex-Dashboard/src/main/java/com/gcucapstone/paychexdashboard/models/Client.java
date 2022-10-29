@@ -32,7 +32,7 @@ public class Client {
 
     private String branch;
 
-    private Timestamp createdDate;
+    private String createdDate;
 
     private int employeeCount;
 
