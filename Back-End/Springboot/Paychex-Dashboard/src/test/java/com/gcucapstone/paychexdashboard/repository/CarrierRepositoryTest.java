@@ -19,7 +19,7 @@ import java.util.List;
  * File:           | CarrierRepositoryTest.java
  * Version:        | 1.0
  * Description:    | This file will be used to test the repo & query methods
- *                 | defined in the CarrierRepository interface
+ *                 | defined in the MongoCarrierRepository interface
  * ---------------------------------------------------------------------------
  * Notes:
  *

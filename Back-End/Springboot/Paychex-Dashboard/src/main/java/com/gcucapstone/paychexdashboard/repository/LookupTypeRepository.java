@@ -12,7 +12,7 @@ import java.util.Optional;
  * Institution:    | Grand Canyon University & Paychex
  * Instructor:     | Dr. Isac Artzi
  * Date:           | (Created) 10-14-2022
- * File:           | LookupTypeRepository.java
+ * File:           | MongoLookupTypeRepository.java
  * Version:        | 1.0
  * Description:    | This interface is where JPA Repository methods, JPQL, and
  *                 | Natice SQL Queries will be defined for LookupType Entities
@@ -66,4 +66,4 @@ public interface LookupTypeRepository extends JpaRepository<LookupType, Long> {
      */
     List<LookupType> findByLookupTypeIdAndLookupType(Long id, String type);
 
-}// LookupTypeRepository Interface
+}// MongoLookupTypeRepository Interface

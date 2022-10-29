@@ -16,7 +16,7 @@ import java.util.Optional;
  * Institution:    | Grand Canyon University & Paychex
  * Instructor:     | Dr. Isac Artzi
  * Date:           | (Created) 10-14-2022
- * File:           | CarrierRepository.java
+ * File:           | MongoCarrierRepository.java
  * Version:        | 1.0
  * Description:    | This interface file is where JPARepository Methods, JPQL and
  *                 | native SQL Query methods will be defined for Carrier entities
@@ -84,4 +84,4 @@ public interface CarrierRepository extends JpaRepository<Carrier, BranchClient> 
     //---------------------------------------
 
 
-}// CarrierRepository Interface
+}// MongoCarrierRepository Interface

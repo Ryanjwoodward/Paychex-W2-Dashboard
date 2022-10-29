@@ -44,7 +44,7 @@ public class CarrierController {
     //----------------------------------------------------
 
     /**
-     * This REST method maps a GET request to a CarrierRepository instance
+     * This REST method maps a GET request to a MongoCarrierRepository instance
      * and calls it's extended JPARepository method findAll() and returns
      * a list of all Carrier Records found in the schema
      * @return  - a list of Carrier Records
@@ -53,7 +53,7 @@ public class CarrierController {
     public List<Carrier> getAllCarriers(){ return carrierRepository.findAll();}
 
     /**
-     * This REST method maps a GET request to a CarrierRepository instance
+     * This REST method maps a GET request to a MongoCarrierRepository instance
      * and calls the JPA Named Query Method findByBranch() and returns a
      * list of Carrier records with a branch attribute that matche the
      * passed parameter
@@ -67,7 +67,7 @@ public class CarrierController {
     }
 
     /**
-     * This REST method maps a GET request to a CarrierRepository instance
+     * This REST method maps a GET request to a MongoCarrierRepository instance
      * and calls the JPA Named Query Method findByBranch() and returns a list
      * of Carrier records with a clientId attribute that matches the
      * passed parameter
@@ -81,7 +81,7 @@ public class CarrierController {
     }
 
     /**
-     * This REST method maps a GET request to a CarrierRepository instance
+     * This REST method maps a GET request to a MongoCarrierRepository instance
      * and calls the JPA Name Query Method findByDestinationAddress() and
      * returns a list of Carrier Records with a destinationAddress attribute
      * that match the passed parameter
@@ -95,7 +95,7 @@ public class CarrierController {
     }
 
     /**
-     * This REST method maps a GET request to a CarrierRepository instance
+     * This REST method maps a GET request to a MongoCarrierRepository instance
      * and calls the JPA Name Query Method findByTrackingId() and
      * returns a list of Carrier Records with a TrackingId attribute
      * that match the passed parameter
@@ -109,7 +109,7 @@ public class CarrierController {
     }
 
     /**
-     * This REST method maps a GET request to a CarrierRepository instance
+     * This REST method maps a GET request to a MongoCarrierRepository instance
      * and calls the JPA Name Query Method findByCarrierLookupId() and
      * returns a list of Carrier Records with a LookupId attribute
      * that match the passed parameter

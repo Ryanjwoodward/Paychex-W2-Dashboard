@@ -50,9 +50,9 @@ public class LookupTypeController {
     }
 
     /**
-     * This REST method maps a GET operation to a LookupTypeRepository instance
+     * This REST method maps a GET operation to a MongoLookupTypeRepository instance
      * and calls the JPA named query method: findByLookUpType defined in
-     * LookupTypeRepository and as a response to a server request returns
+     * MongoLookupTypeRepository and as a response to a server request returns
      * a LoookupType Record corresponding the passed ID attribute
      * @param lookupTypeId  - the id corresponding to the record to search for
      * @return              - LookupType record
@@ -65,9 +65,9 @@ public class LookupTypeController {
     }
 
     /**
-     * This REST method maps a GET Request to a LookupTypeRepository instance
+     * This REST method maps a GET Request to a MongoLookupTypeRepository instance
      * and calls the JPA Named Query Method: findByLookupType defined in
-     * LookupTypeRepository and as a response to a server request returns
+     * MongoLookupTypeRepository and as a response to a server request returns
      * a list of LookupType Records that have an attribute of LookupType
      * that matches the passed parameter
      * @param lookuptype    - the lookup type to search for
@@ -80,9 +80,9 @@ public class LookupTypeController {
     }
 
     /**
-     * This REST method maps a GET request to a LookupTypeRepository instance
+     * This REST method maps a GET request to a MongoLookupTypeRepository instance
      * and calls the JPA named query method: findByLookupTypeIdOrLookupType defined
-     * in LookupTypeRepository and as a response to a server request returns a List
+     * in MongoLookupTypeRepository and as a response to a server request returns a List
      * of LookupType records that match either one of the passed parameters
      * @param lookupTypeId  - the id to search for
      * @param lookuptype    - the type to search for
@@ -95,9 +95,9 @@ public class LookupTypeController {
     }
 
     /**
-     * This REST method maps a GET request to a LookupTypeRepository instance
+     * This REST method maps a GET request to a MongoLookupTypeRepository instance
      * and calls the JPA Named Query Method: findByLookupTypeIdOrLookupType
-     * defined in LookupTypeRepository and as a response to a server request returns
+     * defined in MongoLookupTypeRepository and as a response to a server request returns
      * a list of lookupType Records that match both of the passed parameters
      * @param lookupTypeId  - the id to search for
      * @param lookuptype    - the type to search for

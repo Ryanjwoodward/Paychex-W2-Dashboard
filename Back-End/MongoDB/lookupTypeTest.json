@@ -1,0 +1,15 @@
+[
+        {
+            "lookupTypeID" : "1234",
+            "lookupType" : "vendor"
+        },
+        {
+            "lookupTypeID" : "3467",
+            "lookupType" : "carrier"
+        },
+        {
+            "lookupTypeID" : "8910",
+            "lookupType" : "client"
+        }      
+    
+]

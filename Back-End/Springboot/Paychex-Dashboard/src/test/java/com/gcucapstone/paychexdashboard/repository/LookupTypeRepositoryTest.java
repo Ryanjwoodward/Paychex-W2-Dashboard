@@ -14,10 +14,10 @@ import java.util.List;
  * Institution:    | Grand Canyon University & Paychex
  * Instructor:     | Dr. Isac Artzi
  * Date:           | (Created) 10-14-2022
- * File:           | LookupTypeRepositoryTest.java
+ * File:           | MongoLookupTypeRepositoryTest.java
  * Version:        | 1.0
  * Description:    | This file will be used to test the repo query methods
- *                 | defined in the LookupTypeRepository interface
+ *                 | defined in the MongoLookupTypeRepository interface
  * ---------------------------------------------------------------------------
  * Notes:
  *  - Add JUnit test methods for each CarrierRepo method as they are coded
@@ -124,4 +124,4 @@ public class LookupTypeRepositoryTest {
         });
     }
 
-}// LookupTypeRepositoryTest Class
+}// MongoLookupTypeRepositoryTest Class
