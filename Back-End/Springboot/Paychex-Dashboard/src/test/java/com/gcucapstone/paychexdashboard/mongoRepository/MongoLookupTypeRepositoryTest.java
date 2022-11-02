@@ -35,6 +35,7 @@ public class MongoLookupTypeRepositoryTest {
     // Query Methods Tests
     //----------------------------------------------------
 
+
     @Test
     void findAllLookupType(){
         lookupTypeRepository.findAll().forEach((l) ->{
