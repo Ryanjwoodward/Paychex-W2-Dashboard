@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/145ed2f2-acaf-49bb-b2be-75e88d4a24b5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2c99f1c5-e763-4ead-b483-e84c8e1f583a.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,47 +57,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/_ryan/Desktop/School_GCU/Programming Folders/GCU-Capstone-Project/GCU-Capstone/Back-End/Springboot",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "spring.configuration.checksum": "4e759a160651ab111b9a6212dc3a0393"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/_ryan/Desktop/School_GCU/Programming Folders/GCU-Capstone-Project/GCU-Capstone/Back-End/Springboot&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;4e759a160651ab111b9a6212dc3a0393&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.MongoLookupTableRepositoryTest.findAllLookupTables">
-    <configuration name="MongoCarrierRepositoryTest.findAllCarriers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Paychex-Dashboard" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.mongoRepository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoCarrierRepositoryTest" />
-      <option name="METHOD_NAME" value="findAllCarriers" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}</component>
+  <component name="RunManager" selected="JUnit.MongoLookupTypeRepositoryTest.findAllLookupType">
     <configuration name="MongoLookupTableRepositoryTest.findAllLookupTables" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Paychex-Dashboard" />
       <extension name="coverage">
@@ -124,6 +109,22 @@
       <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
       <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTableRepositoryTest" />
       <option name="METHOD_NAME" value="saveLookupTable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoLookupTypeRepositoryTest.findAllLookupType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.mongoRepository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTypeRepositoryTest" />
+      <option name="METHOD_NAME" value="findAllLookupType" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MongoLookupTypeRepositoryTest.findAllLookupType" />
         <item itemvalue="JUnit.MongoLookupTableRepositoryTest.findAllLookupTables" />
         <item itemvalue="JUnit.MongoLookupTableRepositoryTest.saveLookupTable" />
         <item itemvalue="JUnit.MongoVendorRepositoryClass.findAllVendors" />
         <item itemvalue="JUnit.MongoVendorRepositoryClass.saveVendor" />
-        <item itemvalue="JUnit.MongoCarrierRepositoryTest.findAllCarriers" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +192,9 @@
       <workItem from="1666780736302" duration="15783000" />
       <workItem from="1666832062743" duration="7796000" />
       <workItem from="1666911487250" duration="16013000" />
-      <workItem from="1666998430141" duration="12118000" />
+      <workItem from="1666998430141" duration="17188000" />
+      <workItem from="1667246699750" duration="786000" />
+      <workItem from="1667421535453" duration="6000" />
     </task>
     <servers />
   </component>
