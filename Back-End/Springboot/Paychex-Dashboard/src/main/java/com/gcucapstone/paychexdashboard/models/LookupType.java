@@ -25,7 +25,7 @@ public class LookupType {
     // Instance Variables
     //----------------------------------------------------
     @Id
-    private Long lookupTypeId;
+    private Long lookupTypeID;
 
     private String lookupType;
 

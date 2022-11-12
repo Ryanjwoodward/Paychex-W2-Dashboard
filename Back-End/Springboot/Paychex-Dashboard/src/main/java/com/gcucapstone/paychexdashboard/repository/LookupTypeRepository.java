@@ -66,4 +66,6 @@ public interface LookupTypeRepository extends JpaRepository<LookupType, Long> {
      */
     List<LookupType> findByLookupTypeIdAndLookupType(Long id, String type);
 
+
+
 }// MongoLookupTypeRepository Interface

@@ -1,22 +1,25 @@
 package com.gcucapstone.paychexdashboard.changeStreams;
 
 import com.gcucapstone.paychexdashboard.models.LookupType;
+import com.gcucapstone.paychexdashboard.repository.LookupTypeRepository;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 import com.mongodb.client.model.changestream.ChangeStreamDocument;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+import static java.util.Collections.singletonList;
 import org.bson.conversions.Bson;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import static com.mongodb.client.model.Aggregates.match;
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.changestream.FullDocument.UPDATE_LOOKUP;
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 import java.util.List;
 import java.util.function.Consumer;
-
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 /**
  * ------------------------------------------------------------------------
@@ -32,9 +35,15 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
  */
 public class LookupTypeChangeStreams {
 
+    @Autowired
+    private static LookupTypeRepository lookupTypeRepository;
+    private static com.gcucapstone.paychexdashboard.entity.LookupType lookupTypeE;
+    private static List<com.gcucapstone.paychexdashboard.entity.LookupType> types;
+
+
     public static void main(String[] args) {
 
-        ConnectionString connectionString = new ConnectionString(("mongodb+srv://acerbus:bailey711@cluster0.n66xe.mongodb.net/test"));
+        ConnectionString connectionString = new ConnectionString(("mongodb+srv://pcd-user:pcd-capstone@cluster0.1bx6urb.mongodb.net/?retryWrites=true&w=majority"));
         CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
         CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
         MongoClientSettings clientSettings = MongoClientSettings.builder()
@@ -44,46 +53,35 @@ public class LookupTypeChangeStreams {
 
         try (MongoClient mongoClient = MongoClients.create(clientSettings)) {
             MongoDatabase db = mongoClient.getDatabase("PaychexDashboard");
-            MongoCollection<LookupType> lookupTypes = db.getCollection("lookupTypes", LookupType.class);
+            MongoCollection<LookupType> lookupTypes = db.getCollection("LookupType", LookupType.class);
             List<Bson> pipeline;
 
-            // Only uncomment one example at a time. Follow instructions for each individually then kill all remaining processes.
+            pipeline = singletonList(match(eq("operationType", "update")));
+/*
+            lookupTypes.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach(printEvent());
+*/
+            lookupTypes.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach((d) -> {
+                System.out.println("LOOKUP TYPE: " + d.getFullDocument().getLookupType());
+                System.out.println("LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
+                lookupTypeE = lookupTypeRepository.findByLookupTypeId(903999L);
+                System.out.println("HERE: " + lookupTypeRepository == null);
 
-            /** => Example 1: print all the write operations.
-             *  => Start "ChangeStreams" then "MappingPOJOs" to see some change events.
-             */
-            lookupTypes.watch().forEach(printEvent());
+                lookupTypeE.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+                lookupTypeE.setLookupType(d.getFullDocument().getLookupType());
 
-            /** => Example 2: print only insert and delete operations.
-             *  => Start "ChangeStreams" then "MappingPOJOs" to see some change events.
-             */
-            //pipeline = singletonList(match(in("operationType", asList("insert", "delete"))));
-            //grades.watch(pipeline).forEach(printEvent());
+                lookupTypeRepository.deleteById(d.getFullDocument().getLookupTypeID());
+                lookupTypeRepository.save(lookupTypeE);
+            });
 
-            /** => Example 3: print only updates without fullDocument.
-             *  => Start "ChangeStreams" then "Update" to see some change events (start "Create" before if not done earlier).
+            /*
+            * When there is a change, have an autowired repo instance connected with sql that updates the info in SQL DB
              */
-            // pipeline = singletonList(match(eq("operationType", "update")));
-            //grades.watch(pipeline).forEach(printEvent());
-
-            /** => Example 4: print only updates with fullDocument.
-             *  => Start "ChangeStreams" then "Update" to see some change events.
-             */
-            // pipeline = singletonList(match(eq("operationType", "update")));
-            //grades.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach(printEvent());
-
-            /**
-             * => Example 5: iterating using a cursor and a while loop + remembering a resumeToken then restart the Change Streams.
-             * => Start "ChangeStreams" then "Update" to see some change events.
-             */
-            // exampleWithResumeToken(grades);
 
         }
     }
     private static Consumer<ChangeStreamDocument<LookupType>> printEvent() {
         return System.out::println;
     }
-
 }// LookupTypeChangeStreams Class
 
 

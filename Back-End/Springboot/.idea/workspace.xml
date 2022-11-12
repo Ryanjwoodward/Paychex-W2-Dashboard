@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="" />
+    <list default="true" id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/changeStreams/LookupTypeChangeStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/changeStreams/LookupTypeChangeStreams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/LookupType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/LookupType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +86,20 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Spring Boot.PaychexDashboardApplication">
+  <component name="RunManager" selected="Application.LookupTypeChangeStreams">
+    <configuration name="AtlasConnectionTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.changeStreams.AtlasConnectionTest" />
+      <module name="Paychex-Dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.changeStreams.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ChangeStreams" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="changeStreams.ChangeStreams" />
       <module name="Paychex-Dashboard" />
@@ -120,30 +139,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.gcucapstone.paychexdashboard.changeStreams.ChangeStreams" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.changeStreams.ChangeStreams" />
+    <configuration name="LookupTypeRepositoryTest.findAllMethod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Paychex-Dashboard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.changeStreams.*" />
+          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoLookupTableRepositoryTest.saveLookupTable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Paychex-Dashboard" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcucapstone.paychexdashboard.mongoRepository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository" />
-      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.mongoRepository.MongoLookupTableRepositoryTest" />
-      <option name="METHOD_NAME" value="saveLookupTable" />
+      <option name="PACKAGE_NAME" value="com.gcucapstone.paychexdashboard.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.repository.LookupTypeRepositoryTest" />
+      <option name="METHOD_NAME" value="findAllMethod" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -174,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LookupTableChangeStreams" />
         <item itemvalue="Application.LookupTypeChangeStreams" />
-        <item itemvalue="Application.com.gcucapstone.paychexdashboard.changeStreams.ChangeStreams" />
-        <item itemvalue="JUnit.MongoLookupTableRepositoryTest.saveLookupTable" />
+        <item itemvalue="JUnit.LookupTypeRepositoryTest.findAllMethod" />
+        <item itemvalue="Application.AtlasConnectionTest" />
         <item itemvalue="JUnit.MongoLookupTypeRepositoryTest.findAllLookupType" />
+        <item itemvalue="Application.LookupTableChangeStreams" />
       </list>
     </recent_temporary>
   </component>
@@ -214,10 +220,22 @@
       <workItem from="1668119998610" duration="59000" />
       <workItem from="1668127552662" duration="2286000" />
       <workItem from="1668139201415" duration="641000" />
+      <workItem from="1668198786185" duration="12975000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
