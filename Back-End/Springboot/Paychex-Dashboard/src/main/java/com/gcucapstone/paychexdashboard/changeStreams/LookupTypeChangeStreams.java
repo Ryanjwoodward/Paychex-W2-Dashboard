@@ -63,14 +63,16 @@ public class LookupTypeChangeStreams {
             lookupTypes.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach((d) -> {
                 System.out.println("LOOKUP TYPE: " + d.getFullDocument().getLookupType());
                 System.out.println("LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
-                lookupTypeE = lookupTypeRepository.findByLookupTypeId(903999L);
+                //lookupTypeE = lookupTypeRepository.findByLookupTypeId(903999L);
                 System.out.println("HERE: " + lookupTypeRepository == null);
 
-                lookupTypeE.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+
+
+                /*lookupTypeE.setLookupTypeId(d.getFullDocument().getLookupTypeID());
                 lookupTypeE.setLookupType(d.getFullDocument().getLookupType());
 
                 lookupTypeRepository.deleteById(d.getFullDocument().getLookupTypeID());
-                lookupTypeRepository.save(lookupTypeE);
+                lookupTypeRepository.save(lookupTypeE);*/
             });
 
             /*
