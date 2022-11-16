@@ -1,4 +1,4 @@
-/* Insert a few records into lookupTypes */
+﻿/* Insert a few records into lookupTypes */
 INSERT INTO `PaychexDashboard`.`lookup_types` (`lookup_type_id`, `lookup_type`) VALUES ('1234', 'vendor');
 INSERT INTO `PaychexDashboard`.`lookup_types` (`lookup_type_id`, `lookup_type`) VALUES ('3467', 'carrier');
 INSERT INTO `PaychexDashboard`.`lookup_types` (`lookup_type_id`, `lookup_type`) VALUES ('8910', 'client');

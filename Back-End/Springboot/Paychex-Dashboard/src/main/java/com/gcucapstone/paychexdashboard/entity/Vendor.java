@@ -26,7 +26,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @ToString
 @Table(
-        name = "w2_vendor_information",
+        name = "vendor",
         schema = "PaychexDashboard"
 )
 public class Vendor {
@@ -45,7 +45,7 @@ public class Vendor {
     private int w2Count;
 
     @OneToOne
-    @JoinColumn(name = "lookup_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_lookup_Id"))
+    @JoinColumn(name = "vendor_lookup_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_vendor_lookup_Id"))
     private LookupTable lookupId;
 
 }// W2Vendor Class

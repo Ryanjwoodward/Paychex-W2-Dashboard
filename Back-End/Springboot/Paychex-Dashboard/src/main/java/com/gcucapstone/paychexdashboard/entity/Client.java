@@ -27,7 +27,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 @Table(
-        name = "w2_client",
+        name = "client",
         schema = "PaychexDashboard"
 )
 public class Client {
@@ -62,7 +62,7 @@ public class Client {
     private LookupTable clientTypeId;
 
     @OneToOne
-    @JoinColumn(name = "delivery_code_type", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_delivery_lookup_id"))
+    @JoinColumn(name = "delivery_code_type", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_client_delivery_lookup_id"))
     private LookupTable deliveryCodeTypeId;
 
 }// w2ClientTNG Class

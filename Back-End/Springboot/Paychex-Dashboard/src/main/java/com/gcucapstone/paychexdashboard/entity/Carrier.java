@@ -25,7 +25,7 @@ Notes:
 @AllArgsConstructor
 @ToString
 @Table(
-		name = "w2_carrier_information",
+		name = "carrier",
 		schema = "PaychexDashboard"
 )
 public class Carrier {
@@ -50,7 +50,7 @@ public class Carrier {
 
 	// Add foreign key relationship annotation
 	@OneToOne
-	@JoinColumn(name = "delviery_status_type_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_delivery_lookup_id"))
+	@JoinColumn(name = "delviery_status_type_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_carrier_delivery_lookup_id"))
 	private LookupTable deliveryStatusTypeId;
 
 }// w2Carrier Class
