@@ -43,7 +43,7 @@ public class Client {
     private String branch;
 
     @Column(name = "created_date")
-    private Timestamp createdDate;
+    private String createdDate;
 
     @Column(name = "employee_count")
     private int employeeCount;
