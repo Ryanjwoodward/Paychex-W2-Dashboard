@@ -1,5 +1,7 @@
 package com.gcucapstone.paychexdashboard;
 
+import com.gcucapstone.paychexdashboard.changeStreams.LookupTableChangeStreams;
+import com.gcucapstone.paychexdashboard.changeStreams.LookupTypeChangeStreams;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,7 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
   				| This file is executed to run the backend application/client of the Paychex W2 dashboard
 ---------------------------------------------------------------------
 Notes:
-
+ Multiple contructor call will not work for the application, rather try to
+ create a single changeStream that watches the Database rather than a single collection
 ----------------------------------------------------------------------*/
 @SpringBootApplication
 public class PaychexDashboardApplication {
@@ -23,8 +26,8 @@ public class PaychexDashboardApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(PaychexDashboardApplication.class, args);
+		LookupTypeChangeStreams typeChangeStreams = new LookupTypeChangeStreams();
 	}
-
 
 
 }// PaychexDashboardApplication Class

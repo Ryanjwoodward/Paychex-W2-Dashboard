@@ -1,5 +1,6 @@
 package com.gcucapstone.paychexdashboard.controller;
 
+import com.gcucapstone.paychexdashboard.changeStreams.LookupTypeChangeStreams;
 import com.gcucapstone.paychexdashboard.entity.LookupType;
 import com.gcucapstone.paychexdashboard.repository.LookupTypeRepository;
 import exception.ResourceNotFoundException;
@@ -25,7 +26,7 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:3306")
 @RequestMapping("/dashboard/lookuptype")
-public class LookupTypeController {
+public class LookupTypeController{
 
     //----------------------------------------------------
     // Instance Variables
@@ -108,4 +109,5 @@ public class LookupTypeController {
         List<LookupType> lookupType = lookupTypeRepository.findByLookupTypeIdAndLookupType(lookupTypeId, lookuptype);
         return lookupType;
     }
+
 }// LookupTypeController Class

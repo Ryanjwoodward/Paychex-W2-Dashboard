@@ -22,6 +22,8 @@ public interface MongoLookupTypeRepository extends MongoRepository<LookupType, L
     // Query Methods
     //----------------------------------------------------
 
+    @Query("{'lookupTypeID' : '?0'}")
+    LookupType findByLookupTypeID(Long lookupTypeID);
 
-
-}// MongoLookupTypeRepository Interface
+    LookupType findByLookupType(String type);
+}

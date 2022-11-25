@@ -1,0 +1,30 @@
+[
+    {
+        "carrierId": {
+            "branch": "nowhere",
+            "clientId": "903999-TST"
+        },
+        "destinationAddress": "399 S. Seliger Ave.",
+        "trackingId": "903999-TS",
+        "carrierLookupId": {
+            "lookupId": 903999,
+            "abbreviation": "TST",
+            "description": "tester description",
+            "fullName": "tester name",
+            "lookupTypeId": {
+                "lookupTypeId": 903999,
+                "lookupType": "tester"
+            }
+        },
+        "deliveryStatusTypeId": {
+            "lookupId": 903999,
+            "abbreviation": "TST",
+            "description": "tester description",
+            "fullName": "tester name",
+            "lookupTypeId": {
+                "lookupTypeId": 903999,
+                "lookupType": "tester"
+            }
+        }
+    }
+]
