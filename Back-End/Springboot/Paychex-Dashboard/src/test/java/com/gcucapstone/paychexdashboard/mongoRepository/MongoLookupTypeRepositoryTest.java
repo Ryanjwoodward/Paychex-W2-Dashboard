@@ -43,6 +43,13 @@ public class MongoLookupTypeRepositoryTest {
         });
     }
 
+    @Test
+    void findByLookupTypeId(){
+       LookupType lookupType = lookupTypeRepository.findByLookupTypeID(903999L);
+        System.out.println("TYPE :" + lookupType.getLookupType());
+        System.out.println("ID: " + lookupType.getLookupTypeID());
+    }
+
 
 
 }// MongoLookupTypeRepositoryTest Class

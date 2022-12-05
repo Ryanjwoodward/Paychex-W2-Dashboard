@@ -1,5 +1,7 @@
 package com.gcucapstone.paychexdashboard;
 
+import com.gcucapstone.paychexdashboard.changeStreams.LookupTableChangeStreams;
+import com.gcucapstone.paychexdashboard.changeStreams.LookupTypeChangeStreams;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,7 +17,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
   				| This file is executed to run the backend application/client of the Paychex W2 dashboard
 ---------------------------------------------------------------------
 Notes:
-
 ----------------------------------------------------------------------*/
 @SpringBootApplication
 public class PaychexDashboardApplication {
@@ -24,7 +25,4 @@ public class PaychexDashboardApplication {
 
 		SpringApplication.run(PaychexDashboardApplication.class, args);
 	}
-
-
-
 }// PaychexDashboardApplication Class

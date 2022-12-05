@@ -1,23 +1,29 @@
 package com.gcucapstone.paychexdashboard.changeStreams;
 
+import com.gcucapstone.paychexdashboard.entity.Vendor;
 import com.gcucapstone.paychexdashboard.models.LookupType;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.*;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
-import static java.util.Collections.singletonList;
 import org.bson.conversions.Bson;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
 
 import static com.mongodb.client.model.Aggregates.match;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.changestream.FullDocument.UPDATE_LOOKUP;
+import static java.util.Collections.singletonList;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
-
-import java.sql.*;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * ------------------------------------------------------------------------
@@ -25,13 +31,13 @@ import java.util.concurrent.atomic.AtomicReference;
  * Institution:    | Grand Canyon University & Paychex
  * Instructor:     | Dr. Isac Artzi
  * Date:           | (Created) 11-10-2022
- * File:           | LookupTypeChangeStreams.java
+ * File:           | VendorChangeStreams.java
  * Version:        | 1.0
  * Description:    | This file will be used to monitor changes to the Mongo
- *                 | Atlas Collection : LookupTypes
+ *                 | Atlas Collection : Vendor
  * ---------------------------------------------------------------------------
  */
-public class LookupTypeChangeStreams extends Thread{
+public class VendorChangeStreams extends Thread{
 
     @Override
     public void run(){
@@ -43,34 +49,45 @@ public class LookupTypeChangeStreams extends Thread{
 
         try (MongoClient mongoClient = MongoClients.create(clientSettings)) {
             MongoDatabase db = mongoClient.getDatabase("PaychexDashboard");
-            MongoCollection<LookupType> lookupTypes = db.getCollection("LookupType", LookupType.class);
+            MongoCollection<Vendor> vendors = db.getCollection("Vendor", Vendor.class);
             List<Bson> pipeline;
 
             pipeline = singletonList(match(eq("operationType", "update")));
 
-            lookupTypes.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach((d) -> {
-                System.out.println("LOOKUP TYPE: " + d.getFullDocument().getLookupType());
-                System.out.println("LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
+            vendors.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach((d) -> {
 
-                com.gcucapstone.paychexdashboard.entity.LookupType lt_Entity =  new com.gcucapstone.paychexdashboard.entity.LookupType();
-                lt_Entity.setLookupType(d.getFullDocument().getLookupType());
-                lt_Entity.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+                System.out.println("BC-CLIENT ID: " + d.getFullDocument().getVendorId().getClientId());
+                System.out.println("BC-BRANCH: " + d.getFullDocument().getVendorId().getBranch());
+                System.out.println("EMP COUNT: " + d.getFullDocument().getEmployeeCount());
+                System.out.println("W2 COUNT: " + d.getFullDocument().getW2Count());
 
-            submitQuery(lt_Entity);
-        });
+                Vendor vendor = new Vendor();
+                vendor.setVendorId(d.getFullDocument().getVendorId());
+                vendor.setEmployeeCount(d.getFullDocument().getEmployeeCount());
+                vendor.setW2Count(d.getFullDocument().getW2Count());
+
+                submitQuery(vendor);
+            });
+        }
     }
-}
 
-    public void submitQuery(com.gcucapstone.paychexdashboard.entity.LookupType lookupType){
+    public void submitQuery(Vendor vendor){
 
         try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
 
-            String sqlQuery = "UPDATE `PaychexDashboard`.`lookup_types` SET `lookup_type` = ? WHERE (`lookup_type_id` = ?);";
+            //
+            String sqlQuery = "UPDATE `PaychexDashboard`.`vendor` SET `vendor_employee_count` = ? WHERE (`branch` = ?) and (`client_id` = ?);";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setInt(1, vendor.getEmployeeCount());
+            preparedStatement.setString(2, vendor.getVendorId().getBranch());
+            preparedStatement.setString(3, vendor.getVendorId().getClientId());
+            preparedStatement.executeUpdate();
 
-            preparedStatement.setString(1, lookupType.getLookupType());
-            preparedStatement.setLong(2, lookupType.getLookupTypeId());
-
+            sqlQuery = "UPDATE `PaychexDashboard`.`vendor` SET `vendor_w2_count` = ? WHERE (`branch` = ?) and (`client_id` = ?);";
+            preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setInt(1, vendor.getW2Count());
+            preparedStatement.setString(2, vendor.getVendorId().getBranch());
+            preparedStatement.setString(3, vendor.getVendorId().getClientId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -78,8 +95,5 @@ public class LookupTypeChangeStreams extends Thread{
             throw new RuntimeException(e);
         }
     }
-}// LookupTypeChangeStreams Class
 
-
-
-
+}// VendorChangeStreams
