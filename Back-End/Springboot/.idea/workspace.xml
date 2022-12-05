@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/changeStreams/LookupTypeChangeStreams.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/changeStreams/LookupTypeChangeStreams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/LookupType.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/models/LookupType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/repository/LookupTypeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paychex-Dashboard/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Paychex-Dashboard/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="6cac4964-104d-4214-bc69-d3089c52d5b7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,33 +53,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/_ryan/Downloads/slf4j-jdk14-2.0.3.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;4e759a160651ab111b9a6212dc3a0393&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/anmoldeepsandhu/Documents/GCU-Capstone/Back-End/Springboot",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "4e759a160651ab111b9a6212dc3a0393"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.LookupTypeChangeStreams">
     <configuration name="AtlasConnectionTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gcucapstone.paychexdashboard.changeStreams.AtlasConnectionTest" />
@@ -221,6 +215,7 @@
       <workItem from="1668127552662" duration="2286000" />
       <workItem from="1668139201415" duration="641000" />
       <workItem from="1668198786185" duration="12975000" />
+      <workItem from="1668550034047" duration="62000" />
     </task>
     <servers />
   </component>
