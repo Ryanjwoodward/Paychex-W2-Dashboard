@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df615136-a58a-4046-bae3-e8234c16752f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Back-End/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Back-End/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Front-End.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Front-End.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,17 +23,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "ts.external.directory.path": "/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End/Dashboard/node_modules/typescript/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End/Dashboard/node_modules/typescript/lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
       <method v="2" />
@@ -59,6 +61,8 @@
       <workItem from="1672891118279" duration="381000" />
       <workItem from="1672891643878" duration="456000" />
       <workItem from="1672892104548" duration="78000" />
+      <workItem from="1672894559132" duration="38000" />
+      <workItem from="1672894669712" duration="1000" />
     </task>
     <servers />
   </component>
