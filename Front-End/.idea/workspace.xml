@@ -19,15 +19,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End",
-    "ts.external.directory.path": "/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End/Dashboard/node_modules/typescript/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/anmoldeepsandhu/Documents/GCU-Capstone/Front-End/Dashboard/node_modules/typescript/lib&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -37,6 +38,8 @@
       <option name="presentableId" value="Default" />
       <updated>1670122494518</updated>
       <workItem from="1670122495717" duration="2717000" />
+      <workItem from="1672891118279" duration="381000" />
+      <workItem from="1672891643878" duration="54000" />
     </task>
     <servers />
   </component>
