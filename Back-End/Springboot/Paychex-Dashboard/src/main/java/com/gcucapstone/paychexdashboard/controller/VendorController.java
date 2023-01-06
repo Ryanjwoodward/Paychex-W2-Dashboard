@@ -24,7 +24,7 @@ import java.util.List;
  *  - Add Get methods for GreaterThan/LessThan w2 & Employee Count methods
  *---------------------------------------------------------------------------*/
 @RestController
-@CrossOrigin(origins = "http://localhost:3306")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/dashboard/vendor")
 public class VendorController {
 

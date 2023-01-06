@@ -43,7 +43,6 @@ public class Carrier {
 	@Column(name = "tracking_id")
 	private String trackingId;
 
-	// Add foreign key relationship annotation
 	@OneToOne
 	@JoinColumn(name = "carrier_lookup_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_carrier_lookup_id"))
 	private LookupTable carrierLookupId;

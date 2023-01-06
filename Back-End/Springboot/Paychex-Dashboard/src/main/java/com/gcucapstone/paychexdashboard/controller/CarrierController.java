@@ -25,7 +25,7 @@ import java.util.List;
  *      ^ (above) requires writing those methods in the repo class first
  *--------------------------------------------------------------------------*/
 @RestController
-@CrossOrigin(origins = "http://localhost:3306")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/dashboard/carrier")
 public class CarrierController {
 

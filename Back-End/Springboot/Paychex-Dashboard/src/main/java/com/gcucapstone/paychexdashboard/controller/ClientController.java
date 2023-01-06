@@ -22,7 +22,7 @@ import java.util.List;
  * ---------------------------------------------------------------------------
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:3306")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/dashboard/client")
 public class ClientController {
 

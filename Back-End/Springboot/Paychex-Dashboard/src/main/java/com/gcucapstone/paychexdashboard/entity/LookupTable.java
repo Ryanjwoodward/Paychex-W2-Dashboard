@@ -52,4 +52,7 @@ public class LookupTable {
     @JoinColumn(name = "lookup_type_id", referencedColumnName = "lookup_type_Id", foreignKey=@ForeignKey(name = "Fk_lookup_type_id "))
     private LookupType lookupTypeId;
 
+    @Column(name = "state")
+    private String state;
+
 }// lookupTable Class

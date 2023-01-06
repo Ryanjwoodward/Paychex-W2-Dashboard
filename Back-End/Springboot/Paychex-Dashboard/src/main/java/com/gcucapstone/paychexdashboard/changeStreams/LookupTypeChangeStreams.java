@@ -4,12 +4,16 @@ import com.gcucapstone.paychexdashboard.models.LookupType;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.*;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.changestream.ChangeStreamDocument;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
-import static java.util.Collections.singletonList;
-import org.bson.conversions.Bson;
 
-import static com.mongodb.client.model.Aggregates.match;
+import static com.mongodb.client.model.Filters.in;
+
+import org.bson.conversions.Bson;
+import static java.util.Arrays.asList;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.changestream.FullDocument.UPDATE_LOOKUP;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
@@ -17,7 +21,7 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 import java.sql.*;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 
 /**
  * ------------------------------------------------------------------------
@@ -46,37 +50,75 @@ public class LookupTypeChangeStreams extends Thread{
             MongoCollection<LookupType> lookupTypes = db.getCollection("LookupType", LookupType.class);
             List<Bson> pipeline;
 
-            pipeline = singletonList(match(eq("operationType", "update")));
 
-            lookupTypes.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach((d) -> {
-                System.out.println("LOOKUP TYPE: " + d.getFullDocument().getLookupType());
-                System.out.println("LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
+            lookupTypes.watch(asList(Aggregates.match(Filters.in("operationType", asList("update","insert")))))
+                    .fullDocument(UPDATE_LOOKUP).forEach((d) -> {
 
-                com.gcucapstone.paychexdashboard.entity.LookupType lt_Entity =  new com.gcucapstone.paychexdashboard.entity.LookupType();
-                lt_Entity.setLookupType(d.getFullDocument().getLookupType());
-                lt_Entity.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+                        switch(d.getOperationTypeString()){
 
-            submitQuery(lt_Entity);
-        });
+                            case "update":
+                                System.out.println("update-LOOKUP TYPE: " + d.getFullDocument().getLookupType());
+                                System.out.println("update-LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
+
+                                com.gcucapstone.paychexdashboard.entity.LookupType updated_lookupType =  new com.gcucapstone.paychexdashboard.entity.LookupType();
+                                updated_lookupType.setLookupType(d.getFullDocument().getLookupType());
+                                updated_lookupType.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+
+                                submitUpdateQuery(updated_lookupType);
+                                break;
+                            case "insert":
+
+                                System.out.println("insert-LOOKUP TYPE: " + d.getFullDocument().getLookupType());
+                                System.out.println("insert-LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
+
+                                com.gcucapstone.paychexdashboard.entity.LookupType inserted_lookupType =  new com.gcucapstone.paychexdashboard.entity.LookupType();
+                                inserted_lookupType.setLookupType(d.getFullDocument().getLookupType());
+                                inserted_lookupType.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+
+                                submitInsertQuery(inserted_lookupType);
+                                break;
+                        }
+                    });
     }
 }
 
-    public void submitQuery(com.gcucapstone.paychexdashboard.entity.LookupType lookupType){
+    public void submitUpdateQuery(com.gcucapstone.paychexdashboard.entity.LookupType lookupType){
 
         try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
 
             String sqlQuery = "UPDATE `PaychexDashboard`.`lookup_types` SET `lookup_type` = ? WHERE (`lookup_type_id` = ?);";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-
             preparedStatement.setString(1, lookupType.getLookupType());
             preparedStatement.setLong(2, lookupType.getLookupTypeId());
 
             preparedStatement.executeUpdate();
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public void submitInsertQuery(com.gcucapstone.paychexdashboard.entity.LookupType lookupType){
+
+        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
+
+            String sqlQuery = "INSERT INTO `PaychexDashboard`.`lookup_types` (`lookup_type_id`, `lookup_type`) VALUES (?, ?);";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setLong(1, lookupType.getLookupTypeId());
+            preparedStatement.setString(2, lookupType.getLookupType());
+
+            preparedStatement.execute();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    private static Consumer<ChangeStreamDocument<LookupType>> printEvent() {
+        return System.out::println;
     }
 }// LookupTypeChangeStreams Class
 

@@ -23,7 +23,7 @@ import java.util.Optional;
  * ---------------------------------------------------------------------------
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:3306")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/dashboard/lookuptable")
 public class LookupTableController {
 

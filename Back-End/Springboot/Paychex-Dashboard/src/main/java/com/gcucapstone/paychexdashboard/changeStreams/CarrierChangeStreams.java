@@ -1,13 +1,16 @@
 package com.gcucapstone.paychexdashboard.changeStreams;
 
+import com.gcucapstone.paychexdashboard.entity.BranchClient;
 import com.gcucapstone.paychexdashboard.entity.Carrier;
-import com.gcucapstone.paychexdashboard.entity.Vendor;
+import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Filters;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
@@ -18,10 +21,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import static com.mongodb.client.model.Aggregates.match;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.changestream.FullDocument.UPDATE_LOOKUP;
-import static java.util.Collections.singletonList;
+import static java.util.Arrays.asList;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
@@ -52,26 +54,67 @@ public class CarrierChangeStreams extends Thread{
             MongoCollection<Carrier> carriers = db.getCollection("Carrier", Carrier.class);
             List<Bson> pipeline;
 
-            pipeline = singletonList(match(eq("operationType", "update")));
+            carriers.watch(asList(Aggregates.match(Filters.in("operationType", asList("update","insert")))))
+                    .fullDocument(UPDATE_LOOKUP).forEach((d) -> {
 
-            carriers.watch(pipeline).fullDocument(UPDATE_LOOKUP).forEach((d) -> {
+                        switch(d.getOperationTypeString()){
 
-                System.out.println("BC-CLIENT ID: " + d.getFullDocument().getCarrierId().getClientId());
-                System.out.println("BC-BRANCH: " + d.getFullDocument().getCarrierId().getBranch());
-                System.out.println("TRACK ID: " + d.getFullDocument().getTrackingId());
+                            case "update":
+                                System.out.println("BC-CLIENT ID: " + d.getFullDocument().getCarrierId().getClientId());
+                                System.out.println("BC-BRANCH: " + d.getFullDocument().getCarrierId().getBranch());
+                                System.out.println("TRACK ID: " + d.getFullDocument().getTrackingId());
 
-                Carrier carrier = new Carrier();
-                carrier.setDestinationAddress(d.getFullDocument().getDestinationAddress());
-                carrier.setTrackingId(d.getFullDocument().getTrackingId());
-                carrier.setCarrierId(d.getFullDocument().getCarrierId());
+                                Carrier updatedCarrier = new Carrier();
+                                updatedCarrier.setDestinationAddress(d.getFullDocument().getDestinationAddress());
+                                updatedCarrier.setTrackingId(d.getFullDocument().getTrackingId());
+                                updatedCarrier.setCarrierId(d.getFullDocument().getCarrierId());
 
-                submitQuery(carrier);
+                                submitUpdateQuery(updatedCarrier);
+                                break;
 
-            });
+                            case "insert":
+                                //Verify in the console that a NEW document was inserted by printing some of it's details
+                                System.out.println("BC-CLIENT ID: " + d.getFullDocument().getCarrierId().getClientId());
+                                System.out.println("BC-BRANCH: " + d.getFullDocument().getCarrierId().getBranch());
+                                System.out.println("TRACK ID: " + d.getFullDocument().getTrackingId());
+
+                                //Create Entity Objects
+                                Carrier insertedCarrier = new Carrier();
+                                LookupTable carrierLookupIdTable = new LookupTable();
+                                LookupTable carrierDeliveryStatusTable = new LookupTable();
+
+                                //CarrierLookupId Attribute
+                                //Creates a LookupTable Obj and sets it values to those of the inserted document
+                                carrierLookupIdTable.setAbbreviation(d.getFullDocument().getCarrierLookupId().getAbbreviation());
+                                carrierLookupIdTable.setDescription(d.getFullDocument().getCarrierLookupId().getDescription());
+                                carrierLookupIdTable.setLookupId(d.getFullDocument().getCarrierLookupId().getLookupId());
+                                carrierLookupIdTable.setFullName(d.getFullDocument().getCarrierLookupId().getFullName());
+
+                                //DeliveryStatusTypeId Attribute
+                                //Creates a LookupTable Obj and sets it values to those of the inserted document
+                                carrierDeliveryStatusTable.setAbbreviation(d.getFullDocument().getDeliveryStatusTypeId().getAbbreviation());
+                                carrierDeliveryStatusTable.setDescription(d.getFullDocument().getDeliveryStatusTypeId().getDescription());
+                                carrierDeliveryStatusTable.setLookupId(d.getFullDocument().getDeliveryStatusTypeId().getLookupId());
+                                carrierDeliveryStatusTable.setFullName(d.getFullDocument().getDeliveryStatusTypeId().getFullName());
+
+                                //Set the lone independent attributes od the Carrier entity from the inserted Mongo document
+                                insertedCarrier.setDestinationAddress(d.getFullDocument().getDestinationAddress());
+                                insertedCarrier.setTrackingId(d.getFullDocument().getTrackingId());
+                                insertedCarrier.setCarrierId(new BranchClient(d.getFullDocument().getCarrierId().getBranch(),
+                                        d.getFullDocument().getCarrierId().getClientId()));
+                                insertedCarrier.setCarrierLookupId(carrierLookupIdTable);
+                                insertedCarrier.setDeliveryStatusTypeId(carrierDeliveryStatusTable);
+
+
+
+                                //submitInsertQuery(insertedCarrier);
+                                break;
+                        }
+                    });
         }
     }
 
-    public void submitQuery(Carrier carrier){
+    public void submitUpdateQuery(Carrier carrier){
 
         try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
 
@@ -81,6 +124,27 @@ public class CarrierChangeStreams extends Thread{
             preparedStatement.setString(2, carrier.getCarrierId().getBranch());
             preparedStatement.setString(3, carrier.getCarrierId().getClientId());
             preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void submitInsertQuery(Carrier carrier){
+
+        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
+
+            String sqlQuery = "INSERT INTO `PaychexDashboard`.`carrier` (`branch`, `client_id`, `destination_address`, `tracking_id`, `carrier_lookup_id`, `delviery_status_type_id`) VALUES (?, ?, ?, ?, ?, ?);\n";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setString(1, carrier.getCarrierId().getBranch());
+            preparedStatement.setString(2, carrier.getCarrierId().getClientId());
+            preparedStatement.setString(3, carrier.getDestinationAddress());
+            preparedStatement.setString(4,carrier.getTrackingId());
+            preparedStatement.setLong(5, carrier.getCarrierLookupId().getLookupId().longValue());
+            preparedStatement.setLong(6, carrier.getDeliveryStatusTypeId().getLookupId().longValue());
+
+            preparedStatement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
