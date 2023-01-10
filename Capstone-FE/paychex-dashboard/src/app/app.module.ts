@@ -3,24 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DataTableComponent } from './Components/data-table/data-table.component';
 import { FilterTableComponent } from './Components/filter-table/filter-table.component';
 import { SortingTableComponent } from './Components/sorting-table/sorting-table.component';
-import { MapInterfaceComponent } from './Components/map-interface/map-interface.component';
+import { DataTableComponent } from './Components/data-table/data-table.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataTableComponent,
     FilterTableComponent,
     SortingTableComponent,
-    MapInterfaceComponent
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,
+    FilterTableComponent,
+    SortingTableComponent,
+    DataTableComponent
+  ]
 })
 export class AppModule { }
