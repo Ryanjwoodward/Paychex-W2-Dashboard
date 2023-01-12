@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08364bea-319f-4962-be89-647cd0a5acd0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/Springboot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/Springboot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/Springboot/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/Springboot/Paychex-Dashboard/src/main/java/com/gcucapstone/paychexdashboard/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/Springboot/Paychex-Dashboard/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/Springboot/Paychex-Dashboard/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Capstone-FE/.idea/Capstone-FE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Capstone-FE/.idea/Capstone-FE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Capstone-FE/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Capstone-FE/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="08364bea-319f-4962-be89-647cd0a5acd0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +52,7 @@
       <workItem from="1673464623411" duration="25000" />
       <workItem from="1673465253249" duration="1176000" />
       <workItem from="1673499981707" duration="66000" />
+      <workItem from="1673500376978" duration="44000" />
     </task>
     <servers />
   </component>
