@@ -69,6 +69,15 @@ public interface LookupTableRepository extends JpaRepository<LookupTable, Long> 
      */
     LookupTable findByLookupTypeId(LookupType lookupType);
 
+
+    /**
+     * This method returns a list of LookupTable records that have a
+     * State attribute that matches the passed argument
+     * @param us_State
+     * @return
+     */
+    List<LookupTable> findByState(String us_State);
+
     //---------------------------------------
     // *** Find by Multiple Attributes
     //---------------------------------------

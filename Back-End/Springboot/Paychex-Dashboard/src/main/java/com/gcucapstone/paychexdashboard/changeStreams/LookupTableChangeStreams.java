@@ -59,11 +59,10 @@ public class LookupTableChangeStreams extends Thread{
                         switch(d.getOperationTypeString()){
 
                             case "update":
-                                System.out.println("LOOKUP ID: " + d.getFullDocument().getLookupId());
-                                System.out.println("LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeId());
-                                System.out.println("ABBREV: " + d.getFullDocument().getAbbreviation());
-                                System.out.println("DESCR: " + d.getFullDocument().getDescription());
-                                System.out.println("FULL NAME: " + d.getFullDocument().getFullName());
+
+                                System.out.println("****************************\n****************************\n****************************");
+                                System.out.println("LOOKUPTABLE - Updated Doc: " + d.getFullDocument().toString());
+                                System.out.println("****************************\n****************************\n****************************");
 
                                 com.gcucapstone.paychexdashboard.entity.LookupTable lookupTable = new com.gcucapstone.paychexdashboard.entity.LookupTable();
                                 lookupTable.setLookupId(d.getFullDocument().getLookupId());
@@ -72,23 +71,28 @@ public class LookupTableChangeStreams extends Thread{
                                 lookupTable.setFullName(d.getFullDocument().getFullName());
 
                                 submitUpdateQuery(lookupTable);
+
                                 break;
                             case "insert":
-                                System.out.println("LOOKUP ID: " + d.getFullDocument().getLookupId());
-                                System.out.println("LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeId());
-                                System.out.println("ABBREV: " + d.getFullDocument().getAbbreviation());
-                                System.out.println("DESCR: " + d.getFullDocument().getDescription());
-                                System.out.println("FULL NAME: " + d.getFullDocument().getFullName());
+
+                                System.out.println("****************************\n****************************\n****************************");
+                                System.out.println("LOOKUPTABLE - Inserted Doc: " + d.getFullDocument().toString());
+                                System.out.println("****************************\n****************************\n****************************");
 
                                 lookupTable = new com.gcucapstone.paychexdashboard.entity.LookupTable();
                                 LookupType lookupType = new LookupType();
 
+                                lookupType.setLookupType(d.getFullDocument().getLookupTypeId().getLookupType());
+                                lookupType.setLookupTypeId(d.getFullDocument().getLookupTypeId().getLookupTypeId());
+
+                                lookupTable.setLookupId(d.getFullDocument().getLookupId());
                                 lookupTable.setAbbreviation(d.getFullDocument().getAbbreviation());
                                 lookupTable.setDescription(d.getFullDocument().getDescription());
                                 lookupTable.setFullName(d.getFullDocument().getFullName());
+                                lookupTable.setState(d.getFullDocument().getState());
+                                lookupTable.setLookupTypeId(lookupType);
 
-                                //create lookupId entity then set
-                                lookupTable.setLookupId(d.getFullDocument().getLookupId());
+                                submitInsertQuery(lookupTable);
 
                                 break;
                         }
@@ -116,6 +120,33 @@ public class LookupTableChangeStreams extends Thread{
             preparedStatement.setString(1, lookupTable.getFullName());
             preparedStatement.setLong(2, lookupTable.getLookupId());
             preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void submitInsertQuery(com.gcucapstone.paychexdashboard.entity.LookupTable lookupTable){
+
+        try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
+
+            //-- Add the Inserted Records Corresponding LookupType Record
+            String sqlQuery2 = "INSERT INTO `PaychexDashboard`.`lookup_types` (`lookup_type_id`, `lookup_type`) VALUES (?, ?);";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sqlQuery2);
+            preparedStatement2.setLong(1, lookupTable.getLookupTypeId().getLookupTypeId());
+            preparedStatement2.setString(2, lookupTable.getLookupTypeId().getLookupType());
+
+            //-- Insert the LookupTable Record
+            String sqlQuery = "INSERT INTO `PaychexDashboard`.`lookup_table` (`lookup_id`, `lookup_abbreviation`, `lookup_description`, `lookup_full_name`, `state`, `lookup_type_id`) VALUES (?, ?, ?, ?, ?, ?);";
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setLong(1, lookupTable.getLookupId());
+            preparedStatement.setString(2, lookupTable.getAbbreviation());
+            preparedStatement.setString(3, lookupTable.getDescription());
+            preparedStatement.setString(4, lookupTable.getFullName());
+            preparedStatement.setString(5, lookupTable.getState());
+            preparedStatement.setLong(6, lookupTable.getLookupTypeId().getLookupTypeId());
+            preparedStatement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();

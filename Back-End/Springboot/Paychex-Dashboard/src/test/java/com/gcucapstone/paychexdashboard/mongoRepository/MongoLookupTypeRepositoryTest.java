@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
 /**-------------------------------------------------------------------
  Authors:      | Ryan Woodward
  Class:        | STG451 - Capstone 1
@@ -47,7 +45,7 @@ public class MongoLookupTypeRepositoryTest {
     void findByLookupTypeId(){
        LookupType lookupType = lookupTypeRepository.findByLookupTypeID(903999L);
         System.out.println("TYPE :" + lookupType.getLookupType());
-        System.out.println("ID: " + lookupType.getLookupTypeID());
+        System.out.println("ID: " + lookupType.getLookupTypeId());
     }
 
 

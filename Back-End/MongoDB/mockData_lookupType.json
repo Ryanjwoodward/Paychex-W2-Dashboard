@@ -1,0 +1,126 @@
+[
+    {
+        "lookupTypeId": 1214,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1233,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1234,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1314,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1422,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1432,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1541,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1643,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1761,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 1987,
+        "lookupType": "vendor"
+    },
+    {
+        "lookupTypeId": 3087,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3213,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3214,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3321,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3331,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3467,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3542,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3772,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3876,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 3987,
+        "lookupType": "carrier"
+    },
+    {
+        "lookupTypeId": 8076,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8123,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8125,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8213,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8345,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8456,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8765,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8810,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8888,
+        "lookupType": "test2"
+    },
+    {
+        "lookupTypeId": 8910,
+        "lookupType": "client"
+    },
+    {
+        "lookupTypeId": 8998,
+        "lookupType": "client"
+    }
+]

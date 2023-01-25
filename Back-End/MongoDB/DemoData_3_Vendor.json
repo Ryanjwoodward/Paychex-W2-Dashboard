@@ -1,0 +1,21 @@
+[
+    {
+        "vendorId": {
+            "branch": "TEST",
+            "clientId": "TEST-1043"
+        },
+        "employeeCount": 2501233,
+        "w2Count": 2501233,
+        "lookupId": {
+            "lookupId": 9999,
+            "abbreviation": "TST",
+            "description": "test_decription",
+            "fullName": "TEST full name",
+            "lookupTypeId": {
+                "lookupTypeId": 998877,
+                "lookupType": "TEST"
+            },
+            "state": "TS"
+        }
+    }
+]

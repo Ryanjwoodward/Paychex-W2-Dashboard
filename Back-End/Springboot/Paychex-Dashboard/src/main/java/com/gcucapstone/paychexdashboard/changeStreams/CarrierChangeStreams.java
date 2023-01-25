@@ -60,9 +60,10 @@ public class CarrierChangeStreams extends Thread{
                         switch(d.getOperationTypeString()){
 
                             case "update":
-                                System.out.println("BC-CLIENT ID: " + d.getFullDocument().getCarrierId().getClientId());
-                                System.out.println("BC-BRANCH: " + d.getFullDocument().getCarrierId().getBranch());
-                                System.out.println("TRACK ID: " + d.getFullDocument().getTrackingId());
+
+                                System.out.println("****************************\n****************************\n****************************");
+                                System.out.println("CARRIER - Updated Doc: " + d.getFullDocument().toString());
+                                System.out.println("****************************\n****************************\n****************************");
 
                                 Carrier updatedCarrier = new Carrier();
                                 updatedCarrier.setDestinationAddress(d.getFullDocument().getDestinationAddress());
@@ -73,10 +74,10 @@ public class CarrierChangeStreams extends Thread{
                                 break;
 
                             case "insert":
-                                //Verify in the console that a NEW document was inserted by printing some of it's details
-                                System.out.println("BC-CLIENT ID: " + d.getFullDocument().getCarrierId().getClientId());
-                                System.out.println("BC-BRANCH: " + d.getFullDocument().getCarrierId().getBranch());
-                                System.out.println("TRACK ID: " + d.getFullDocument().getTrackingId());
+
+                                System.out.println("****************************\n****************************\n****************************");
+                                System.out.println("CARRIER - Inserted Doc: " + d.getFullDocument().toString());
+                                System.out.println("****************************\n****************************\n****************************");
 
                                 //Create Entity Objects
                                 Carrier insertedCarrier = new Carrier();
@@ -106,8 +107,7 @@ public class CarrierChangeStreams extends Thread{
                                 insertedCarrier.setDeliveryStatusTypeId(carrierDeliveryStatusTable);
 
 
-
-                                //submitInsertQuery(insertedCarrier);
+                                submitInsertQuery(insertedCarrier);
                                 break;
                         }
                     });
@@ -135,15 +135,23 @@ public class CarrierChangeStreams extends Thread{
 
         try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
 
-            String sqlQuery = "INSERT INTO `PaychexDashboard`.`carrier` (`branch`, `client_id`, `destination_address`, `tracking_id`, `carrier_lookup_id`, `delviery_status_type_id`) VALUES (?, ?, ?, ?, ?, ?);\n";
+
+            System.out.println("INSCAR: BRANCH-" + carrier.getCarrierId().getBranch());
+            System.out.println("INSCAR: CLIENT-" + carrier.getCarrierId().getClientId());
+            System.out.println("INSCAR: DESTAD-" + carrier.getTrackingId());
+            System.out.println("INSCAR: TRACID-" + carrier.getTrackingId());
+            System.out.println("INSCAR: CLUPID-" + carrier.getCarrierLookupId().getLookupId());
+            System.out.println("INSCAR: DLSTID-" + carrier.getDeliveryStatusTypeId().getLookupId());
+
+
+            String sqlQuery = "INSERT INTO `PaychexDashboard`.`carrier` (`branch`, `client_id`, `destination_address`, `tracking_id`, `carrier_lookup_id`, `delviery_status_type_id`) VALUES (?, ?, ?, ?, ?, ?);";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1, carrier.getCarrierId().getBranch());
             preparedStatement.setString(2, carrier.getCarrierId().getClientId());
             preparedStatement.setString(3, carrier.getDestinationAddress());
-            preparedStatement.setString(4,carrier.getTrackingId());
-            preparedStatement.setLong(5, carrier.getCarrierLookupId().getLookupId().longValue());
-            preparedStatement.setLong(6, carrier.getDeliveryStatusTypeId().getLookupId().longValue());
-
+            preparedStatement.setString(4, carrier.getTrackingId());
+            preparedStatement.setLong(5, carrier.getCarrierLookupId().getLookupId());
+            preparedStatement.setLong(6, carrier.getDeliveryStatusTypeId().getLookupId());
             preparedStatement.execute();
 
         } catch (SQLException e) {

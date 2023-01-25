@@ -35,4 +35,6 @@ public class LookupTable {
 
     private LookupType lookupTypeId;
 
+    private String state;
+
 }//LookupTable Class

@@ -19,18 +19,18 @@ public class ChangeStreamThread {
     public static void main(String[] args){
 
         //call constructors of each class t
-        //LookupTypeChangeStreams lookupTypeChangeStreams = new LookupTypeChangeStreams();
-        LookupTableChangeStreams lookupTableChangeStreams = new LookupTableChangeStreams();
-  /*      ClientChangeStreams clientChangeStreams = new ClientChangeStreams();
+        LookupTypeChangeStreams lookupTypeChangeStreams = new LookupTypeChangeStreams();
         VendorChangeStreams vendorChangeStreams = new VendorChangeStreams();
-        CarrierChangeStreams carrierChangeStreams = new CarrierChangeStreams();*/
+        ClientChangeStreams clientChangeStreams = new ClientChangeStreams();
+        LookupTableChangeStreams lookupTableChangeStreams = new LookupTableChangeStreams();
+        CarrierChangeStreams carrierChangeStreams = new CarrierChangeStreams();
 
         // call .start() on each
-        //lookupTypeChangeStreams.start();
-        lookupTableChangeStreams.start();
-      /*  clientChangeStreams.start();
-        vendorChangeStreams.start();
-        carrierChangeStreams.start();*/
+        lookupTypeChangeStreams.start();  //-- COMPLETED
+        lookupTableChangeStreams.start(); //-- COMPLETED
+        vendorChangeStreams.start();      //-- COMPLETED
+        clientChangeStreams.start();
+        carrierChangeStreams.start();     //-- COMPLETED
     }
 
-}//ChangeStreamThres Class
+}//ChangeStreamThread Class

@@ -3,8 +3,6 @@ package com.gcucapstone.paychexdashboard.models;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Id;
-
 /**
  * ------------------------------------------------------------------------
  * Authors:        | Ryan Woodward
@@ -24,8 +22,8 @@ public class LookupType {
     //----------------------------------------------------
     // Instance Variables
     //----------------------------------------------------
-    @Id
-    private Long lookupTypeID;
+
+    private Long lookupTypeId;
 
     private String lookupType;
 

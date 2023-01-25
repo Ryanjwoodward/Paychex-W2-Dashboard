@@ -1,5 +1,6 @@
 package com.gcucapstone.paychexdashboard.changeStreams;
 
+import com.gcucapstone.paychexdashboard.entity.LookupType;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
@@ -57,12 +58,12 @@ public class VendorChangeStreams extends Thread{
 
                         switch(d.getOperationTypeString()){
                              case "update":
-                                 System.out.println("BC-CLIENT ID: " + d.getFullDocument().getVendorId().getClientId());
-                                System.out.println("BC-BRANCH: " + d.getFullDocument().getVendorId().getBranch());
-                                System.out.println("EMP COUNT: " + d.getFullDocument().getEmployeeCount());
-                                System.out.println("W2 COUNT: " + d.getFullDocument().getW2Count());
+                                 System.out.println("****************************\n****************************\n****************************");
+                                 System.out.println("VENDROR - Updated Doc: " + d.getFullDocument().toString());
+                                 System.out.println("****************************\n****************************\n****************************");
 
-                                Vendor vendor = new Vendor();
+
+                                 Vendor vendor = new Vendor();
                                 vendor.setVendorId(d.getFullDocument().getVendorId());
                                 vendor.setEmployeeCount(d.getFullDocument().getEmployeeCount());
                                 vendor.setW2Count(d.getFullDocument().getW2Count());
@@ -70,14 +71,10 @@ public class VendorChangeStreams extends Thread{
                                 submitUpdateQuery(vendor);
                              break;
                             case "insert":
-                                System.out.println("BC-CLIENT ID: " + d.getFullDocument().getVendorId().getClientId());
-                                System.out.println("BC-BRANCH: " + d.getFullDocument().getVendorId().getBranch());
-                                System.out.println("EMP COUNT: " + d.getFullDocument().getEmployeeCount());
-                                System.out.println("W2 COUNT: " + d.getFullDocument().getW2Count());
-                                System.out.println("LOOK UP ID -ID: " + d.getFullDocument().getLookupId().getLookupId());
-                                System.out.println("LOOK UP ID -ABBR: " + d.getFullDocument().getLookupId().getAbbreviation());
-                                System.out.println("LOOK UP ID -Fullname: " + d.getFullDocument().getLookupId().getFullName());
 
+                                System.out.println("****************************\n****************************\n****************************");
+                                System.out.println("VENDOR - Inserted Doc: " + d.getFullDocument().toString());
+                                System.out.println("****************************\n****************************\n****************************");
 
                                 Vendor vendor1 = new Vendor();
                                 vendor1.setVendorId(d.getFullDocument().getVendorId());
@@ -121,19 +118,15 @@ public class VendorChangeStreams extends Thread{
 
         try(Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PaychexDashboard?createDatabaseIfNotExist=true", "acerbus", "bailey711");){
 
-            String sqlQuery = "INSERT INTO `PaychexDashboard`.`vendor` (`branch`, `client_id`, `vendor_employee_count`, `vendor_w2_count`, `vendor_lookup_id`) VALUES (?, ?, ?, ?, ?);\n";
-            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-            preparedStatement.setString(1, vendor.getVendorId().getBranch());
-            preparedStatement.setString(2, vendor.getVendorId().getClientId());
-            preparedStatement.setInt(3, vendor.getEmployeeCount());
-            preparedStatement.setInt(4, vendor.getW2Count());
-
-            //*** HERE *** //
-            //Create a new LookupTable and Type entity that correspond to this inserted record
-            preparedStatement.setLong(5, vendor.getLookupId().getLookupId().longValue());
-            preparedStatement.execute();
-
-
+            //-- Insert a new record into the MySQL DB that matches the newly inserted record of the MongoDB Colleciton
+            String sqlQuery3 = "INSERT INTO `PaychexDashboard`.`vendor` (`branch`, `client_id`, `vendor_employee_count`, `vendor_w2_count`, `vendor_lookup_id`) VALUES (?, ?, ?, ?, ?);";
+            PreparedStatement preparedStatement3 = connection.prepareStatement(sqlQuery3);
+            preparedStatement3.setString(1, vendor.getVendorId().getBranch());
+            preparedStatement3.setString(2, vendor.getVendorId().getClientId());
+            preparedStatement3.setInt(3, vendor.getEmployeeCount());
+            preparedStatement3.setInt(4, vendor.getW2Count());
+            preparedStatement3.setLong(5, vendor.getLookupId().getLookupId());
+            preparedStatement3.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();

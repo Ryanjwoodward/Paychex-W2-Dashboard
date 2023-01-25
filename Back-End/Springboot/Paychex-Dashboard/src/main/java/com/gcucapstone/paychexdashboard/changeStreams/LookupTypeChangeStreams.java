@@ -57,23 +57,25 @@ public class LookupTypeChangeStreams extends Thread{
                         switch(d.getOperationTypeString()){
 
                             case "update":
-                                System.out.println("update-LOOKUP TYPE: " + d.getFullDocument().getLookupType());
-                                System.out.println("update-LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
+                                System.out.println("****************************\n****************************\n****************************");
+                                System.out.println("LOOKUPTYPE - Updated Doc: " + d.getFullDocument().toString());
+                                System.out.println("****************************\n****************************\n****************************");
 
                                 com.gcucapstone.paychexdashboard.entity.LookupType updated_lookupType =  new com.gcucapstone.paychexdashboard.entity.LookupType();
                                 updated_lookupType.setLookupType(d.getFullDocument().getLookupType());
-                                updated_lookupType.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+                                updated_lookupType.setLookupTypeId(d.getFullDocument().getLookupTypeId());
+
 
                                 submitUpdateQuery(updated_lookupType);
                                 break;
                             case "insert":
-
-                                System.out.println("insert-LOOKUP TYPE: " + d.getFullDocument().getLookupType());
-                                System.out.println("insert-LOOKUP TYPE ID: " + d.getFullDocument().getLookupTypeID());
+                                System.out.println("****************************\n****************************\n****************************");
+                                System.out.println("LOOKUPTYPE - Inserted Doc: " + d.getFullDocument().toString());
+                                System.out.println("****************************\n****************************\n****************************");
 
                                 com.gcucapstone.paychexdashboard.entity.LookupType inserted_lookupType =  new com.gcucapstone.paychexdashboard.entity.LookupType();
                                 inserted_lookupType.setLookupType(d.getFullDocument().getLookupType());
-                                inserted_lookupType.setLookupTypeId(d.getFullDocument().getLookupTypeID());
+                                inserted_lookupType.setLookupTypeId(d.getFullDocument().getLookupTypeId());
 
                                 submitInsertQuery(inserted_lookupType);
                                 break;

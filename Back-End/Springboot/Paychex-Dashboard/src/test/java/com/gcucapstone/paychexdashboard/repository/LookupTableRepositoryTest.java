@@ -87,8 +87,16 @@ public class LookupTableRepositoryTest {
         System.out.println("DESCR: "+ table.getDescription());
     }
 
-    //--------------------------------
-    // Find by Multiple Attributes
-    //--------------------------------
+    @Test
+    void findByState(){
+        List<LookupTable> tables = lookupTableRepository.findByState("AZ");
+
+        tables.forEach((t) -> {
+            System.out.println("ABBREV: " + t.getAbbreviation());
+            System.out.println("STATE: " + t.getState());
+            System.out.println("FULL NAME: " + t.getFullName());
+        });
+
+    }
 
 }//LookupTableRepositoryTest Class
