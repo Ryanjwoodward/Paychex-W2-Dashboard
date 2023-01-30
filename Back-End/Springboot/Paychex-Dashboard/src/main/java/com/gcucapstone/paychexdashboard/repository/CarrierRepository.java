@@ -77,11 +77,13 @@ public interface CarrierRepository extends JpaRepository<Carrier, BranchClient> 
      */
     Carrier findByCarrierLookupId(LookupTable lookupId);
 
-    //find by delivery status type id LookupTable
-
-    //---------------------------------------
-    // *** Find by Multiple Attributes
-    //---------------------------------------
-
+    /**
+     * This method returns a List of Carrier records that have a state
+     * attribute (of their LookupTable FK) that match the passed argument
+     * @param state    - the state atribute to search for
+     * @return         - the List of vendor Records
+     */
+    @Query("SELECT c FROM Carrier c WHERE c.carrierLookupId.state =?1")
+   List<Carrier> findByLookupTableState(String state);
 
 }// MongoCarrierRepository Interface

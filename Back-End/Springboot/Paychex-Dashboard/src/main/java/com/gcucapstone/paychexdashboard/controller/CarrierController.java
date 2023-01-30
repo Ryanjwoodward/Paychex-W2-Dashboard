@@ -123,4 +123,17 @@ public class CarrierController {
         return carrier;
     }
 
+    /**
+     * This is REST method that maps a GET Request to a CarrierRepository Instance
+     * and returns a List of Carrier records that have a state attribute (of their
+     * LookupTable FK attribute) that matches the passed argument
+     * @param state - the passed argument
+     * @return      - List of Carrier Records
+     */
+    @GetMapping("/lookuptable/{state}")
+    public List<Carrier> getCarriersByState(@PathVariable(value = "state")String state){
+        List<Carrier> carriers = carrierRepository.findByLookupTableState(state);
+        return carriers;
+    }
+
 }// CarrierController Class

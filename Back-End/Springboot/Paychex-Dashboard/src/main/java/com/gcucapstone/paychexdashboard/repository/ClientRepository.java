@@ -96,8 +96,14 @@ public interface ClientRepository extends JpaRepository<Client, String> {
      */
     Client findByDeliveryCodeTypeId(LookupTable deliveryCodeTypeId);
 
-    //---------------------------------------
-    // *** Find by Multiple Attributes
-    //---------------------------------------
+    /**
+     * This method is a custom written JPQL Query method that returns a list of
+     * Client records that have a state attribute (of their LookupTable FK attribute)
+     * that matches the passed argument
+     * @param state - the state attribute to search for
+     * @return      - a List of Client records
+     */
+    @Query("SELECT c FROM Client c WHERE c.clientTypeId.state = ?1")
+   List<Client> findByLookupTableState(String state);
 
 } //ClientRepository Interface

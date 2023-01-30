@@ -157,5 +157,12 @@ public class ClientController {
         return client;
     }
 
+    @GetMapping("/lookuptable/{state}")
+    public List<Client> getClientByState(@PathVariable(value = "state")String state){
+
+        List<Client> clients = clientRepository.findByLookupTableState(state);
+        return clients;
+    }
+
 
 }//ClientController Class

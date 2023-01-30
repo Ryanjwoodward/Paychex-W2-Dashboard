@@ -9,10 +9,15 @@ import {Vendor} from "../Classes/vendor";
 export class VendorService {
 
   private baseURL = "http://localhost:8080/dashboard/vendor/vendors";
+  private stateSortURL = "http://localhost:8080/dashboard/vendor/lookuptable/NY"
 
   constructor(private httpClient: HttpClient) { }
 
   getAllVendors(): Observable<Vendor[]>{
     return this.httpClient.get<Vendor[]>(`${this.baseURL}`);
+  }
+
+  getVendorsByState(): Observable<Vendor[]>{
+    return this.httpClient.get<Vendor[]>(`${this.stateSortURL}`);
   }
 }

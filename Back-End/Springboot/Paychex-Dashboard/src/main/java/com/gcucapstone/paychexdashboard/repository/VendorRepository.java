@@ -152,4 +152,15 @@ public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
    List<Vendor> findByBranchOrClientId(String branch, String clientId);
 
 
+    /**
+     * This method is a custom written JPQL Query method that returns a list of
+     * Vendor records that have a state attribute (of their LookupTable FK attribute)
+     * that matches the passed argument
+     * @param state - the state attribute to search for
+     * @return      - a List of Vendor records
+     */
+   @Query("SELECT v FROM Vendor v WHERE v.lookupId.state = ?1")
+   List<Vendor> findByLookupTableState(String state);
+
+
 }// VendorRepository Interface

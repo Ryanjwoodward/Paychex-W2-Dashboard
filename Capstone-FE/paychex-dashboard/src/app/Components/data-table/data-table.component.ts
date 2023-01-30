@@ -58,19 +58,31 @@ export class DataTableComponent implements OnInit {
   }
 
   private getVendors(){
-    this.vendorService.getAllVendors().subscribe(data =>{
+    /*this.vendorService.getAllVendors().subscribe(data =>{
       this.vendors = data;
+    })*/
+
+    this.vendorService.getVendorsByState().subscribe(data =>{
+      this.vendors  = data;
     })
   }
 
   private getCarriers(){
-    this.carrierService.getAllCarriers().subscribe(data =>{
+  /*  this.carrierService.getAllCarriers().subscribe(data =>{
+      this.carriers = data;
+    })*/
+
+    this.carrierService.getCarriersByState().subscribe(data =>{
       this.carriers = data;
     })
   }
 
   private getClients(){
-    this.clientService.getAllClients().subscribe(data =>{
+    /*this.clientService.getAllClients().subscribe(data =>{
+      this.clients = data;
+    })*/
+
+    this.clientService.getClientsByState().subscribe(data =>{
       this.clients = data;
     })
   }

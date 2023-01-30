@@ -78,9 +78,4 @@ public interface LookupTableRepository extends JpaRepository<LookupTable, Long> 
      */
     List<LookupTable> findByState(String us_State);
 
-    //---------------------------------------
-    // *** Find by Multiple Attributes
-    //---------------------------------------
-
-
 } // LookupTableRepository Interface

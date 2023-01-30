@@ -117,4 +117,17 @@ public class VendorController {
         return vendor;
     }
 
+    /**
+     * This is REST method that maps a GET Request to a Vendor Repository instance
+     * and returns a list of Vendor records that have a state attribute that match the
+     * passed string argument
+     * @param state     - the passed argument
+     * @return          - the List of Vendor Records
+     */
+    @GetMapping("/lookuptable/{state}")
+    public List<Vendor> getVendorsByState(@PathVariable(value = "state")String state){
+        List<Vendor> vendors = vendorRepository.findByLookupTableState(state);
+        return vendors;
+    }
+
 }//VendorController Class

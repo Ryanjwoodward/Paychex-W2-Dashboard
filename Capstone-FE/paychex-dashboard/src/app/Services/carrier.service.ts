@@ -9,10 +9,15 @@ import {Carrier} from "../Classes/carrier";
 export class CarrierService {
 
   private baseURL = "http://localhost:8080/dashboard/carrier/carriers";
+  private sortStateURL = "http://localhost:8080/dashboard/carrier/lookuptable/NV";
 
   constructor(private httpClient: HttpClient) { }
 
   getAllCarriers(): Observable<Carrier[]>{
     return this.httpClient.get<Carrier[]>(`${this.baseURL}`);
+  }
+
+  getCarriersByState(): Observable<Carrier[]>{
+    return this.httpClient.get<Carrier[]>(`${this.sortStateURL}`);
   }
 }

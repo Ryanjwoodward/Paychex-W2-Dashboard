@@ -5,6 +5,7 @@ import com.gcucapstone.paychexdashboard.entity.LookupType;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
 import com.gcucapstone.paychexdashboard.repository.LookupTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -127,5 +128,37 @@ public class LookupTableController {
         return table;
     }
 
+
+    /**
+     * This REST method maps a GET Reqeuest to a LookupTable Instance. This method is called to fetch all
+     * LookupTable enities in the SQL database and sort them, in ascending order, by their state attribute
+     * @return  - the List of all LookupTables in ascending order (state)
+     */
+    @GetMapping("/sortby/stateasc")
+    public List<LookupTable> getAllLookupTablesSortedByStateAsc(){
+
+        List<LookupTable> sortedTables = lookupTableRepository.findAll(Sort.by("state").ascending());
+        return sortedTables;
+    }
+
+
+    /**
+     * This REST method maps a GET Reqeuest to a LookupTable Instance. This method is called to fetch all
+     * LookupTable enities in the SQL database and sort them, in descending order, by their state attribute
+     * @return  - the List of all LookupTables in descending order (state)
+     */
+    @GetMapping("/sortby/statedesc")
+    public List<LookupTable> getAllLookupTablesSortedByStateDesc(){
+
+        List<LookupTable> sortedTables = lookupTableRepository.findAll(Sort.by("state").descending());
+        return sortedTables;
+    }
+
+    @GetMapping("/tables/{state}")
+    public List<LookupTable> getLookupTablesByState(@PathVariable(value = "state")String state){
+
+        List<LookupTable> tables = lookupTableRepository.findByState(state);
+        return tables;
+    }
 
 }//LookupTableController Class
