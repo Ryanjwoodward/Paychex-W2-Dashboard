@@ -106,4 +106,9 @@ public interface ClientRepository extends JpaRepository<Client, String> {
     @Query("SELECT c FROM Client c WHERE c.clientTypeId.state = ?1")
    List<Client> findByLookupTableState(String state);
 
+
+    @Query("SELECT c FROM Client c WHERE c.clientTypeId.state = ?1")
+    List<Client> findByLookupTableStates(String state);
+
+
 } //ClientRepository Interface
