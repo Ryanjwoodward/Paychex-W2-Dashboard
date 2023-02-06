@@ -8,6 +8,7 @@ import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -156,6 +157,27 @@ public class ClientController {
         Client client = clientRepository.findByDeliveryCodeTypeId(table);
         return client;
     }
+
+    @GetMapping("/lookuptable/state/{state}")
+    public List<Client> getClientByState(@PathVariable(value = "state")String state){
+
+        List<Client> clients = clientRepository.findByLookupTableState(state);
+        return clients;
+    }
+
+    @GetMapping("/lookuptable/states/{states}")
+    @ResponseBody
+    public List<Client> getClientByStates(@PathVariable(value = "states")List<String> states){
+
+        List<Client> clients = new ArrayList<Client>();
+
+        for(int idx = 0; idx < states.size(); idx++){
+            clients.addAll(clientRepository.findByLookupTableStates(states.get(idx)));
+        }
+
+        return clients;
+    }
+
 
 
 }//ClientController Class

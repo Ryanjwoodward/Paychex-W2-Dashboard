@@ -10,9 +10,15 @@ export class ClientService {
 
   private baseURL = "http://localhost:8080/dashboard/client/clients";
 
+  private sortStateURL = "http://localhost:8080/dashboard/client/lookuptable/NY";
+
   constructor(private httpClient: HttpClient) { }
 
   getAllClients(): Observable<Client[]>{
     return this.httpClient.get<Client[]>(`${this.baseURL}`);
+  }
+
+  getClientsByState(): Observable<Client[]>{
+    return this.httpClient.get<Client[]>(`${this.sortStateURL}`)
   }
 }
