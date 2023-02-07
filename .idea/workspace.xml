@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="08364bea-319f-4962-be89-647cd0a5acd0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Capstone-FE/paychex-dashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Capstone-FE/paychex-dashboard/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +33,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.Angular CLI Server">
+  <component name="RunManager">
     <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
       <method v="2" />
     </configuration>
@@ -63,7 +64,7 @@
       <workItem from="1673500376978" duration="44000" />
       <workItem from="1673501470170" duration="137000" />
       <workItem from="1673501611594" duration="128000" />
-      <workItem from="1675716870248" duration="405000" />
+      <workItem from="1675716870248" duration="1058000" />
     </task>
     <servers />
   </component>
