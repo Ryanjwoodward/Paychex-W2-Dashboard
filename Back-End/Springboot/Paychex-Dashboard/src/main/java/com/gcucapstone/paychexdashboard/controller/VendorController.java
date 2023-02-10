@@ -1,5 +1,6 @@
 package com.gcucapstone.paychexdashboard.controller;
 
+import com.gcucapstone.paychexdashboard.entity.Carrier;
 import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
@@ -7,6 +8,7 @@ import com.gcucapstone.paychexdashboard.repository.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,8 +73,8 @@ public class VendorController {
      * @return          - a list of Vendor records
      */
     @GetMapping("/clientid/{clientId}")
-    public List<Vendor> getVendorsByClientId(@PathVariable(value = "clientId") String clientId) {
-        List<Vendor> vendors = vendorRepository.findByClientId(clientId);
+    public Vendor getVendorsByClientId(@PathVariable(value = "clientId") String clientId) {
+        Vendor vendors = vendorRepository.findByClientId(clientId);
         return vendors;
     }
 
@@ -129,5 +131,6 @@ public class VendorController {
         List<Vendor> vendors = vendorRepository.findByLookupTableState(state);
         return vendors;
     }
+
 
 }//VendorController Class

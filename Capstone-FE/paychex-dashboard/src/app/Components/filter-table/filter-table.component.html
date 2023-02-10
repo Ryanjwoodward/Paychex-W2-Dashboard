@@ -1,23 +1,32 @@
+<link rel="stylesheet" href="filter-table.component.css">
+
 <div id="filter-table" class="column-table sort-filt-table">
   <table class="table table-striped table-hover">
     <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Sorting</th>
+      <th colspan="3">Filters</th>
+    </tr>
+    <tr>
+      <th scope="col">Client</th>
+      <th scope="col">Carrier</th>
+      <th scope="col">Vendor</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Alphabetically</td>
+      <td>Clt Atr 1<i id="client-filter" class="fa-solid fa-square-check" (click)='selectColumn("client-filter")' ></i></td>
+      <td>Clt Atr 2<i id="carrier-filter" class="fa-solid fa-square-check" (click)='selectColumn("carrier-filter")' ></i></td>
+      <td>Clt Atr 3<i id="vendor-filter" class="fa-solid fa-square-check" (click)='selectColumn("vendor-filter")' ></i></td>
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td>Least to Greatest</td>
+      <td>Car Atr 1<i id="client-filter1" class="fa-solid fa-square-check" (click)='selectColumn("client-filter1")' ></i></td>
+      <td>Car Atr 2<i id="carrier-filter1" class="fa-solid fa-square-check" (click)='selectColumn("carrier-filter1")' ></i></td>
+      <td>Car Atr 3<i id="vendor-filter1" class="fa-solid fa-square-check" (click)='selectColumn("vendor-filter1")' ></i></td>
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td>Reverse</td>
+      <td>Ven Atr 1<i id="client-filter2" class="fa-solid fa-square-check" (click)='selectColumn("client-filter2")' ></i></td>
+      <td>Ven Atr 2<i id="carrier-filter2" class="fa-solid fa-square-check" (click)='selectColumn("carrier-filter2")' ></i></td>
+      <td>Ven Atr 3<i id="vendor-filter2" class="fa-solid fa-square-check" (click)='selectColumn("vendor-filter2")' ></i></td>
     </tr>
     </tbody>
   </table>

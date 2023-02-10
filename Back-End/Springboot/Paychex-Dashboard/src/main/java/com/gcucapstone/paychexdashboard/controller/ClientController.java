@@ -1,6 +1,5 @@
 package com.gcucapstone.paychexdashboard.controller;
 
-
 import com.gcucapstone.paychexdashboard.entity.Client;
 import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.repository.ClientRepository;
@@ -73,8 +72,8 @@ public class ClientController {
      * @return         - the Client Record
      */
     @GetMapping("/branch/{branch}")
-    public Client getClientByBranch(@PathVariable(value = "branch") String branch){
-        Client client = clientRepository.findByBranch(branch);
+    public List<Client> getClientByBranch(@PathVariable(value = "branch") String branch){
+        List<Client> client = clientRepository.findByBranch(branch);
         return client;
     }
 
@@ -172,12 +171,72 @@ public class ClientController {
         List<Client> clients = new ArrayList<Client>();
 
         for(int idx = 0; idx < states.size(); idx++){
-            clients.addAll(clientRepository.findByLookupTableStates(states.get(idx)));
+            clients.addAll(clientRepository.findByLookupTableState(states.get(idx)));
         }
 
         return clients;
     }
 
+    @GetMapping("clientsort/{filtercriteria}/clients/{filtervalues}")
+    @ResponseBody
+    public List<Client> getFiltered(@PathVariable(value = "filtercriteria")List<Integer> criteriaAttributes,
+                                         @PathVariable(value = "filtervalues")List<String> criteriaValues){
 
+
+        List<Client> clients = new ArrayList<Client>();
+
+        for(int idx = 0; idx < criteriaAttributes.size(); idx++){
+
+            switch(criteriaAttributes.get(idx)){
+
+                case 1 : //search for w2Transmission Id (single)
+
+                    clients.add(clientRepository.findByW2TransmissionId(criteriaValues.get(idx)));
+                    break;
+
+                case 2 : // search for branch (mult)
+
+                    clients.addAll(clientRepository.findByBranch(criteriaValues.get(idx)));
+                    break;
+
+                case 3 : // search for created Data (mult)
+
+                    //no controller method
+                    break;
+
+                case 4 : // search for emp count (mult)
+
+                    clients.addAll(clientRepository.findByEmployeeCount(Integer.parseInt(criteriaValues.get(idx))));
+                    break;
+
+                case 5: // search for transm file (mult)
+
+                    clients.add(clientRepository.findByTransmissionFile(criteriaValues.get(idx)));
+                    break;
+
+                case 6 : //search for w2count (mult)
+
+                    clients.addAll(clientRepository.findByW2Count(Integer.parseInt(criteriaValues.get(idx))));
+                    break;
+
+                case 7 : // search for w2 delivery address
+
+                    clients.addAll(clientRepository.findByW2DeliveryAddress(criteriaValues.get(idx)));
+                    break;
+
+                case 8: // search for client type id (single)
+
+                    clients.add(clientRepository.findByLookupTableClientTypeId(Long.valueOf(criteriaValues.get(idx))));
+                    break;
+
+                default:    // print an error
+
+                    System.out.println("Feler...Something went Wrong!");
+            }
+
+        }
+
+        return clients;
+    }
 
 }//ClientController Class

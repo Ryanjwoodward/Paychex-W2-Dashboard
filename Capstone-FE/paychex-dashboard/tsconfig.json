@@ -23,6 +23,9 @@
       "dom"
     ]
   },
+  "files": [
+    "List.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

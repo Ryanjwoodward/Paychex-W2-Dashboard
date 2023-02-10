@@ -81,8 +81,13 @@ This is the section where the map and the filters table will be
   margin: 5px;
 }
 
+.form-group{
+  border: solid 3px var(--paychex-blue);
+  border-radius: 9px;
+}
+
+
 .column-table{
-  border: solid var(--paychex-blue) 3px;
   border-radius: 0 0 10px 10px;
   min-width: 300px;
   margin: 10px;
@@ -125,15 +130,15 @@ This is where the data table will be*/
 }
 
 #data-table-div{
-  border: 2px solid blue;
   height: auto;
 }
 
+td{
+  min-width: 150px;
+}
 
-/*------- FOOTER SECTION START -------*/
-/*
-This is an eventuality, it is out of scope so it is not necessary to work on now
-*/
+
+/*------- FOOTER SECTION S
 
 
 /*------- MAP STYLES BELOW ---------*/

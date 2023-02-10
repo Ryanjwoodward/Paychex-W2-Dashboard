@@ -7,6 +7,7 @@ import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,8 +76,8 @@ public class CarrierController {
      * @return          - list of Carrier records
      */
     @GetMapping("/clientid/{clientid}")
-    public List<Carrier> getCarriersByClientId(@PathVariable(value = "clientid") String clientId){
-        List<Carrier> carriers = carrierRepository.findByClientId(clientId);
+    public Carrier getCarriersByClientId(@PathVariable(value = "clientid") String clientId){
+        Carrier carriers = carrierRepository.findByClientId(clientId);
         return carriers;
     }
 
@@ -135,5 +136,7 @@ public class CarrierController {
         List<Carrier> carriers = carrierRepository.findByLookupTableState(state);
         return carriers;
     }
+
+
 
 }// CarrierController Class

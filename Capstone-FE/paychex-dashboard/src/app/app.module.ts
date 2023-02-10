@@ -3,27 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilterTableComponent } from './Components/filter-table/filter-table.component';
-import { SortingTableComponent } from './Components/sorting-table/sorting-table.component';
 import { DataTableComponent } from './Components/data-table/data-table.component';
 import {HttpClientModule} from "@angular/common/http";
+import { VendorPipe } from "./Pipes/vendor-pipe";
+import {FormsModule} from "@angular/forms";
+import { CarrierPipe } from "./Pipes/carrier-pipe";
+import { ClientPipe } from "./Pipes/client-pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterTableComponent,
-    SortingTableComponent,
-    DataTableComponent
+    DataTableComponent,
+    VendorPipe,
+    CarrierPipe,
+    ClientPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent,
-    FilterTableComponent,
-    SortingTableComponent,
     DataTableComponent
   ]
 })
