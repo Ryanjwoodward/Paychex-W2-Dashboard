@@ -21,6 +21,5 @@ describe('MapInterfaceComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    ok
   });
 });
