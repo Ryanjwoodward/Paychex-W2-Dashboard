@@ -1,0 +1,10 @@
+.fa-square-check{
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+  vertical-align: middle;
+}
+
+td{
+  min-width: 120px;
+}

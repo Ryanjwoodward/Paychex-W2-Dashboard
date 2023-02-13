@@ -1,0 +1,238 @@
+*{
+  font-family: sans-serif;
+}
+
+body{
+  height: auto;
+}
+
+/*--------- GLOBAL ELEMENTS --------*/
+#body-div{
+  display: flex;
+  flex-direction: column;
+  background-color: #9fa3a7;
+  min-height: 100vh;
+  height: auto;
+}
+
+thead{
+  background-color: var(--paychex-blue);
+  color: var(--white-rock);
+}
+
+/*--  Define Paychex Color Scheme Variables   --*
+         Generated @ imagecolorpicker.com     --*/
+:root{
+  --pickled-bluewood: #304b5d;
+  --white-rock: #ece7da;
+  --hillary: #aea285;
+  --twine: #c19053;
+  --spicy-mix: #92604c;
+  --edward: #a8b0ae;
+  --foggy-gray: #c7c4ae;
+  --gray-chateau: #9fa3a7;
+  --pelorous: #3eb2b2;
+  --paychex-blue: #0059a2;
+}
+
+/*------- HEADER SECTION START -------*/
+
+#header-section{
+  background-color: var(--paychex-blue);
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+h2{
+  color: white;
+}
+
+/*------- MAIN SECTION START -------*/
+/*
+This is the section where the map and the filters table will be
+*/
+
+.fa-square-caret-down{
+  position: absolute;
+  margin: 18px 0 0 35px;
+}
+
+#main-content-div{
+  background-color: white;
+  border-radius: 12px;
+  border: 3px solid var(--paychex-blue);
+  min-height: 52px;
+  margin: 10px 15px 10px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#main-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 15px;
+  margin: 5px 10px 5px 10px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+#cmm-usa{
+  margin: 5px;
+}
+
+.form-group{
+  border: solid 3px var(--paychex-blue);
+  border-radius: 9px;
+}
+
+
+.column-table{
+  border-radius: 0 0 10px 10px;
+  min-width: 300px;
+  margin: 10px;
+}
+
+.fa-square-check{
+  font-size: 20px;
+  color: var(--gray-chateau);
+  z-index: 5;
+}
+
+#sorting-table{
+  margin-right: 50px;
+}
+
+/*------- BOTTOM SECTION START -------*/
+/*
+This is where the data table will be*/
+
+#data-table-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  border: 3px solid var(--paychex-blue);
+  margin: 10px 15px 10px 15px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: auto;
+  left: 0.5px;
+  top: 668px;
+  width: 98.5%;
+}
+
+.fa-floppy-disk{
+  font-size: 30px;
+  color: var(--paychex-blue);
+  z-index: 5;
+}
+
+#data-table-div{
+  height: auto;
+}
+
+td{
+  min-width: 150px;
+}
+
+
+/*------- FOOTER SECTION S
+
+
+/*------- MAP STYLES BELOW ---------*/
+.cmm-usa {
+  display:none;
+  margin:0 auto;
+  position:relative;
+  padding:10px
+}
+.cmm-usa svg {
+  width:100%;
+  z-index:99
+}
+.cmm-usa svg path {
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10
+}
+.cmm-usa-hover-state-info {
+  position:relative;
+  margin:-40px auto 20px auto;
+  display:none;
+  box-sizing:border-box;
+  padding:.75em;
+  width:300px;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 0 20px #999;
+  font-size:14px;
+  z-index:100
+}
+.cmm-usa-hover-state-info span {
+  display:block;
+  line-height:1.5em
+}
+.cmm-usa-hover-state-info span:first-child {
+  font-weight:bold;
+  text-align:center
+}
+.cmm-usa-listview {
+  width:100%;
+  text-align:center;
+  margin:1em 0
+}
+.cmm-usa-listview ul {
+  vertical-align:top;
+  list-style:none;
+  display:inline-block;
+  text-align:left;
+  margin:0;
+  padding:0
+}
+.cmm-usa-listview ul li {
+  padding:0;
+  margin:0
+}
+.cmm-usa-listview ul li span {
+  display:inline-block;
+  position:relative;
+  height:12px;
+  width:12px;
+  border-radius:12px;
+  color:black;
+  text-align:center;
+  line-height:12px;
+  font-weight:bold;
+  border:1px solid #999;
+  opacity:1.0;
+  margin-right:.5em
+}
+.cmm-usa-listview ul li span::after {
+  content:"\2B9E";
+  position:relative;
+  color:#333;
+  font-size:12px
+}
+.cmm-usa-listview ul li a {
+  display:inline-block;
+  margin:.5em 1em .5em 0;
+  color:#ccc;
+  text-decoration:none
+}
+.cmm-usa-listview ul li a.cmm-usa-live-link {
+  color:#000;
+  text-decoration:underline;
+  cursor:pointer
+}
+.cmm-usa-title {
+  width:100%;
+  text-align:center;
+  font-weight:bold
+}
+.cmm-usa-credit-link {
+  text-align:center
+}
+
+
