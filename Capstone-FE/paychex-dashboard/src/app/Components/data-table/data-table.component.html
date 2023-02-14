@@ -1,5 +1,9 @@
 <i class="fa-solid fa-floppy-disk"></i>
 <div id="data-table-div" class="column-table">
+
+  <div class="form-group" style=" margin-bottom: 10px;">
+    <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter Vendors">
+  </div>
   <!-- LOOKUP TYPE TABLE -->
   <!--   <table class="table table-striped table-hover">
        <thead>
@@ -51,8 +55,8 @@
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col"> Vendor ID: Client ID</th>
-      <th scope="col"> Vendor ID: Branch</th>
+      <th scope="col"> Client ID</th>
+      <th scope="col"> Branch</th>
       <th scope="col"> Employee Count </th>
       <th scope="col"> W2 Count </th>
       <th scope="col"> Lookup ID </th>
@@ -63,7 +67,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor = "let vendor of vendors; let idx =  index">
+    <tr *ngFor = "let vendor of vendors | vendor: filter; let idx =  index">
       <td> {{ idx + 1 }} </td>
       <td> {{ vendor.vendorId.clientId }} </td>
       <td> {{ vendor.vendorId.branch }} </td>
@@ -78,24 +82,30 @@
     </tbody>
   </table>
 
+
+  <div class="form-group" style=" margin-bottom: 10px;">
+    <input type="search" class="form-control" [(ngModel)]="filter1" placeholder="Filter Carriers">
+  </div>
+
+
   <!-- CARRIER TABLE -->
   <table class="table table-striped table-hover">
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col"> Carrier ID: Client ID</th>
-      <th scope="col"> Carrier ID: Branch</th>
-      <th scope="col"> Destination Address </th>
+      <th scope="col"> Carrier ID</th>
+      <th scope="col"> Branch</th>
+      <th scope="col"> Dest. Address </th>
       <th scope="col"> Tracking ID </th>
-      <th scope="col"> Carrier Lookup ID</th>
-      <th scope="col"> Carrier Lookup ID: Abbreviation </th>
-      <th scope="col"> Carrier Lookup ID: Description </th>
-      <th scope="col"> Carrier Lookup ID: Full Name </th>
-      <th scope="col"> Carrier Lookup ID: State </th>
+      <th scope="col"> Lookup ID</th>
+      <th scope="col"> Abbreviation </th>
+      <th scope="col"> Description </th>
+      <th scope="col"> Full Name </th>
+      <th scope="col"> State </th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor = "let carrier of carriers; let idx =  index">
+    <tr *ngFor = "let carrier of carriers | carrier: filter1; let idx =  index">
       <td> {{ idx + 1 }} </td>
       <td> {{ carrier.carrierId.clientId }} </td>
       <td> {{ carrier.carrierId.branch }} </td>
@@ -117,6 +127,11 @@
     </tbody>
   </table>
 
+
+  <div class="form-group" style=" margin-bottom: 10px;">
+    <input type="search" class="form-control" [(ngModel)]="filter2" placeholder="Filter Clients">
+  </div>
+
   <!-- CLIENT TABLE -->
   <table class="table table-striped table-hover">
     <thead>
@@ -129,12 +144,12 @@
       <th scope="col"> Transmission File </th>
       <th scope="col"> W2 Count </th>
       <th scope="col"> W2 Delivery Address </th>
-      <th scope="col"> Client Lookup ID </th>
-      <th scope="col"> Delivery Code Lookup ID: State </th>
+      <th scope="col"> Lookup ID </th>
+      <th scope="col"> State </th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor = "let client of clients; let idx =  index">
+    <tr *ngFor = "let client of clients | client : filter2; let idx =  index">
       <td> {{ idx + 1 }} </td>
       <td> {{ client.w2TransmissionId }} </td>
       <td> {{ client.branch }} </td>

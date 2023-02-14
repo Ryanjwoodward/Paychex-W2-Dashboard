@@ -12,6 +12,7 @@ import {CarrierService} from "../../Services/carrier.service";
 import {ClientService} from "../../Services/client.service";
 import {Client} from "../../Classes/client";
 
+
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
@@ -27,6 +28,9 @@ export class DataTableComponent implements OnInit {
   carriers: Carrier[];
   clients: Client[];
 
+  filter: string;
+  filter1: string;
+  filter2: string;
 
   constructor(private lookupTypeService: LookupTypeServiceService,
               private lookupTableService: LookupTableService,
@@ -58,33 +62,33 @@ export class DataTableComponent implements OnInit {
   }
 
   private getVendors(){
-    /*this.vendorService.getAllVendors().subscribe(data =>{
+    this.vendorService.getAllVendors().subscribe(data =>{
       this.vendors = data;
-    })*/
-
-    this.vendorService.getVendorsByState().subscribe(data =>{
-      this.vendors  = data;
     })
+
+    /*this.vendorService.getVendorsByState().subscribe(data =>{
+      this.vendors  = data;
+    })*/
   }
 
   private getCarriers(){
-  /*  this.carrierService.getAllCarriers().subscribe(data =>{
-      this.carriers = data;
-    })*/
-
-    this.carrierService.getCarriersByState().subscribe(data =>{
+    this.carrierService.getAllCarriers().subscribe(data =>{
       this.carriers = data;
     })
+
+  /*  this.carrierService.getCarriersByState().subscribe(data =>{
+      this.carriers = data;
+    })*/
   }
 
   private getClients(){
-    /*this.clientService.getAllClients().subscribe(data =>{
-      this.clients = data;
-    })*/
-
-    this.clientService.getClientsByState().subscribe(data =>{
+    this.clientService.getAllClients().subscribe(data =>{
       this.clients = data;
     })
+
+    /*this.clientService.getClientsByState().subscribe(data =>{
+      this.clients = data;
+    })*/
   }
 
 }

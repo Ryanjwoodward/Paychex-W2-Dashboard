@@ -36,11 +36,15 @@ var ClickableMap = {}; (function() {
       showStateTitleAndDescOnHover: true,
       showLinksList: false,
       globalLinkUrl: null,
-      globalJsCallback: null,
+      globalJsCallback: "stateClicked()",
       mapTitle: 'Choose your state below',
       creditLink: ''
     }
   }
+
+  //*********************************************************************************************
+  //BASE STATES DATA FUNCTION
+  //*********************************************************************************************
   function createBaseStatesData() {
     var statesData = {
       AL: {
@@ -217,6 +221,10 @@ var ClickableMap = {}; (function() {
     }
     return statesData
   }
+
+  //*********************************************************************************************
+  //STATE-ON FUNCTION
+  //*********************************************************************************************
   function stateOn(stateId) {
     if (this.statesData[stateId].isHovering) {
       return
@@ -265,6 +273,11 @@ var ClickableMap = {}; (function() {
       $stateLink.parentNode.appendChild($stateLink)
     }
   }
+
+
+  //*********************************************************************************************
+  //STATE-OFF FUNCTION
+  //*********************************************************************************************
   function stateOff(stateId) {
     this.statesData[stateId].isHovering = false;
     var $statePath = global.getEleByQuery('#' + this.$map.id + ' .' + global.stateIdToDomClass(stateId) + ' path');
@@ -443,6 +456,7 @@ var ClickableMap = {}; (function() {
         var fn = window[self.globalData.globalJsCallback];
         if (typeof fn == 'function') {
           fn(stateId)
+          alert("Hello!");
         } else {
           console.log('Unable to execute function: ' + self.globalData.globalJsCallback + '("' + stateId + '")')
         }
@@ -520,7 +534,7 @@ myUsaMap.setGlobalData({
   "showStateTitleAndDescOnHover": false,
   "showLinksList": false,
   "globalLinkUrl": null,
-  "globalJsCallback": null,
+  "globalJsCallback": "stateClicked()",
   "mapTitle": "",
 });
 myUsaMap.setStatesData({
@@ -1291,3 +1305,8 @@ myUsaMap.setStatesData({
   }
 });
 myUsaMap.draw();
+
+
+function stateClicked(){
+  alert("state was clicked");
+}
