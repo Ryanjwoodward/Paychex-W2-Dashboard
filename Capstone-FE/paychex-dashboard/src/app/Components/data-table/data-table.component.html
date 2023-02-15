@@ -1,60 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+
+
+
 <i class="fa-solid fa-floppy-disk"></i>
-<div id="data-table-div" class="column-table">
+<div class="data-table-div column-table">
 
-  <div class="form-group" style=" margin-bottom: 10px;">
-    <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter Vendors">
-  </div>
-  <!-- LOOKUP TYPE TABLE -->
-  <!--   <table class="table table-striped table-hover">
-       <thead>
-       <tr>
-         <th scope="col">#</th>
-         <th scope="col">Lookup Type ID</th>
-         <th scope="col">Lookup Type</th>
-       </tr>
-       </thead>
-       <tbody>
-       <tr *ngFor = "let lookuptype of lookupTypes; let idx =  index">
-         <td> {{ idx + 1 }} </td>
-         <td> {{ lookuptype.lookupTypeId }} </td>
-         <td> {{ lookuptype.lookupType }} </td>
-       </tr>
-
-
-
-       </tbody>
-     </table>
-     &lt;!&ndash; LOOKUP TABLE -TABLE &ndash;&gt;
-     <table class="table table-striped table-hover">
-       <thead>
-       <tr>
-         <th scope="col">#</th>
-         <th scope="col">Lookup ID</th>
-         <th scope="col">Abbreviation</th>
-         <th scope="col">Description</th>
-         <th scope="col">Full Name</th>
-         <th scope="col">Lookup Type ID</th>
-         <th scope="col">State</th>
-       </tr>
-       </thead>
-       <tbody>
-       <tr *ngFor = "let lookuptable of lookupTables; let idx =  index">
-         <td> {{ idx + 1 }} </td>
-         <td> {{ lookuptable.lookupId }} </td>
-         <td> {{ lookuptable.abbreviation }} </td>
-         <td> {{ lookuptable.description }} </td>
-         <td> {{ lookuptable.fullName }} </td>
-         <td> {{ lookuptable.lookupTypeId.lookupTypeId }} </td>
-         <td> {{ lookuptable.state }} </td>
-       </tr>
-       </tbody>
-     </table>-->
-
-  <!-- VENDOR TABLE -->
   <table class="table table-striped table-hover">
     <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col"> Client ID</th>
       <th scope="col"> Branch</th>
       <th scope="col"> Employee Count </th>
@@ -67,8 +28,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor = "let vendor of vendors | vendor: filter; let idx =  index">
-      <td> {{ idx + 1 }} </td>
+    <tr>
+      <td>
+        <div class="form-group" style=" margin-bottom: 10px;">
+          <input type="search" class="form-control" [(ngModel)]="filter" placeholder="Filter Vendors">
+        </div>
+      </td>
+    </tr>
+    <tr *ngFor = "let vendor of vendors | vendor: filter;">
       <td> {{ vendor.vendorId.clientId }} </td>
       <td> {{ vendor.vendorId.branch }} </td>
       <td> {{ vendor.employeeCount }} </td>
@@ -83,16 +50,9 @@
   </table>
 
 
-  <div class="form-group" style=" margin-bottom: 10px;">
-    <input type="search" class="form-control" [(ngModel)]="filter1" placeholder="Filter Carriers">
-  </div>
-
-
-  <!-- CARRIER TABLE -->
   <table class="table table-striped table-hover">
     <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col"> Carrier ID</th>
       <th scope="col"> Branch</th>
       <th scope="col"> Dest. Address </th>
@@ -105,24 +65,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor = "let carrier of carriers | carrier: filter1; let idx =  index">
-      <td> {{ idx + 1 }} </td>
+    <tr *ngFor = "let carrier of carriers | carrier: filter1; ">
       <td> {{ carrier.carrierId.clientId }} </td>
       <td> {{ carrier.carrierId.branch }} </td>
       <td> {{ carrier.destinationAddress }} </td>
       <td> {{ carrier.trackingId }} </td>
-      <!-- Carrier Lookup ID -->
       <td> {{ carrier.carrierLookupId.lookupId }} </td>
       <td> {{ carrier.carrierLookupId.abbreviation }} </td>
       <td> {{ carrier.carrierLookupId.description }} </td>
       <td> {{ carrier.carrierLookupId.fullName }} </td>
       <td> {{ carrier.carrierLookupId.state }} </td>
-      <!-- Delivery Status Type ID --><!--
-        <td> {{ carrier.deliveryStatusTypeId.lookupId }} </td>
-        <td> {{ carrier.deliveryStatusTypeId.abbreviation }} </td>
-        <td> {{ carrier.deliveryStatusTypeId.description }} </td>
-        <td> {{ carrier.deliveryStatusTypeId.fullName }} </td>
-        <td> {{ carrier.deliveryStatusTypeId.state }} </td>-->
+
 
     </tbody>
   </table>
@@ -132,11 +85,9 @@
     <input type="search" class="form-control" [(ngModel)]="filter2" placeholder="Filter Clients">
   </div>
 
-  <!-- CLIENT TABLE -->
   <table class="table table-striped table-hover">
     <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col"> W2 Transmission ID </th>
       <th scope="col"> Branch </th>
       <th scope="col"> Created Date </th>
@@ -149,8 +100,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor = "let client of clients | client : filter2; let idx =  index">
-      <td> {{ idx + 1 }} </td>
+    <tr *ngFor = "let client of clients | client : filter2;">
       <td> {{ client.w2TransmissionId }} </td>
       <td> {{ client.branch }} </td>
       <td> {{ client.createdDate }} </td>
@@ -163,5 +113,10 @@
     </tbody>
   </table>
 
-  <!-- END data-table-component.html -->
+  <!-- END data-table-component.html-->
 </div>
+
+
+</body>
+</html>
+

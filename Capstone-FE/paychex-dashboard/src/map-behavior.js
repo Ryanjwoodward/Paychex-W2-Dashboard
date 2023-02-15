@@ -41,6 +41,10 @@ var ClickableMap = {}; (function() {
       creditLink: ''
     }
   }
+
+  //*********************************************************************************************
+  //BASE STATES DATA FUNCTION
+  //*********************************************************************************************
   function createBaseStatesData() {
     var statesData = {
       AL: {
@@ -217,6 +221,10 @@ var ClickableMap = {}; (function() {
     }
     return statesData
   }
+
+  //*********************************************************************************************
+  //STATE-ON FUNCTION
+  //*********************************************************************************************
   function stateOn(stateId) {
     if (this.statesData[stateId].isHovering) {
       return
@@ -265,6 +273,11 @@ var ClickableMap = {}; (function() {
       $stateLink.parentNode.appendChild($stateLink)
     }
   }
+
+
+  //*********************************************************************************************
+  //STATE-OFF FUNCTION
+  //*********************************************************************************************
   function stateOff(stateId) {
     this.statesData[stateId].isHovering = false;
     var $statePath = global.getEleByQuery('#' + this.$map.id + ' .' + global.stateIdToDomClass(stateId) + ' path');
@@ -406,6 +419,12 @@ var ClickableMap = {}; (function() {
     }
     if (this.statesData[stateId].isDisabled) {
       clickFn = null
+
+      //------------------------------------------------------------------------------------------------------------------------
+      //------------------------------------------------------------------------------------------------------------------------
+      //GLOBAL JS CALLBACK
+      //------------------------------------------------------------------------------------------------------------------------
+      //------------------------------------------------------------------------------------------------------------------------
     } else if (this.statesData[stateId].linkUrl != null) {
       var self = this;
       clickFn = function(e) {
@@ -421,6 +440,7 @@ var ClickableMap = {}; (function() {
           document.location.href = self.statesData[stateId].linkUrl
         }
       }
+
     } else if (this.globalData.globalLinkUrl != null) {
       var self = this;
       clickFn = function(e) {
@@ -443,6 +463,7 @@ var ClickableMap = {}; (function() {
         var fn = window[self.globalData.globalJsCallback];
         if (typeof fn == 'function') {
           fn(stateId)
+          alert("Hello!");
         } else {
           console.log('Unable to execute function: ' + self.globalData.globalJsCallback + '("' + stateId + '")')
         }
@@ -559,7 +580,7 @@ myUsaMap.setStatesData({
     "title": "Arizona",
     "description": null,
     "longDescription": null,
-    "linkUrl": null,
+    "linkUrl": stateClicked(),
     "isDisabled": false,
     "isHovering": false,
     "cssClass": null,
@@ -1291,3 +1312,8 @@ myUsaMap.setStatesData({
   }
 });
 myUsaMap.draw();
+
+
+function stateClicked(){
+  alert("state was clicked");
+}

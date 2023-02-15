@@ -16,7 +16,8 @@ import { ClientPipe } from "./Pipes/client-pipe";
     DataTableComponent,
     VendorPipe,
     CarrierPipe,
-    ClientPipe
+    ClientPipe,
+
   ],
   imports: [
     BrowserModule,

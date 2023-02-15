@@ -23,10 +23,16 @@ export class VendorPipe implements PipeTransform{
         value.lookupId.abbreviation.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
       const venDescription =
         value.lookupId.description.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+      const  venLookupId =
+        value.lookupId.lookupId.toString().toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+      const venW2Count =
+        value.w2Count.toString().toLowerCase().indexOf((filter.toLowerCase())) !== -1;
+      const venEmpCount =
+        value.employeeCount.toString().toLowerCase().indexOf(filter.toLowerCase()) !== -1;
 
 
 
-      if (branchFound || clientIdFound || clientAbbrev || venDescription) {
+      if (branchFound || clientIdFound || clientAbbrev || venDescription || venLookupId || venEmpCount || venW2Count) {
         return value;
       }
     });
