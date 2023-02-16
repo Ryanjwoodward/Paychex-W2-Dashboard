@@ -129,7 +129,7 @@ This is where the data table will be*/
   z-index: 5;
 }
 
-#data-table-div{
+.data-table-div{
   height: auto;
 }
 

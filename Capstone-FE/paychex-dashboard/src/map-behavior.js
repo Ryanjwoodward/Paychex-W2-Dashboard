@@ -36,7 +36,7 @@ var ClickableMap = {}; (function() {
       showStateTitleAndDescOnHover: true,
       showLinksList: false,
       globalLinkUrl: null,
-      globalJsCallback: "stateClicked()",
+      globalJsCallback: null,
       mapTitle: 'Choose your state below',
       creditLink: ''
     }
@@ -419,6 +419,12 @@ var ClickableMap = {}; (function() {
     }
     if (this.statesData[stateId].isDisabled) {
       clickFn = null
+
+      //------------------------------------------------------------------------------------------------------------------------
+      //------------------------------------------------------------------------------------------------------------------------
+      //GLOBAL JS CALLBACK
+      //------------------------------------------------------------------------------------------------------------------------
+      //------------------------------------------------------------------------------------------------------------------------
     } else if (this.statesData[stateId].linkUrl != null) {
       var self = this;
       clickFn = function(e) {
@@ -434,6 +440,7 @@ var ClickableMap = {}; (function() {
           document.location.href = self.statesData[stateId].linkUrl
         }
       }
+
     } else if (this.globalData.globalLinkUrl != null) {
       var self = this;
       clickFn = function(e) {
@@ -534,7 +541,7 @@ myUsaMap.setGlobalData({
   "showStateTitleAndDescOnHover": false,
   "showLinksList": false,
   "globalLinkUrl": null,
-  "globalJsCallback": "stateClicked()",
+  "globalJsCallback": null,
   "mapTitle": "",
 });
 myUsaMap.setStatesData({
@@ -573,7 +580,7 @@ myUsaMap.setStatesData({
     "title": "Arizona",
     "description": null,
     "longDescription": null,
-    "linkUrl": null,
+    "linkUrl": stateClicked(),
     "isDisabled": false,
     "isHovering": false,
     "cssClass": null,
