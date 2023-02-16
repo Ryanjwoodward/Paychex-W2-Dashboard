@@ -20,6 +20,9 @@ import {Client} from "../../Classes/client";
 })
 export class DataTableComponent implements OnInit {
 
+  //-------------------------------------
+  //ENTITY DATA ARRAYS
+  //-------------------------------------
   lookupTypes: LookupType[];
   lookupTables: LookupTable[];
 
@@ -28,9 +31,46 @@ export class DataTableComponent implements OnInit {
   carriers: Carrier[];
   clients: Client[];
 
-  filter: string; filter1: string;filter2: string;filter3: string;filter4: string;filter5: string;filter6: string;filter7: string;filter8: string;filter9: string;filter10: string;filter11: string;filter12: string;filter13: string;filter14: string;filter15: string;filter16: string;filter17: string;filter18: string;filter19: string;filter20: string;filter21: string;filter22: string;filter23: string;filter24: string;filter25: string;filter26: string;filter27: string;
+  //-------------------------------------
+  // VENDOR PIPE-Filters
+  //-------------------------------------
+  venidfilter: string;
+  vendorBranchFilter: string;
+  vendorEmployeeFilter: string;
+  vendorW2Filter: string;
+  vendorLookupIdFilter:string;
+  vendorDescriptionFilter:string;
+  vendorAbbreviationFilter:string;
+  vendorFullNameFilter: string;
+  vendorStateFilter: string;
 
+  //-------------------------------------
+  // CARRIER PIPE-Filters
+  //-------------------------------------
+  carrierIdFilter: string;
+  carrierBranchFilter: string;
+  carrierDestAddrFilter: string;
+  carrierTrackIdFilter:string;
+  carrierLookupIdFilter:string;
+  carrierAbbrevFilter: string;
+  carrierDescripFilter:string;
+  carrierFullnamefilter:string;
+  carrierStateFilter:string;
 
+  //-------------------------------------
+  // CLIENT PIPE-Filters
+  //-------------------------------------
+  clientTransIdFilter:string;
+  clientBranchFilter:string;
+  clientCreatedDatefilter:string;
+  clientEmployeeFilter:string;
+  clientTransFileFilter:string;
+  clientW2Filter:string;
+  clientDeliveryAddressFilter:string;
+  clientLookupIdFilter:string;
+  clientStateFilter:string;
+
+  //-------------------------------------------------------------------------
   constructor(private lookupTypeService: LookupTypeServiceService,
               private lookupTableService: LookupTableService,
               private vendorService: VendorService,
