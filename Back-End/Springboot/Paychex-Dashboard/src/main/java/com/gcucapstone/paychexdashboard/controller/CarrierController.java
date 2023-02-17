@@ -5,6 +5,7 @@ import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.repository.CarrierRepository;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class CarrierController {
     @Autowired
     private LookupTableRepository lookupTableRepository;
 
+    int[] attributeCounter = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     //----------------------------------------------------
     // Methods
     //----------------------------------------------------
@@ -50,8 +52,83 @@ public class CarrierController {
      * a list of all Carrier Records found in the schema
      * @return  - a list of Carrier Records
      */
-    @GetMapping("/carriers")
-    public List<Carrier> getAllCarriers(){ return carrierRepository.findAll();}
+    @GetMapping("/carriers/{sel}")
+    public List<Carrier> getAllCarriers(@PathVariable(value = "sel") int selection){
+
+        String[] attributes ={
+                "carrierId.clientId", "carrierId.branch", "destinationAddress", "trackingId", "carrierLookupId.lookupId",
+                "carrierLookupId.abbreviation", "carrierLookupId.description", "carrierLookupId.fullName", "carrierLookupId.state"
+        };
+
+        switch(selection){
+            case 1: //vendorId.clientId
+                if(attributeCounter[0] == 0) {
+                    attributeCounter[0] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[0]).descending());
+                }else{
+                    attributeCounter[0] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[0]).ascending());
+                }
+            case 2://vendorId.branch
+                if(attributeCounter[1] == 0) {
+                    attributeCounter[1] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[1]).descending());
+                }else{
+                    attributeCounter[1] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[1]).ascending());
+                }
+            case 3://employeeCount
+                if(attributeCounter[2] == 0) {
+                    attributeCounter[2] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[2] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 4://w2Count
+                if(attributeCounter[3] == 0) {
+                    attributeCounter[3] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[3]).descending());
+                }else{
+                    attributeCounter[3] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[3]).ascending());
+                }
+            case 5://lookupId.lookupId
+                if(attributeCounter[4] == 0) {
+                    attributeCounter[4] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[4]).descending());
+                }else{
+                    attributeCounter[4] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[4]).ascending());
+                }
+            case 6://lookupId.abbreviation
+                if(attributeCounter[5] == 0) {
+                    attributeCounter[5] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[5]).descending());
+                }else{
+                    attributeCounter[5] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[5]).ascending());
+                }
+            case 7://lookupId.description
+                if(attributeCounter[6] == 0) {
+                    attributeCounter[6] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[6] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 8://lookupId.fullName
+                if(attributeCounter[7] == 0) {
+                    attributeCounter[7] = 1;
+                    return carrierRepository.findAll(Sort.by(attributes[7]).descending());
+                }else{
+                    attributeCounter[7] = 0;
+                    return carrierRepository.findAll(Sort.by(attributes[7]).ascending());
+                }                case 9: //lookupId.state
+            default: //all vendors
+                return carrierRepository.findAll();
+        }
+    }
 
     /**
      * This REST method maps a GET request to a MongoCarrierRepository instance

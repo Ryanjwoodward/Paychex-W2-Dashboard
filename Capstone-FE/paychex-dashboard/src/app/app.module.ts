@@ -33,6 +33,8 @@ import {ClientW2Pipe} from "./Pipes/ClientPipes/client-w2-pipe";
 import {ClientDelvieryAddressPipe} from "./Pipes/ClientPipes/client-delviery-address-pipe";
 import {ClientLookupIdPipe} from "./Pipes/ClientPipes/client-lookup-id-pipe";
 import {ClientStatePipe} from "./Pipes/ClientPipes/client-state-pipe";
+import { MatTableExporterModule } from "mat-table-exporter";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -64,17 +66,20 @@ import {ClientStatePipe} from "./Pipes/ClientPipes/client-state-pipe";
     ClientW2Pipe,
     ClientDelvieryAddressPipe,
     ClientLookupIdPipe,
-    ClientStatePipe
+    ClientStatePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTableExporterModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent,
     DataTableComponent
+
   ]
 })
 export class AppModule { }

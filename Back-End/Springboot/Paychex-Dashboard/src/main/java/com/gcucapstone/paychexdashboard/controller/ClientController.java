@@ -5,6 +5,7 @@ import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.repository.ClientRepository;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class ClientController {
 
     @Autowired
     private LookupTableRepository lookupTableRepository;
-
+    int[] attributeCounter = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     //----------------------------------------------------
     // Methods
     //----------------------------------------------------
@@ -46,8 +47,86 @@ public class ClientController {
      * a list of all Client Records found in the schema
      * @return  - a list of Client Records
      */
-    @GetMapping("/clients")
-    public List<Client> getAllClients(){ return clientRepository.findAll(); }
+    @GetMapping("/clients/{sel}")
+    public List<Client> getAllClients(@PathVariable(value = "sel")int selection){
+
+        String[] attributes ={
+                "w2TransmissionId", "branch", "createdDate", "employeeCount", "transmissionFile", "w2Count",
+                "w2DeliveryAddress", "clientTypeId.lookupId", "deliveryCodeTypeId.State"
+        };
+
+        switch(selection){
+            case 1: //vendorId.clientId
+                if(attributeCounter[0] == 0) {
+                    System.out.println("ATTR_COUNT: " + attributeCounter[0]);
+                    attributeCounter[0] = 1;
+                    System.out.println("ATTR_COUNT: " + attributeCounter[0]);
+                    return clientRepository.findAll(Sort.by(attributes[0]).descending());
+                }else if(attributeCounter[0] == 1){
+                    System.out.println("ATTRCOUNT: " + attributeCounter[0]);
+                    attributeCounter[0] = 0;
+                    System.out.println("ATTRCOUNT: " + attributeCounter[0]);
+                    return clientRepository.findAll(Sort.by(attributes[0]).ascending());
+                }
+            case 2://vendorId.branch
+                if(attributeCounter[1] == 0) {
+                    attributeCounter[1] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[1]).descending());
+                }else{
+                    attributeCounter[1] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[1]).ascending());
+                }
+            case 3://employeeCount
+                if(attributeCounter[2] == 0) {
+                    attributeCounter[2] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[2] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 4://w2Count
+                if(attributeCounter[3] == 0) {
+                    attributeCounter[3] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[3]).descending());
+                }else{
+                    attributeCounter[3] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[3]).ascending());
+                }
+            case 5://lookupId.lookupId
+                if(attributeCounter[4] == 0) {
+                    attributeCounter[4] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[4]).descending());
+                }else{
+                    attributeCounter[4] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[4]).ascending());
+                }
+            case 6://lookupId.abbreviation
+                if(attributeCounter[5] == 0) {
+                    attributeCounter[5] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[5]).descending());
+                }else{
+                    attributeCounter[5] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[5]).ascending());
+                }
+            case 7://lookupId.description
+                if(attributeCounter[6] == 0) {
+                    attributeCounter[6] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[6] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 8://lookupId.fullName
+                if(attributeCounter[7] == 0) {
+                    attributeCounter[7] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[7]).descending());
+                }else{
+                    attributeCounter[7] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[7]).ascending());
+                }                case 9: //lookupId.state
+            default: //all vendors
+                return clientRepository.findAll();
+        }    }
 
 
     /**
