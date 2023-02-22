@@ -1,6 +1,7 @@
 package com.gcucapstone.paychexdashboard.controller;
 
 import com.gcucapstone.paychexdashboard.changeStreams.LookupTypeChangeStreams;
+import com.gcucapstone.paychexdashboard.entity.Client;
 import com.gcucapstone.paychexdashboard.entity.LookupType;
 import com.gcucapstone.paychexdashboard.repository.LookupTypeRepository;
 import exception.ResourceNotFoundException;
@@ -9,6 +10,7 @@ import org.springframework.boot.context.config.ConfigDataResourceNotFoundExcepti
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -108,6 +110,37 @@ public class LookupTypeController{
     public List<LookupType> getLookupTypeByIdAndType(@PathVariable(value = "id") Long lookupTypeId, @PathVariable(value = "type") String lookuptype) {
         List<LookupType> lookupType = lookupTypeRepository.findByLookupTypeIdAndLookupType(lookupTypeId, lookuptype);
         return lookupType;
+    }
+
+
+    @GetMapping("lookupsort/{filtercriteria}/lookups/{filtervalues}")
+    @ResponseBody
+    public List<LookupType> getClientByState(@PathVariable(value = "filtercriteria")List<Integer> criteriaAttributes,
+                                         @PathVariable(value = "filtervalues")List<String> criteriaValues){
+
+        List<LookupType> types = new ArrayList<LookupType>();
+
+        for(int idx = 0; idx < criteriaAttributes.size(); idx++){
+
+            switch(criteriaAttributes.get(idx)){
+
+                case 1 : //lookupTypeId (long) (single)
+
+                    types.add(lookupTypeRepository.findByLookupTypeId(Long.valueOf(criteriaValues.get(idx))));
+                    break;
+
+                case 2 : // findbyLookupType (str) (mult)
+
+                    types.addAll(lookupTypeRepository.findByLookupType(criteriaValues.get(idx)));
+                    break;
+
+                default:    // print an error
+                    System.out.println("\n*******************\nFehler...something went wrong!");
+            }
+
+        }
+
+        return types;
     }
 
 }// LookupTypeController Class

@@ -46,7 +46,7 @@ public interface ClientRepository extends JpaRepository<Client, String> {
      * @param branch    - the branch to search for
      * @return          - the client record
      */
-    Client findByBranch(String branch);
+    List<Client> findByBranch(String branch);
 
     /**
      * This method returns a list of Client records that have an attribute
@@ -106,9 +106,18 @@ public interface ClientRepository extends JpaRepository<Client, String> {
     @Query("SELECT c FROM Client c WHERE c.clientTypeId.state = ?1")
    List<Client> findByLookupTableState(String state);
 
+    /**
+     * This method is a custom JPQL QUery method that returns a Client
+     * record that corresponds to the lookupTable Lookup ID attribute
+     * that matches the pass argument
+     * @param id
+     * @return CLient record
+     */
+    @Query("SELECT c FROM Client c WHERE c.clientTypeId.lookupId = ?1")
+   Client findByLookupTableClientTypeId(Long id);
 
-    @Query("SELECT c FROM Client c WHERE c.clientTypeId.state = ?1")
-    List<Client> findByLookupTableStates(String state);
+
+
 
 
 } //ClientRepository Interface
