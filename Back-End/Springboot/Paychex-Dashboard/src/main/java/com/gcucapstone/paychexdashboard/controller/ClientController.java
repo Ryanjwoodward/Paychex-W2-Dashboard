@@ -4,10 +4,15 @@ import com.gcucapstone.paychexdashboard.entity.Client;
 import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.repository.ClientRepository;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +51,19 @@ public class ClientController {
      * and calls it's extended JPARepository method findAll() and returns
      * a list of all Client Records found in the schema
      * @return  - a list of Client Records
+     */
+    @GetMapping("/clients")
+    public List<Client> getAllCients(){
+        return clientRepository.findAll();
+    }
+
+
+    /**
+     * This REST method is called with a selection value to indicate the column that is to be sorted by
+     * This controller tracks the number of times the column is clicked to return asc or desc sort order
+     * initially it returns all records by default
+     * @param selection
+     * @return
      */
     @GetMapping("/clients/{sel}")
     public List<Client> getAllClients(@PathVariable(value = "sel")int selection){

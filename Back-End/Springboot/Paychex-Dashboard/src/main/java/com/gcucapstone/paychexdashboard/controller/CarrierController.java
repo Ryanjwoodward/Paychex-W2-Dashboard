@@ -52,6 +52,19 @@ public class CarrierController {
      * a list of all Carrier Records found in the schema
      * @return  - a list of Carrier Records
      */
+    @GetMapping("/carriers")
+    public List<Carrier> getAllCarriers(){
+        return carrierRepository.findAll();
+    }
+
+
+    /**
+     * This REST method is called with a selection value to indicate the column that is to be sorted by
+     * This controller tracks the number of times the column is clicked to return asc or desc sort order
+     * initially it returns all records by default
+     * @param selection
+     * @return
+     */
     @GetMapping("/carriers/{sel}")
     public List<Carrier> getAllCarriers(@PathVariable(value = "sel") int selection){
 

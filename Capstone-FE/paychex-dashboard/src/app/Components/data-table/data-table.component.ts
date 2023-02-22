@@ -11,8 +11,7 @@ import {Carrier} from "../../Classes/carrier";
 import {CarrierService} from "../../Services/carrier.service";
 import {ClientService} from "../../Services/client.service";
 import {Client} from "../../Classes/client";
-import { orderBy } from 'lodash';
-import { Pipe, PipeTransform } from '@angular/core';
+import {CsvExportService} from "../../Services/csv-export.service";
 
 
 @Component({
@@ -77,33 +76,19 @@ export class DataTableComponent implements OnInit {
               private lookupTableService: LookupTableService,
               private vendorService: VendorService,
               private carrierService: CarrierService,
-              private clientService: ClientService
+              private clientService: ClientService,
+              private csvExportService: CsvExportService
   ) {
     /*this.getLookupTypes();
     this.getLookupTables();*/
     this.getVendors("0");
     this.getCarriers("0");
     this.getClients("0");
-
-
   }
 
   ngOnInit(): void {
 
   }
-/*
-  private getLookupTypes(){
-    this.lookupTypeService.getAllLookupTypes().subscribe(data => {
-      this.lookupTypes = data;
-    });
-  }
-
-  private getLookupTables(){
-    this.lookupTableService.getAllLookupTables().subscribe(data =>{
-      this.lookupTables = data;
-    })
-  }*/
-
 
   public getVendors(selection:string){
     this.vendorService.getAllVendors(selection).subscribe(data =>{
@@ -124,6 +109,29 @@ export class DataTableComponent implements OnInit {
       this.carriers = data;
     })*/
   }
+
+  public exportCSV(){
+    console.log("entered export");
+    this.csvExportService.callExportCSV();
+    console.log("exit export");
+  }
+
+
+
+  //----- OLD, but Maybe USeful Methods
+  /*
+  private getLookupTypes(){
+    this.lookupTypeService.getAllLookupTypes().subscribe(data => {
+      this.lookupTypes = data;
+    });
+  }
+
+  private getLookupTables(){
+    this.lookupTableService.getAllLookupTables().subscribe(data =>{
+      this.lookupTables = data;
+    })
+  }*/
+
 
   public getClients(selection: string){
     this.clientService.getAllClients(selection).subscribe(data =>{
@@ -151,6 +159,7 @@ export class DataTableComponent implements OnInit {
       this.clients = data;
     })
   }//getEntitiesByState
+
 
 }
 
