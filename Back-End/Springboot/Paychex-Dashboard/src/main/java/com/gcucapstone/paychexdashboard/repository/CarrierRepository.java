@@ -50,7 +50,7 @@ public interface CarrierRepository extends JpaRepository<Carrier, BranchClient> 
      * @return          - the Carrier records
      */
     @Query("SELECT c FROM Carrier c WHERE c.carrierId.clientId = ?1")
-    List<Carrier> findByClientId(String clientId);
+    Carrier findByClientId(String clientId);
     //find By tracking_id
 
     /**
@@ -85,5 +85,14 @@ public interface CarrierRepository extends JpaRepository<Carrier, BranchClient> 
      */
     @Query("SELECT c FROM Carrier c WHERE c.carrierLookupId.state =?1")
    List<Carrier> findByLookupTableState(String state);
+
+    /**
+     * This method returns a Carrier record that corresponds to the passed
+     * carrierLookupID argument
+     * @param id
+     * @return Carrier record
+     */
+    @Query("SELECT c FROM Carrier c WHERE c.carrierLookupId.lookupId = ?1")
+    Carrier findByLookupTableCarrierLookupId(Long id);
 
 }// MongoCarrierRepository Interface

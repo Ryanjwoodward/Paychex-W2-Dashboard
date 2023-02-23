@@ -1,13 +1,18 @@
 package com.gcucapstone.paychexdashboard.controller;
 
-
 import com.gcucapstone.paychexdashboard.entity.Client;
 import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.repository.ClientRepository;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +41,7 @@ public class ClientController {
 
     @Autowired
     private LookupTableRepository lookupTableRepository;
-
+    int[] attributeCounter = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     //----------------------------------------------------
     // Methods
     //----------------------------------------------------
@@ -48,7 +53,98 @@ public class ClientController {
      * @return  - a list of Client Records
      */
     @GetMapping("/clients")
-    public List<Client> getAllClients(){ return clientRepository.findAll(); }
+    public List<Client> getAllCients(){
+        return clientRepository.findAll();
+    }
+
+
+    /**
+     * This REST method is called with a selection value to indicate the column that is to be sorted by
+     * This controller tracks the number of times the column is clicked to return asc or desc sort order
+     * initially it returns all records by default
+     * @param selection
+     * @return
+     */
+    @GetMapping("/clients/{sel}")
+    public List<Client> getAllClients(@PathVariable(value = "sel")int selection){
+
+        String[] attributes ={
+                "w2TransmissionId", "branch", "createdDate", "employeeCount", "transmissionFile", "w2Count",
+                "w2DeliveryAddress", "clientTypeId.lookupId", "deliveryCodeTypeId.State"
+        };
+
+        switch(selection){
+            case 1: //vendorId.clientId
+                if(attributeCounter[0] == 0) {
+                    System.out.println("ATTR_COUNT: " + attributeCounter[0]);
+                    attributeCounter[0] = 1;
+                    System.out.println("ATTR_COUNT: " + attributeCounter[0]);
+                    return clientRepository.findAll(Sort.by(attributes[0]).descending());
+                }else if(attributeCounter[0] == 1){
+                    System.out.println("ATTRCOUNT: " + attributeCounter[0]);
+                    attributeCounter[0] = 0;
+                    System.out.println("ATTRCOUNT: " + attributeCounter[0]);
+                    return clientRepository.findAll(Sort.by(attributes[0]).ascending());
+                }
+            case 2://vendorId.branch
+                if(attributeCounter[1] == 0) {
+                    attributeCounter[1] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[1]).descending());
+                }else{
+                    attributeCounter[1] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[1]).ascending());
+                }
+            case 3://employeeCount
+                if(attributeCounter[2] == 0) {
+                    attributeCounter[2] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[2] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 4://w2Count
+                if(attributeCounter[3] == 0) {
+                    attributeCounter[3] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[3]).descending());
+                }else{
+                    attributeCounter[3] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[3]).ascending());
+                }
+            case 5://lookupId.lookupId
+                if(attributeCounter[4] == 0) {
+                    attributeCounter[4] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[4]).descending());
+                }else{
+                    attributeCounter[4] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[4]).ascending());
+                }
+            case 6://lookupId.abbreviation
+                if(attributeCounter[5] == 0) {
+                    attributeCounter[5] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[5]).descending());
+                }else{
+                    attributeCounter[5] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[5]).ascending());
+                }
+            case 7://lookupId.description
+                if(attributeCounter[6] == 0) {
+                    attributeCounter[6] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[6] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 8://lookupId.fullName
+                if(attributeCounter[7] == 0) {
+                    attributeCounter[7] = 1;
+                    return clientRepository.findAll(Sort.by(attributes[7]).descending());
+                }else{
+                    attributeCounter[7] = 0;
+                    return clientRepository.findAll(Sort.by(attributes[7]).ascending());
+                }                case 9: //lookupId.state
+            default: //all vendors
+                return clientRepository.findAll();
+        }    }
 
 
     /**
@@ -73,8 +169,8 @@ public class ClientController {
      * @return         - the Client Record
      */
     @GetMapping("/branch/{branch}")
-    public Client getClientByBranch(@PathVariable(value = "branch") String branch){
-        Client client = clientRepository.findByBranch(branch);
+    public List<Client> getClientByBranch(@PathVariable(value = "branch") String branch){
+        List<Client> client = clientRepository.findByBranch(branch);
         return client;
     }
 
@@ -172,12 +268,72 @@ public class ClientController {
         List<Client> clients = new ArrayList<Client>();
 
         for(int idx = 0; idx < states.size(); idx++){
-            clients.addAll(clientRepository.findByLookupTableStates(states.get(idx)));
+            clients.addAll(clientRepository.findByLookupTableState(states.get(idx)));
         }
 
         return clients;
     }
 
+    @GetMapping("clientsort/{filtercriteria}/clients/{filtervalues}")
+    @ResponseBody
+    public List<Client> getFiltered(@PathVariable(value = "filtercriteria")List<Integer> criteriaAttributes,
+                                         @PathVariable(value = "filtervalues")List<String> criteriaValues){
 
+
+        List<Client> clients = new ArrayList<Client>();
+
+        for(int idx = 0; idx < criteriaAttributes.size(); idx++){
+
+            switch(criteriaAttributes.get(idx)){
+
+                case 1 : //search for w2Transmission Id (single)
+
+                    clients.add(clientRepository.findByW2TransmissionId(criteriaValues.get(idx)));
+                    break;
+
+                case 2 : // search for branch (mult)
+
+                    clients.addAll(clientRepository.findByBranch(criteriaValues.get(idx)));
+                    break;
+
+                case 3 : // search for created Data (mult)
+
+                    //no controller method
+                    break;
+
+                case 4 : // search for emp count (mult)
+
+                    clients.addAll(clientRepository.findByEmployeeCount(Integer.parseInt(criteriaValues.get(idx))));
+                    break;
+
+                case 5: // search for transm file (mult)
+
+                    clients.add(clientRepository.findByTransmissionFile(criteriaValues.get(idx)));
+                    break;
+
+                case 6 : //search for w2count (mult)
+
+                    clients.addAll(clientRepository.findByW2Count(Integer.parseInt(criteriaValues.get(idx))));
+                    break;
+
+                case 7 : // search for w2 delivery address
+
+                    clients.addAll(clientRepository.findByW2DeliveryAddress(criteriaValues.get(idx)));
+                    break;
+
+                case 8: // search for client type id (single)
+
+                    clients.add(clientRepository.findByLookupTableClientTypeId(Long.valueOf(criteriaValues.get(idx))));
+                    break;
+
+                default:    // print an error
+
+                    System.out.println("Feler...Something went Wrong!");
+            }
+
+        }
+
+        return clients;
+    }
 
 }//ClientController Class
