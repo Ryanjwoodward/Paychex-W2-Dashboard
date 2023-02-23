@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/GCU-Capstone.iml" filepath="$PROJECT_DIR$/.idea/GCU-Capstone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Back-End/Springboot/Paychex-Dashboard/Paychex-Dashboard.iml" filepath="$PROJECT_DIR$/Back-End/Springboot/Paychex-Dashboard/Paychex-Dashboard.iml" />
     </modules>
   </component>
 </project>

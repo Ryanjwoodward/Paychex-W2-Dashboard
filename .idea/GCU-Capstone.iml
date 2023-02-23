@@ -5,6 +5,8 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/Front-End/Dashboard/dist" />
       <excludeFolder url="file://$MODULE_DIR$/Front-End/Dashboard/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Capstone-FE/paychex-dashboard/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/Capstone-FE/paychex-dashboard/tmp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
