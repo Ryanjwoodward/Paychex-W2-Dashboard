@@ -477,14 +477,38 @@
   var tooltipSpan = document.getElementById('details-box');
 
   document.addEventListener('mouseover', function (e) {
+    // If hovering over a state, change the cursor to a pointer
+    if (e.target.tagName == 'path') {
+      e.target.style.cursor = 'pointer';
+    }
     if (e.target.tagName == 'path') {
       var content = e.target.dataset.name;
       document.getElementById("details-box").innerHTML = content;
       document.getElementById("details-box").style.opacity = "100%";
+
     }
     else {
       document.getElementById("details-box").style.opacity = "0%";
     }
+  });
+
+  // // Create an onclick event that changes the state columns to the state that was clicked
+  // document.addEventListener('click', function (e) {
+  //   if (e.target.tagName == 'path') {
+  //     var state = e.target.dataset.id;
+  //     alert("You clicked on " + state);
+  //     document.getElementById("v_state").value = state;
+  //   }
+  // });
+  document.addEventListener('click', function (e) {
+    if (e.target.tagName == 'path') {
+      var state = e.target.dataset.id;
+      document.getElementById("v_state").value = state;
+      // alert("You clicked on " + state);
+      // document.getElementById("ca_state").value = state;
+      // document.getElementById("cl_state").value = state;
+    }
+
   });
 
   window.onmousemove = function (e) {
@@ -494,6 +518,9 @@
     tooltipSpan.style.left = (x) + 'px';
   };
 </script>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

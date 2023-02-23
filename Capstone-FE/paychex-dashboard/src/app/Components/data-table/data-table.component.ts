@@ -160,9 +160,7 @@ export class DataTableComponent implements OnInit {
     })
   }//getEntitiesByState
 
-
 }
-
 
 
 
