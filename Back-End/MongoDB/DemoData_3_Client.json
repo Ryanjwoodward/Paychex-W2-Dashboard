@@ -1,0 +1,33 @@
+[
+    {
+        "w2TransmissionId": "test-tst-7777",
+        "branch": "test_branch",
+        "createdDate": "2022-12-01",
+        "employeeCount": 1200,
+        "transmissionFile": "test-file.csv",
+        "w2Count": 1200,
+        "w2DeliveryAddress": "8023 W. Guadalupe Rd.",
+        "clientTypeId": {
+            "lookupId": 7777,
+            "abbreviation": "TST3",
+            "description": "test_description",
+            "fullName": "TEST full name",
+            "lookupTypeId": {
+                "lookupTypeId": 332211,
+                "lookupType": "TEST4"
+            },
+            "state": "TS"
+        },
+        "deliveryCodeTypeId": {
+            "lookupId": 7777,
+            "abbreviation": "TST3",
+            "description": "test_description",
+            "fullName": "TEST full name",
+            "lookupTypeId": {
+                "lookupTypeId": 332211,
+                "lookupType": "TEST4"
+            },
+            "state": "TS"
+        }
+    }
+]

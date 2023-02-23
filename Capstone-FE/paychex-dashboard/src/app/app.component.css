@@ -1,0 +1,12 @@
+#content-tables{
+  display: flex;
+  flex-direction: row;
+}
+
+#header-section{
+  background-color: var(--paychex-blue);
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+}
+

@@ -1,0 +1,35 @@
+[
+    {
+        "lookupId": 9999,
+        "abbreviation": "TST1",
+        "description": "test_decription",
+        "fullName": "TEST full name",
+        "lookupTypeId": {
+            "lookupTypeId": 998877,
+            "lookupType": "TEST"
+        },
+        "state": "TS"
+    },
+    {
+        "lookupId": 8888,
+        "abbreviation": "TST2",
+        "description": "test_decription",
+        "fullName": "TEST full name",
+        "lookupTypeId": {
+            "lookupTypeId": 665544,
+            "lookupType": "TEST2"
+        },
+        "state": "TS"
+    },
+    {
+        "lookupId": 7777,
+        "abbreviation": "TST3",
+        "description": "test_decription",
+        "fullName": "TEST full name",
+        "lookupTypeId": {
+            "lookupTypeId": 332211,
+            "lookupType": "TEST3"
+        },
+        "state": "TS"
+    }
+]
