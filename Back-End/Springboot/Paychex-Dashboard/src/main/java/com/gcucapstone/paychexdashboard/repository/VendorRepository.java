@@ -49,7 +49,7 @@ public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
     * @return           - the vendor record(s)
     */
    @Query("SELECT v FROM Vendor v WHERE v.vendorId.clientId = ?1")
-   List<Vendor> findByClientId(String clientId);
+   Vendor findByClientId(String clientId);
 
 
    /**
@@ -161,6 +161,9 @@ public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
      */
    @Query("SELECT v FROM Vendor v WHERE v.lookupId.state = ?1")
    List<Vendor> findByLookupTableState(String state);
+
+   @Query("SELECT v FROM Vendor v WHERE v.lookupId.lookupId = ?1")
+   Vendor findByLookupTableCarrierId(Long id);
 
 
 }// VendorRepository Interface
