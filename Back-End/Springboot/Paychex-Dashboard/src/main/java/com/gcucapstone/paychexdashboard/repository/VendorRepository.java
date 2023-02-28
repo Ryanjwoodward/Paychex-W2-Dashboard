@@ -141,6 +141,7 @@ public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
    @Query("SELECT v FROM Vendor v WHERE v.vendorId.branch = ?1 AND v.vendorId.clientId = ?2")
    List<Vendor> findByBranchAndClientId(String Branch, String clientId);
 
+
    /**
     * This method is a custom written JPQL Query method that returns o located vendor
     * record that corresponds to at least one of the passed Branch of Client ID parameters
@@ -162,8 +163,8 @@ public interface VendorRepository extends JpaRepository<Vendor, BranchClient> {
    @Query("SELECT v FROM Vendor v WHERE v.lookupId.state = ?1")
    List<Vendor> findByLookupTableState(String state);
 
-   @Query("SELECT v FROM Vendor v WHERE v.lookupId.lookupId = ?1")
-   Vendor findByLookupTableCarrierId(Long id);
+
+
 
 
 }// VendorRepository Interface

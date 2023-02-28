@@ -5,6 +5,8 @@ import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
 import com.gcucapstone.paychexdashboard.repository.VendorRepository;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +46,53 @@ public class VendorController {
     //----------------------------------------------------
     // Methods
     //----------------------------------------------------
+
+    /**
+     * Method to Return all Vendor records in the Database
+     * @return
+     */
+    @GetMapping("/vendors")
+    public List<Vendor> getAllVendors(){
+        return vendorRepository.findAll();
+    }
+
+
+    @GetMapping("/vendors/json/filter")
+    public List<Vendor> getFilteredVendors(JSONObject vendorJsonFile){
+
+
+
+        //List<Vendor> vendors = vendorRepository.findByBranch((String) vendorJsonFile.get("branch"));
+
+        return null;
+    }
+
+/*
+
+{
+        "vendorId": {
+            "branch": "southwest",
+            "clientId": "intl-1076"
+        },
+        "employeeCount": 13451,
+        "w2Count": 13451,
+        "lookupId": {
+            "lookupId": 1076,
+            "abbreviation": "VEN",
+            "description": "Intel vendor description",
+            "fullName": "Intel",
+            "lookupTypeId": {
+                "lookupTypeId": 1541,
+                "lookupType": "vendor"
+            },
+            "state": "NY"
+        }
+    }
+
+
+ */
+
+
 
     /**
      * This method is a REST method that maps a GET operation to a VendorRepository
