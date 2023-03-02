@@ -67,33 +67,6 @@ public class VendorController {
         return null;
     }
 
-/*
-
-{
-        "vendorId": {
-            "branch": "southwest",
-            "clientId": "intl-1076"
-        },
-        "employeeCount": 13451,
-        "w2Count": 13451,
-        "lookupId": {
-            "lookupId": 1076,
-            "abbreviation": "VEN",
-            "description": "Intel vendor description",
-            "fullName": "Intel",
-            "lookupTypeId": {
-                "lookupTypeId": 1541,
-                "lookupType": "vendor"
-            },
-            "state": "NY"
-        }
-    }
-
-
- */
-
-
-
     /**
      * This method is a REST method that maps a GET operation to a VendorRepository
      * instance and calls it's extended JPARepository method findAll() and
