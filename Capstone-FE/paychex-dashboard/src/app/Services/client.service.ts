@@ -15,6 +15,7 @@ export class ClientService {
   constructor(private httpClient: HttpClient) { }
 
   getAllClients(sel:string): Observable<Client[]>{
+
     return this.httpClient.get<Client[]>(`${this.baseURL+sel}`);
   }
 

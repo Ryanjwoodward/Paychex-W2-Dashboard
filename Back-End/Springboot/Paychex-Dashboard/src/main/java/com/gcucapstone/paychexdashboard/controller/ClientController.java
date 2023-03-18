@@ -4,15 +4,13 @@ import com.gcucapstone.paychexdashboard.entity.Client;
 import com.gcucapstone.paychexdashboard.entity.LookupTable;
 import com.gcucapstone.paychexdashboard.repository.ClientRepository;
 import com.gcucapstone.paychexdashboard.repository.LookupTableRepository;
-import com.opencsv.CSVWriter;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +40,7 @@ public class ClientController {
     @Autowired
     private LookupTableRepository lookupTableRepository;
     int[] attributeCounter = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int pageNumber;
     //----------------------------------------------------
     // Methods
     //----------------------------------------------------
@@ -62,10 +61,11 @@ public class ClientController {
      * This REST method is called with a selection value to indicate the column that is to be sorted by
      * This controller tracks the number of times the column is clicked to return asc or desc sort order
      * initially it returns all records by default
+     *
      * @param selection
      * @return
      */
-    @GetMapping("/clients/{sel}")
+/*    @GetMapping("/clients/{sel}")
     public List<Client> getAllClients(@PathVariable(value = "sel")int selection){
 
         String[] attributes ={
@@ -144,7 +144,113 @@ public class ClientController {
                 }                case 9: //lookupId.state
             default: //all vendors
                 return clientRepository.findAll();
-        }    }
+        }    }*/
+
+
+    @GetMapping("/clients/{sel}")
+    public List<Client> getAllCarriers(@PathVariable(value = "sel") int selection){
+
+        String[] attributes ={
+                "w2TransmissionId", "branch", "createdDate", "employeeCount", "transmissionFile", "w2Count",
+                "w2DeliveryAddress", "clientTypeId.lookupId", "deliveryCodeTypeId.State"
+        };
+
+        int pageSize = 5;
+
+        Page<Client> vendorPage; // = vendorRepository.findAll(pageable);
+        Sort sortby = Sort.by(attributes[0]).descending();
+
+        switch(selection){
+            case 1: //vendorId.clientId
+                if(attributeCounter[0] == 0) {
+                    attributeCounter[0] = 1;
+                    sortby = Sort.by(attributes[0]).descending();
+                }else{
+                    attributeCounter[0] = 0;
+                    sortby = Sort.by(attributes[0]).ascending();
+                }
+            case 2://vendorId.branch
+                if(attributeCounter[1] == 0) {
+                    attributeCounter[1] = 1;
+                    sortby = Sort.by(attributes[1]).descending();
+                }else{
+                    attributeCounter[1] = 0;
+                    sortby = Sort.by(attributes[1]).ascending();
+                }
+            case 3://employeeCount
+                if(attributeCounter[2] == 0) {
+                    attributeCounter[2] = 1;
+                    sortby = Sort.by(attributes[2]).descending();
+                }else{
+                    attributeCounter[2] = 0;
+                    sortby = Sort.by(attributes[2]).ascending();
+                }
+            case 4://w2Count
+                if(attributeCounter[3] == 0) {
+                    attributeCounter[3] = 1;
+                    sortby = Sort.by(attributes[3]).descending();
+                }else{
+                    attributeCounter[3] = 0;
+                    sortby = Sort.by(attributes[3]).ascending();
+                }
+            case 5://lookupId.lookupId
+                if(attributeCounter[4] == 0) {
+                    attributeCounter[4] = 1;
+                    sortby = Sort.by(attributes[4]).descending();
+                }else{
+                    attributeCounter[4] = 0;
+                    sortby = Sort.by(attributes[4]).ascending();
+                }
+            case 6://lookupId.abbreviation
+                if(attributeCounter[5] == 0) {
+                    attributeCounter[5] = 1;
+                    sortby = Sort.by(attributes[5]).descending();
+                }else{
+                    attributeCounter[5] = 0;
+                    sortby =Sort.by(attributes[5]).ascending();
+                }
+            case 7://lookupId.description
+                if(attributeCounter[6] == 0) {
+                    attributeCounter[6] = 1;
+                    sortby = Sort.by(attributes[6]).descending();
+                }else{
+                    attributeCounter[6] = 0;
+                    sortby = Sort.by(attributes[6]).ascending();
+                }
+            case 8://lookupId.fullName
+                if(attributeCounter[7] == 0) {
+                    attributeCounter[7] = 1;
+                    sortby = Sort.by(attributes[7]).descending();
+                }else{
+                    attributeCounter[7] = 0;
+                    sortby = Sort.by(attributes[7]).ascending();
+                }
+            case 9: //lookupId.state
+                if(attributeCounter[8] == 0) {
+                    attributeCounter[8] = 1;
+                    sortby = Sort.by(attributes[8]).descending();
+                }else{
+                    attributeCounter[8] = 0;
+                    sortby = Sort.by(attributes[8]).ascending();
+                }
+            default: //all vendors
+                // need a default page to return....
+        }
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sortby);
+        vendorPage = clientRepository.findAll(pageable);
+        List<Client> carriers = vendorPage.toList();
+        return carriers;
+    }
+
+    @GetMapping("/pagecarriers")
+    private void incrementPageNumber() {
+        if (this.pageNumber >= 2) {
+            this.pageNumber = 0;
+        } else {
+            this.pageNumber += 1;
+        }
+    }
 
 
     /**

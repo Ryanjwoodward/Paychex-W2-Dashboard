@@ -8,6 +8,9 @@ import com.gcucapstone.paychexdashboard.repository.VendorRepository;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,10 +46,13 @@ public class VendorController {
     private LookupTableRepository lookupTableRepository;
 
     int[] attributeCounter = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+    int currentSortAttrib = 0;
+    int pageNumber;
+
     //----------------------------------------------------
     // Methods
     //----------------------------------------------------
-
     /**
      * Method to Return all Vendor records in the Database
      * @return
@@ -57,15 +63,84 @@ public class VendorController {
     }
 
 
-    @GetMapping("/vendors/json/filter")
-    public List<Vendor> getFilteredVendors(JSONObject vendorJsonFile){
+  /*  @GetMapping("/vendors/{columnselect}")
+    public List<Vendor> getAllVendors(@PathVariable(value = "columnselect") int selection){
 
+        String[] attributes ={
+                "vendorId.clientId", "vendorId.branch", "employeeCount", "w2Count", "lookupId.lookupId",
+                "lookupId.abbreviation", "lookupId.description", "lookupId.fullName", "lookupId.state"
+        };
 
+        switch(selection){
+            case 1: //vendorId.clientId
+                if(attributeCounter[0] == 0) {
+                    attributeCounter[0] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[0]).descending());
+                }else{
+                    attributeCounter[0] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[0]).ascending());
+                }
+            case 2://vendorId.branch
+                if(attributeCounter[1] == 0) {
+                    attributeCounter[1] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[1]).descending());
+                }else{
+                    attributeCounter[1] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[1]).ascending());
+                }
+            case 3://employeeCount
+                if(attributeCounter[2] == 0) {
+                    attributeCounter[2] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[2] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 4://w2Count
+                if(attributeCounter[3] == 0) {
+                    attributeCounter[3] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[3]).descending());
+                }else{
+                    attributeCounter[3] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[3]).ascending());
+                }
+            case 5://lookupId.lookupId
+                if(attributeCounter[4] == 0) {
+                    attributeCounter[4] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[4]).descending());
+                }else{
+                    attributeCounter[4] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[4]).ascending());
+                }
+            case 6://lookupId.abbreviation
+                if(attributeCounter[5] == 0) {
+                    attributeCounter[5] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[5]).descending());
+                }else{
+                    attributeCounter[5] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[5]).ascending());
+                }
+            case 7://lookupId.description
+                if(attributeCounter[6] == 0) {
+                    attributeCounter[6] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[2]).descending());
+                }else{
+                    attributeCounter[6] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[2]).ascending());
+                }
+            case 8://lookupId.fullName
+                if(attributeCounter[7] == 0) {
+                    attributeCounter[7] = 1;
+                    return vendorRepository.findAll(Sort.by(attributes[7]).descending());
+                }else{
+                    attributeCounter[7] = 0;
+                    return vendorRepository.findAll(Sort.by(attributes[7]).ascending());
+                }                case 9: //lookupId.state
+            default: //all vendors
+                return vendorRepository.findAll();
+        }
+    }*/
 
-        //List<Vendor> vendors = vendorRepository.findByBranch((String) vendorJsonFile.get("branch"));
-
-        return null;
-    }
 
     /**
      * This method is a REST method that maps a GET operation to a VendorRepository
@@ -73,82 +148,109 @@ public class VendorController {
      * returns a list of all Vendor records found in the schema
      * @return - a list of Vendor Records
      */
-    @GetMapping("/vendors/{sel}")
-    public List<Vendor> getAllVendors(@PathVariable(value = "sel") int selection){
+    @GetMapping("/vendors/{columnselect}")
+    public List<Vendor> getAllVendors(@PathVariable(value = "columnselect") int selection){
 
             String[] attributes ={
                     "vendorId.clientId", "vendorId.branch", "employeeCount", "w2Count", "lookupId.lookupId",
                     "lookupId.abbreviation", "lookupId.description", "lookupId.fullName", "lookupId.state"
             };
 
+            int pageSize = 5;
+
+            Page<Vendor> vendorPage; // = vendorRepository.findAll(pageable);
+            Sort sortby = Sort.by(attributes[0]).descending();
+
             switch(selection){
                 case 1: //vendorId.clientId
                     if(attributeCounter[0] == 0) {
                         attributeCounter[0] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[0]).descending());
+                        sortby = Sort.by(attributes[0]).descending();
                     }else{
                         attributeCounter[0] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[0]).ascending());
+                        sortby = Sort.by(attributes[0]).ascending();
                     }
                 case 2://vendorId.branch
                     if(attributeCounter[1] == 0) {
                         attributeCounter[1] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[1]).descending());
+                        sortby = Sort.by(attributes[1]).descending();
                     }else{
                         attributeCounter[1] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[1]).ascending());
+                        sortby = Sort.by(attributes[1]).ascending();
                     }
                 case 3://employeeCount
                     if(attributeCounter[2] == 0) {
                         attributeCounter[2] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[2]).descending());
+                        sortby = Sort.by(attributes[2]).descending();
                     }else{
                         attributeCounter[2] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[2]).ascending());
+                        sortby = Sort.by(attributes[2]).ascending();
                     }
                 case 4://w2Count
                     if(attributeCounter[3] == 0) {
                         attributeCounter[3] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[3]).descending());
+                        sortby = Sort.by(attributes[3]).descending();
                     }else{
                         attributeCounter[3] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[3]).ascending());
+                        sortby = Sort.by(attributes[3]).ascending();
                     }
                 case 5://lookupId.lookupId
                     if(attributeCounter[4] == 0) {
                         attributeCounter[4] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[4]).descending());
+                        sortby = Sort.by(attributes[4]).descending();
                     }else{
                         attributeCounter[4] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[4]).ascending());
+                        sortby = Sort.by(attributes[4]).ascending();
                     }
                 case 6://lookupId.abbreviation
                     if(attributeCounter[5] == 0) {
                         attributeCounter[5] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[5]).descending());
+                        sortby = Sort.by(attributes[5]).descending();
                     }else{
                         attributeCounter[5] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[5]).ascending());
+                        sortby =Sort.by(attributes[5]).ascending();
                     }
                 case 7://lookupId.description
                     if(attributeCounter[6] == 0) {
                         attributeCounter[6] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[2]).descending());
+                        sortby = Sort.by(attributes[6]).descending();
                     }else{
                         attributeCounter[6] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[2]).ascending());
+                        sortby = Sort.by(attributes[6]).ascending();
                     }
                 case 8://lookupId.fullName
                     if(attributeCounter[7] == 0) {
                         attributeCounter[7] = 1;
-                        return vendorRepository.findAll(Sort.by(attributes[7]).descending());
+                        sortby = Sort.by(attributes[7]).descending();
                     }else{
                         attributeCounter[7] = 0;
-                        return vendorRepository.findAll(Sort.by(attributes[7]).ascending());
-                    }                case 9: //lookupId.state
+                        sortby = Sort.by(attributes[7]).ascending();
+                    }
+                    case 9: //lookupId.state
+                        if(attributeCounter[8] == 0) {
+                            attributeCounter[8] = 1;
+                            sortby = Sort.by(attributes[8]).descending();
+                        }else{
+                            attributeCounter[8] = 0;
+                            sortby = Sort.by(attributes[8]).ascending();
+                        }
                 default: //all vendors
-                    return vendorRepository.findAll();
+                    // need a default page to return....
             }
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sortby);
+        vendorPage = vendorRepository.findAll(pageable);
+        List<Vendor> vendors = vendorPage.toList();
+        return vendors;
+    }
+
+    @GetMapping("/pagevendors")
+    private void incrementPageNumber() {
+        if (this.pageNumber >= 2) {
+            this.pageNumber = 0;
+        } else {
+            this.pageNumber += 1;
+        }
     }
 
     /**
@@ -233,3 +335,14 @@ public class VendorController {
 
 
 }//VendorController Class
+
+/*
+
+
+
+
+
+
+
+
+ */

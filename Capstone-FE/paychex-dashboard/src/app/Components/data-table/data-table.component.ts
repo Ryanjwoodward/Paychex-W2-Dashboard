@@ -71,6 +71,10 @@ export class DataTableComponent implements OnInit {
   clientLookupIdFilter:string;
   clientStateFilter:string;
 
+  vendorPageNumber: number = 0;
+  clientPageNumber: number = 0;
+  carrierPageNumber: number = 0;
+
   //-------------------------------------------------------------------------
   constructor(private lookupTypeService: LookupTypeServiceService,
               private lookupTableService: LookupTableService,
@@ -99,6 +103,8 @@ export class DataTableComponent implements OnInit {
       this.vendors  = data;
     })*/
   }
+
+
 
   public getCarriers(selection: string){
     this.carrierService.getAllCarriers(selection).subscribe(data =>{
