@@ -6,6 +6,7 @@ import com.gcucapstone.paychexdashboard.entity.LookupType;
 import com.gcucapstone.paychexdashboard.entity.Vendor;
 import com.gcucapstone.paychexdashboard.repository.*;
 import com.opencsv.CSVWriter;
+import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * ------------------------------------------------------------------------
@@ -67,14 +70,22 @@ private LookupTypeRepository lookupTypeRepository;
                 "attachment; filename=\"" + filename + "\"");
 
 
-        StatefulBeanToCsv<Vendor> writer1 = new StatefulBeanToCsvBuilder<Vendor>(response.getWriter()).withOrderedResults(true).build();
+        StatefulBeanToCsv<Vendor> writer1 =
+                new StatefulBeanToCsvBuilder<Vendor>(response.getWriter()).withSeparator('|').build();
         writer1.write(vendorRepository.findAll());
 
-        StatefulBeanToCsv<Carrier> writer2 = new StatefulBeanToCsvBuilder<Carrier>(response.getWriter()).withOrderedResults(true).build();
-        writer2.write(carrierRepository.findAll());
+        response.getWriter().println();
 
-        StatefulBeanToCsv<Client> writer3 = new StatefulBeanToCsvBuilder<Client>(response.getWriter()).withOrderedResults(true).build();
+        StatefulBeanToCsv<Carrier> writer2 =
+                new StatefulBeanToCsvBuilder<Carrier>(response.getWriter()).withSeparator('|').build();
+        writer2.write(carrierRepository.findAll());
+        response.getWriter().println();
+
+        StatefulBeanToCsv<Client> writer3 =
+                new StatefulBeanToCsvBuilder<Client>(response.getWriter()).withSeparator('|').build();
         writer3.write(clientRepository.findAll());
+
+
 
     }
 

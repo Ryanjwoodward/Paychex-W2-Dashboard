@@ -22,7 +22,7 @@ import java.util.List;
 public class AtlasConnectionTest {
 
     public static void main(String[] args) {
-        String connectionString = "mongodb+srv://pcd-user:pcd-capstone@cluster0.1bx6urb.mongodb.net/?retryWrites=true&w=majority";
+        String connectionString = "mongodb+srv://pcd-user:6ZJd78OhykEBSiqS@cluster0.1bx6urb.mongodb.net/?retryWrites=true&w=majority";
         try (MongoClient mongoClient = MongoClients.create(connectionString)) {
             List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
             databases.forEach(db -> System.out.println(db.toJson()));

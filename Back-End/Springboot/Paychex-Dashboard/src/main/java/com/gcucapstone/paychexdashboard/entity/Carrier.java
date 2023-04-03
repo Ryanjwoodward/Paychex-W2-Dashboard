@@ -1,5 +1,6 @@
 package com.gcucapstone.paychexdashboard.entity;
 
+import com.opencsv.bean.CsvBindByName;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,12 +35,15 @@ public class Carrier {
 	// Instance Variables
 	//----------------------------------------------------
 
+	@CsvBindByName(column = "Carrier ID")
 	@EmbeddedId
 	private BranchClient carrierId;
 
+	@CsvBindByName(column = "Destination Address")
 	@Column(name = "destination_address")
 	private String destinationAddress;
 
+	@CsvBindByName(column = "Tracking ID")
 	@Column(name = "tracking_id")
 	private String trackingId;
 
@@ -47,7 +51,7 @@ public class Carrier {
 	@JoinColumn(name = "carrier_lookup_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_carrier_lookup_id"))
 	private LookupTable carrierLookupId;
 
-	// Add foreign key relationship annotation
+	@CsvBindByName(column = "Delivery Status")
 	@OneToOne
 	@JoinColumn(name = "delviery_status_type_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_carrier_delivery_lookup_id"))
 	private LookupTable deliveryStatusTypeId;

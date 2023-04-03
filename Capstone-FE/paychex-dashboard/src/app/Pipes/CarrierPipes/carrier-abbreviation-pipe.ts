@@ -3,25 +3,25 @@ import { Carrier } from "../../Classes/carrier";
 
 // @ts-ignore
 @Pipe({name: 'carabbrev'})
-export class CarrierAbbreviationPipe implements PipeTransform{
+    export class CarrierAbbreviationPipe implements PipeTransform{
 
-  transform(values: Carrier[], filter: string): Carrier[] {
-    if (!filter || filter.length === 0) {
-      return values;
-    }
+      transform(values: Carrier[], filter: string): Carrier[] {
+        if (!filter || filter.length === 0) {
+          return values;
+        }
 
-    if (values.length === 0) {
-      return values;
-    }
+        if (values.length === 0) {
+          return values;
+        }
 
-    // @ts-ignore
-    return values.filter((value: Carrier) => {
-      const valueFound =
-      value.carrierLookupId.abbreviation.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+        // @ts-ignore
+        return values.filter((value: Carrier) => {
+          const valueFound =
+            value.carrierLookupId.abbreviation.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
 
-      if (valueFound) {
-        return value;
-      }
-    });
+          if (valueFound) {
+            return value;
+          }
+        });
   }
 }

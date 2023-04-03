@@ -25,12 +25,12 @@ public class ChangeStreamThread {
         LookupTableChangeStreams lookupTableChangeStreams = new LookupTableChangeStreams();
         CarrierChangeStreams carrierChangeStreams = new CarrierChangeStreams();
 
-        // call .start() on each
-        lookupTypeChangeStreams.start();  //-- COMPLETED
-        lookupTableChangeStreams.start(); //-- COMPLETED
-        vendorChangeStreams.start();      //-- COMPLETED
-        clientChangeStreams.start();
-        carrierChangeStreams.start();     //-- COMPLETED
+        // call .start() on ea
+        //lookupTypeChangeStreams.start();  //-- COMPLETED
+      // lookupTableChangeStreams.start(); //-- COMPLETED
+       vendorChangeStreams.start();      //-- COMPLETED
+       clientChangeStreams.start();
+       carrierChangeStreams.start();     //-- COMPLETED
     }
 
 }//ChangeStreamThread Class

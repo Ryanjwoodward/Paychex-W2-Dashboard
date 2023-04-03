@@ -44,7 +44,7 @@ public class CarrierChangeStreams extends Thread{
     @Override
     public void run(){
 
-        ConnectionString connectionString = new ConnectionString(("mongodb+srv://pcd-user:pcd-capstone@cluster0.1bx6urb.mongodb.net/?retryWrites=true&w=majority"));
+        ConnectionString connectionString = new ConnectionString(("mongodb+srv://ryangcu:UkfF5xsRobTil1Y6@cluster0.1bx6urb.mongodb.net/?retryWrites=true&w=majority"));
         CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
         CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
         MongoClientSettings clientSettings = MongoClientSettings.builder().applyConnectionString(connectionString).codecRegistry(codecRegistry).build();

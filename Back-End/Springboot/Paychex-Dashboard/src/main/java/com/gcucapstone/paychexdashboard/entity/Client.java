@@ -1,5 +1,6 @@
 package com.gcucapstone.paychexdashboard.entity;
 
+import com.opencsv.bean.CsvBindByName;
 import lombok.*;
 
 import javax.persistence.*;
@@ -35,28 +36,36 @@ public class Client {
     //----------------------------------------------------
     // Instance Variables
     //----------------------------------------------------
+    @CsvBindByName(column = "W2 Transmission ID")
     @Id
     @Column(name = "w2_transmission_id")
     private String w2TransmissionId;
 
+    @CsvBindByName(column = "Branch")
     @Column(name = "branch")
     private String branch;
 
+    @CsvBindByName(column = "Created Date")
     @Column(name = "created_date")
     private String createdDate;
 
+    @CsvBindByName(column = "Employee Count")
     @Column(name = "employee_count")
     private int employeeCount;
 
+    @CsvBindByName(column = "Transmission File")
     @Column(name = "transmission_file")
     private String transmissionFile;
 
+    @CsvBindByName(column = "W2 Count")
     @Column(name = "w2_count")
     private int w2Count;
 
+    @CsvBindByName(column = "Delivery Address")
     @Column(name = "w2_delivery_address")
     private String w2DeliveryAddress;
 
+    @CsvBindByName(column = "Client Type")
     @OneToOne
     @JoinColumn(name = "client_type_id", referencedColumnName = "lookup_id", foreignKey=@ForeignKey(name = "Fk_client_lookup_id"))
     private LookupTable clientTypeId;
