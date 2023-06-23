@@ -18,5 +18,5 @@
 #### Screenshot of Dashboard
 
 
-><img src="https://user-images.githubusercontent.com/48807137/235379450-240b387a-f405-42e9-8062-93f3e08faf60.png" width="25"/> __Full Demo:__ https://youtu.be/WhGbs3zrJt4
+<img src="https://user-images.githubusercontent.com/48807137/235379450-240b387a-f405-42e9-8062-93f3e08faf60.png" width="25"/> __Full Demo:__ https://youtu.be/WhGbs3zrJt4
 
