@@ -1,6 +1,6 @@
 # Paychex-W2-Dashboard
 ***
-###Senior Project @ Grand Canyon University - Mentorship with Paychex
+### Senior Project @ Grand Canyon University - Mentorship with Paychex
 > This Data Dashboard was the basis for my _Senior ‘Capstone project_ for _Grand Canyon University’s Software Engineering Program_. I had an opportunity to __intern with Paychex__ for two semesters as I developed the project. The Dashboard is designed to expose data stored in a relational database to the User Interface that supports a variety of functions such as sorting, filtering, paging, and data exportation (.csv). Further more I was tasked with building a __RESTful web service using Java and Springboot__ and a data management layer that leveraged __MongoDB’s Change Streams__ to maintain both Mongo Collections and the MariaDB schema.
 
 #### Technologies
