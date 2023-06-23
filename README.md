@@ -14,8 +14,10 @@
 ><img src="https://github.com/Ryanjwoodward/Paychex-W2-Dashboard/assets/48807137/445b0bd1-9960-44d6-8453-8639c29145d3" width="35"/> 
 
 #### Demo of Change Streams Database Management
-![Change Streams](https://user-images.githubusercontent.com/48807137/234738580-45713ea2-9acd-4a78-a3ff-db2ef052a463.gif)![pcd](https://user-images.githubusercontent.com/48807137/234739215-ecf23f94-4199-4b88-b120-489a5bc27294.jpg)
+![Change Streams](https://user-images.githubusercontent.com/48807137/234738580-45713ea2-9acd-4a78-a3ff-db2ef052a463.gif)
 #### Screenshot of Dashboard
+>![pcd](https://user-images.githubusercontent.com/48807137/234739215-ecf23f94-4199-4b88-b120-489a5bc27294.jpg)
 
-><img src="https://user-images.githubusercontent.com/48807137/235379450-240b387a-f405-42e9-8062-93f3e08faf60.png"/> __Full Demo:__ https://youtu.be/WhGbs3zrJt4
+
+><img src="https://user-images.githubusercontent.com/48807137/235379450-240b387a-f405-42e9-8062-93f3e08faf60.png" width="25"/> __Full Demo:__ https://youtu.be/WhGbs3zrJt4
 
